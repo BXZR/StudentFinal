@@ -1,0 +1,16 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class fixedFollow : MonoBehaviour {
+
+	//完全固定视角摄像机
+	public Vector3 extraDistance = new Vector3 (2,2,2);
+	//观察目标
+	public Transform theTarget;
+
+	void LateUpdate()
+	{
+		this.transform.position = Vector3.Lerp (this.transform.position , theTarget.transform.position + extraDistance , 0.6f);
+	}
+}

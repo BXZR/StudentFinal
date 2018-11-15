@@ -1,0 +1,19 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TalkNormal : UIBasic {
+
+	//这个是用于对话的UI
+
+	public Image theHeadImage;//头像
+	public Text theTalkText;//文字
+
+
+
+	public void NextText()
+	{
+	   	
+	}
+}

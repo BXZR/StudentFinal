@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FlySkill : SkillBasic {
+
+	private CharacterController theMoveController;
+
+	private move moveOBJ;
+
+	private float yMove = 0f;
+
+	void Start ()
+	{
+		Init ();
+		theMoveController = thePlayer.GetComponent<CharacterController> ();
+		if (!theMoveController)
+			Destroy (this);
+	}
+
+	public override void Init ()
+	{
+		skillName = "御剑飞仙";//技能名字
+		skillInformation = "纵向位移";//技能介绍
+		skillAllTimer = 1f;//冷却时间
+		skillEffectTime = 0.4f;//技能持续时间
+		thePlayer = this.GetComponentInParent<Player>();
+	}
+
+
+	public override void UseTheSkill ()
+	{
+		//没有控制者就不发
+		if (!this.thePlayer || theStateNow!= skillState.isReady)
+			return;
+
+		theStateNow = skillState.isUsing;
+		thePlayer.theSkillNow = this;
+		if(theAnimatorController)
+			theAnimatorController.PlayAnimation (playerAction.jump);
+		if (theMoveController)
+			moveOBJ.changeMoveMode (new runMoveMode());
+	}
+
+
+	public override void OnUpdate ()
+	{
+		if (theStateNow == skillState.isUsing)
+		{
+			yMove = (skillAllTimer - timerForAdd) *jumpForce*Time.deltaTime;
+		} 
+		else if (theStateNow == skillState.isCooling)
+		{
+			yMove = -0.5f;
+		}
+
+		theMoveController.Move (new Vector3 (0f,yMove,0f));
+	}
+
+	void Update()
+	{
+		OnUpdate ();
+	}
+
+
+}

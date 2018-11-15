@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JumpSkill : SkillBasic {
+
+	private CharacterController theMoveController;
+	private animatorController theAnimatorController;
+	//跳跃力量
+	[Range(10f,50f)]
+	public float jumpForce = 25f;
+	private float yMove = 0f;
+
+	void Start ()
+	{
+		theMoveController = this.GetComponentInParent<CharacterController> ();
+		theAnimatorController = this.GetComponentInParent<animatorController> ();
+		if (!theMoveController)
+			Destroy (this);
+		Init ();
+	}
+
+	public override void Init ()
+	{
+		skillName = "跳跃";//技能名字
+		skillInformation = "纵向位移";//技能介绍
+		skillAllTimer = 1f;//冷却时间
+		skillEffectTime = 0.4f;//技能持续时间
+	}
+
+
+	public override void UseTheSkill ()
+	{
+		if(theAnimatorController)
+		  theAnimatorController.PlayAnimation (playerAction.jump);
+	}
+
+
+	public override void OnUpdate ()
+	{
+		if (theStateNow == skillState.isUsing)
+		{
+			yMove = (skillAllTimer - timerForAdd) *jumpForce*Time.deltaTime;
+		} 
+		else if (theStateNow == skillState.isCooling)
+		{
+			yMove = -0.4f;
+		}
+
+		theMoveController.Move (new Vector3 (0f,yMove,0f));
+	}
+
+
+}

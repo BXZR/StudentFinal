@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//技能控制按钮
+using UnityEngine.UI;
+
+
+public class UISkillButton : MonoBehaviour {
+
+	//被控制的技能
+	public SkillBasic theSkill;
+	//用于遮罩的技能图片
+	public Image theImageForSkillFront;
+	//遮罩的颜色
+	public Color colorForEffecting = Color.yellow;
+	public Color colorForCooling = Color.black;
+
+
+	public void makeSkillOperate()
+	{
+		theSkill.SkillEffect ();
+	}
+
+	void Update () 
+	{
+		if (!theSkill || !theImageForSkillFront)
+			return;
+		
+		theSkill.makeTimeCanculate();
+
+		if(theSkill.theStateNow == skillState.isReady)
+			theImageForSkillFront.enabled = false;
+	
+		else if(theSkill.theStateNow == skillState.isUsing)
+		{
+			theImageForSkillFront.enabled = true;
+			theImageForSkillFront.fillAmount = theSkill.theStatePercent;
+			theImageForSkillFront.color = colorForEffecting;
+		}
+
+		else if(theSkill.theStateNow == skillState.isCooling)
+		{
+			theImageForSkillFront.enabled = true;
+			theImageForSkillFront.fillAmount = theSkill.theStatePercent;
+			theImageForSkillFront.color = colorForCooling;
+		}
+		//print ("theSkill.theStatePercent = " + theSkill.theStatePercent);
+		print ("theSkill.theStateNow = "+theSkill.theStateNow);
+		
+	}
+}
