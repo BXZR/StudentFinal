@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{18A227F1-5C0F-ACA8-E1B1-82377BC58276}</ProjectGuid>
+    <ProjectGuid>{C0A4B727-89DD-17B4-9CA3-6D3B3167D6DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -49,6 +49,7 @@
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
      <Compile Include="Assets\Codes\System\SystemValues.cs" />
+     <Compile Include="Assets\Codes\UI\MessageBox\messageBox.cs" />
      <Compile Include="Assets\Codes\UI\NormalUI\CameraUI.cs" />
      <Compile Include="Assets\Codes\UI\NormalUI\MovePadThumb.cs" />
      <Compile Include="Assets\Codes\UI\NormalUI\PlayerActCanvas.cs" />
@@ -115,7 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{4DFF8B3F-55A8-A909-5297-D418CB153797}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{9066B48B-B3AB-05A0-664A-2399A3B9E9F5}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

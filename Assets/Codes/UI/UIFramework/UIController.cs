@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour {
 
 	private Dictionary <string , GameObject> UIBook = new Dictionary<string, GameObject>();
 
-	public  void ShowUI <T> () where T : UIBasic
+	public  void ShowUI <T> (string value = "") where T : UIBasic
 	{
 		string UIName = typeof(T).ToString ();
 		GameObject theUI;
@@ -26,6 +26,7 @@ public class UIController : MonoBehaviour {
 		}
 		if(theUI)
 		{
+			theUI.GetComponent <T> ().OnShow (value);
 			theUI.SetActive (true);
 		}
 	}
@@ -44,6 +45,7 @@ public class UIController : MonoBehaviour {
 		}
 		if(theUI)
 		{
+			theUI.GetComponent <T> ().OnEndShow ();
 			theUI.SetActive (false);
 		}
 	}
@@ -56,8 +58,8 @@ public class UIController : MonoBehaviour {
 	void Update()
 	{
 		if (Input.GetKeyDown (KeyCode.A))
-			ShowUI<PlayerActCanvas> ();
+			ShowUI<messageBox> ("这个世界是有真理的");
 		if (Input.GetKeyDown (KeyCode.S))
-			CloseUI<PlayerActCanvas> ();
+			ShowUI<messageBox> ("这个真理毫无疑问就是吸");
 	}
 }
