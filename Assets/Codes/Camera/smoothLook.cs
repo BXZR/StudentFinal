@@ -60,15 +60,18 @@ public class smoothLook : MonoBehaviour {
 			{
 				float xMove = (Input.mousePosition.x - mousePosition.x); 
 				float yMove = (Input.mousePosition.y - mousePosition.y);
-				xMove = Mathf.Abs (xMove) > 8f ? xMove * 0.02f : 0f;
-				yMove = Mathf.Abs (yMove) > 8f ? yMove * 0.01f : 0f;
-
+				xMove = Mathf.Abs (xMove) > 9f ? xMove * 0.02f : 0f;
+				yMove = Mathf.Abs (yMove) > 9f ? yMove * 0.01f : 0f;
+				//取反是可以改变操作的感觉
+				xMove = -xMove;
+				yMove = -yMove;
 				mousePosition = Input.mousePosition;
 				this.transform.Translate (new Vector3 (xMove, 0f, 0f));
 				height += yMove;
 				distance += yMove;
-				height = Mathf.Clamp (height , 2f, 6f);
-				distance = Mathf.Clamp (distance  , 4f , 8f);
+
+				height = Mathf.Clamp (height , 2f, 8f);
+				distance = Mathf.Clamp (distance  , 5f , 9f);
 			}
 		}
 		if (Input.GetMouseButtonUp (0))

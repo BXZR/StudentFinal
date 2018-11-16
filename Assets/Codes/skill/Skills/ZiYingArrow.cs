@@ -56,12 +56,7 @@ public class ZiYingArrow : SkillBasic {
 	{
 		if (ArrowUsing)
 		{
-			try
-			{
-				ArrowUsing.gameObject.SetActive(false); 
-				//DestroyImmediate(ArrowUsing.gameObject);
-				theStateNow = skillState.isCooling;
-			}
+			try{ArrowUsing.gameObject.SetActive(false); }
 			catch(Exception d){Destroy (ArrowUsing);}
 		}
 	}
