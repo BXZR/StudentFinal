@@ -34,10 +34,6 @@ public class JumpSkill : SkillBasic {
 
 	public override void UseTheSkill ()
 	{
-		//没有控制者就不发
-		if (!this.thePlayer || theStateNow!= skillState.isReady)
-			return;
-
 		theStateNow = skillState.isUsing;
 		thePlayer.theSkillNow = this;
 

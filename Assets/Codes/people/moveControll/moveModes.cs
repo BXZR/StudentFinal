@@ -1,0 +1,98 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class moveModes : MonoBehaviour {}
+
+//移动模式基础类
+public class moveModeBasic
+{
+	//开始移动的时候使用
+	public virtual void OnStartMove(move theMove){}
+	//正在移动的时候使用（不完全在Update中使用）
+	public virtual void OnMove(CharacterController theMoveController, float speed){}
+	//结束移动的时候使用
+	public virtual void OnEndMove(move theMove){}
+	//动画播放
+	public virtual void OnPlayAnimation(animatorController theAnimatorController , float x, float y){}
+	//重力控制
+	public virtual void OnGravity(CharacterController theMoveController){}
+	//额外不断刷新
+	public virtual void ExtraUpdate(move theMove){}
+	//技能额外计算（二段动作）
+	public virtual void ExtraUpdate2(move theMove,float  value){}
+	//二段操作的收尾都动作
+	public virtual void ExtraUpdate2End(move theMove){}
+
+}
+
+//普通移动的模式
+public class runMoveMode : moveModeBasic
+{
+	public override void OnMove (CharacterController theMoveController, float speed)
+	{
+		if(theMoveController)
+			theMoveController.Move ( theMoveController.transform.forward.normalized * Time.deltaTime * speed);
+	}
+	public override void OnPlayAnimation (animatorController theAnimatorController,float x ,float y)
+	{
+		if (theAnimatorController)
+			theAnimatorController.setValue (x ,y);
+	}
+	public override void OnGravity (CharacterController theMoveController)
+	{
+		if(theMoveController)
+			theMoveController.Move (new Vector3 (0f, -7.5f* Time.deltaTime,0f) );
+	}
+
+	public override void OnStartMove (move theMove)
+	{
+		if (theMove.theMoveModeNow != null)
+			theMove.flyTrans.gameObject.SetActive (false);
+	}
+
+	public override void ExtraUpdate2 (move theMove , float value)
+	{
+		theMove.theMoveController.Move (new Vector3 (0f,value,0f));
+	}
+}
+//飞行移动的模式
+public class flyMoveMode : moveModeBasic
+{
+	public override void OnMove (CharacterController theMoveController, float speed)
+	{
+		if (theMoveController)
+			theMoveController.Move ( theMoveController.transform.forward.normalized * Time.deltaTime * speed * 2f);
+	}
+
+	public override void OnStartMove (move theMove)
+	{
+		if (theMove.theMoveModeNow != null)
+			theMove.flyTrans.gameObject.SetActive (true);
+	}
+	public override void OnPlayAnimation (animatorController theAnimatorController,float x ,float y)
+	{
+		if (theAnimatorController)
+			theAnimatorController.setValue (0f,0f);
+	}
+
+	public override void ExtraUpdate (move theMove)
+	{
+		//持续计算高度
+		Vector3 aim = new Vector3 (theMove.transform.position .x , 10f , theMove.transform.position .z);
+		theMove.transform.position = Vector3.Lerp (theMove.transform.position , aim , 0.3f);
+
+	}
+
+	public override void ExtraUpdate2 (move theMove , float value)
+	{
+		theMove.theMoveController.Move (theMove.transform.rotation * new Vector3 (0f, 0f , value *2f));
+	}
+	public override void ExtraUpdate2End (move theMove)
+	{
+		Vector3 ro = theMove.transform.rotation.eulerAngles;
+		Vector3 endro = new Vector3 (ro.x,ro.y , 0f);
+		theMove.transform.rotation = Quaternion.Euler( endro);
+	}
+}
+

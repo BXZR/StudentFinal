@@ -18,14 +18,36 @@ public class SkillBasic : MonoBehaviour {
 	public float theStatePercent = 0f;//用于显示和计算的当前技能状态百分比
 	public Player thePlayer;//使用技能的人物
 	public UISkillButton theButton;//技能对应的按钮
+	public Sprite theSkillSprite;//技能图
+
 	//技能虚方法
 	public virtual void Init(){}
 	public virtual void SkillEffect(float extradamage){theStateNow = skillState.isUsing;}//真正的技能效果
 	public virtual void UseTheSkill(){}//播放技能动画
 	public virtual void OnUpdate(){}//持续效果
-	public virtual void OnReady(){}//当冷却完成之后发生
+
+	public virtual void OnUse()
+	{
+		timerForAdd = 0f;
+		theStatePercent = 0f;
+	}
+
+	public virtual void OnReady()//当冷却完成之后发生
+	{
+		timerForAdd = 0f;
+		theStatePercent = 0f;
+	}
 	public virtual void OnCool(){}//当效果完成之后进入冷却的时候发生
 
+
+
+	public bool canUseTheSkill()
+	{
+		//没有控制者就不发
+		if (!this.thePlayer || theStateNow != skillState.isReady)
+			return false;
+		return true;
+	}
 
 
 	/// <summary>
@@ -55,7 +77,7 @@ public class SkillBasic : MonoBehaviour {
 		{
 			timerForAdd += Time.deltaTime;
 			if (timerForAdd < skillAllTimer)
-				theStatePercent = (timerForAdd - skillEffectTime) / (skillAllTimer - skillEffectTime);
+				theStatePercent =  1f - (timerForAdd - skillEffectTime) / (skillAllTimer - skillEffectTime);
 			else
 			{
 				theStateNow = skillState.isReady;

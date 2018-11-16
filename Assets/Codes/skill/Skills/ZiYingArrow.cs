@@ -37,9 +37,6 @@ public class ZiYingArrow : SkillBasic {
 	//真正的技能效果
 	public override void SkillEffect (float extradamage)
 	{
-		//没有控制者就不发
-		if (!this.thePlayer || theStateNow!= skillState.isReady)
-			return;
 
 		theStateNow = skillState.isUsing;
 

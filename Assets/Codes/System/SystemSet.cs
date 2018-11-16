@@ -13,7 +13,7 @@ public class SystemSet : MonoBehaviour {
 
 	void makeStart()
 	{
-		Application.targetFrameRate = 30;
+		Application.targetFrameRate = 40;
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
 		Destroy (this);
 	}
