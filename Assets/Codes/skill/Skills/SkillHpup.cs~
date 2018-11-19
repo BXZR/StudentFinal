@@ -25,7 +25,7 @@ public class SkillHpup : SkillBasic {
 	{
 		theStateNow = skillState.isUsing;
 		thePlayer.theSkillNow = this;
-		thePlayer.hpNow += thePlayer.hpMaxNow * 0.1f;
+		thePlayer.OnHpChange(thePlayer.hpMaxNow * 0.1f);
 	}
 
 

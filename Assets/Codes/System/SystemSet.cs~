@@ -14,6 +14,7 @@ public class SystemSet : MonoBehaviour {
 	void makeStart()
 	{
 		Application.targetFrameRate = 40;
+		UIController.GetInstance ().ShowUI<HpBasicPanel> ();
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
 		Destroy (this);
 	}
