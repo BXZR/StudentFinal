@@ -13,18 +13,15 @@ public class smoothLook : MonoBehaviour {
 
 	private Vector3 mousePosition = Vector3.zero;
 	private bool canOperate = false;//是否可以操作摄像机
-	private float ySave = 0;//储存的Y坐标，只有超过一定阈值长期可以更新
 
 	//完全固定视角摄像机
 	public Vector3 extraDistance = new Vector3 (0,2,-2);
 
 	void Start ()
 	{
-		ySave = theTarget.transform.position.y + height;
 		canOperate = true;
 		FixedPostion ();
 		canOperate = false;
-		FixedPostion ();
 	}
 	
 	// Update is called once per frame
@@ -61,17 +58,19 @@ public class smoothLook : MonoBehaviour {
 				float xMove = (Input.mousePosition.x - mousePosition.x); 
 				float yMove = (Input.mousePosition.y - mousePosition.y);
 				xMove = Mathf.Abs (xMove) > 9f ? xMove * 0.02f : 0f;
-				yMove = Mathf.Abs (yMove) > 9f ? yMove * 0.01f : 0f;
+				yMove = Mathf.Abs (yMove) > 9f ? yMove * 0.015f : 0f;
 				//取反是可以改变操作的感觉
 				xMove = -xMove;
 				yMove = -yMove;
 				mousePosition = Input.mousePosition;
-				this.transform.Translate (new Vector3 (xMove, 0f, 0f));
+
 				height += yMove;
 				distance += yMove;
+				height = Mathf.Clamp (height , 2f, 6f);
+				distance = Mathf.Clamp (distance  , 4f , 8f);
 
-				height = Mathf.Clamp (height , 2f, 8f);
-				distance = Mathf.Clamp (distance  , 5f , 9f);
+				this.transform.Translate (new Vector3 (xMove, 0f, 0f));
+
 			}
 		}
 		if (Input.GetMouseButtonUp (0))
@@ -85,18 +84,18 @@ public class smoothLook : MonoBehaviour {
 	{
 		if (SystemValues.theCameraState == CameraState.rotateCamera || canOperate) 
 		{
+			Vector3 aimPosition = theTarget.transform.position + extraDistance ;
+			aimPosition =  new Vector3 (this.transform.position.x , theTarget.transform.position.y + height, this.transform.position.z);
+			extraDistance =  (aimPosition - theTarget.transform.position).normalized * distance;
 			this.transform.LookAt (theTarget.transform.position + new Vector3 (0f, 1f, 0f));
-			Vector3 aimPosition = theTarget.transform.position + (this.transform.position - theTarget.transform.position).normalized * distance;
-			this.transform.position =Vector3.Lerp (this.transform.position, aimPosition  , 0.6f);
-			ySave = Mathf.Lerp (ySave, theTarget.transform.position.y + height, 0.1f);
-			this.transform.position = new Vector3 (this.transform.position.x, ySave, this.transform.position.z);
-
-			extraDistance =  (this.transform.position - theTarget.transform.position).normalized * distance;
+			this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.8f);
 		}
-		if (SystemValues.theCameraState == CameraState.fixedCamera) 
+		else if (SystemValues.theCameraState == CameraState.fixedCamera) 
 		{
-			this.transform.position = Vector3.Lerp (this.transform.position, theTarget.transform.position + extraDistance, 0.6f);
+			this.transform.position = theTarget.transform.position + extraDistance;
+			//Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.8f);
 		}
+
 	}
 		
 }
