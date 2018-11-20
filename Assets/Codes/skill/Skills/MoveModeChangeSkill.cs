@@ -23,11 +23,11 @@ public class MoveModeChangeSkill: SkillBasic {
 
 	public override void Init ()
 	{
-		skillName = "切换运动状态";//技能名字
-		skillInformation = "纵向位移";//技能介绍
 		skillAllTimer = 0.6f;//冷却时间
 		skillEffectTime = 0.1f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
+		skillName = "御剑飞仙";//技能名字
+		skillInformation = "御剑而飞，冯虚卓然，关山万里瞬息而至。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
 
 	}
 
@@ -41,11 +41,16 @@ public class MoveModeChangeSkill: SkillBasic {
 		{
 			moveOBJ.changeMoveMode (new runMoveMode ());
 			ChangePicture (runSprite);
+			skillName = "御剑飞仙";//技能名字
+			skillInformation = "御剑而飞，冯虚卓然，关山万里瞬息而至。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
 		} 
 		else 
 		{
 			moveOBJ.changeMoveMode (new flyMoveMode ());
 			ChangePicture (flySprite);
+			skillName = "取消御剑";//技能名字
+			skillInformation = "取消御剑飞仙，在凡尘经历人生，修仙修心。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
+
 		}
 	}
 

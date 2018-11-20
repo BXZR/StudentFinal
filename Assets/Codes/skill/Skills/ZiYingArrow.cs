@@ -19,11 +19,12 @@ public class ZiYingArrow : SkillBasic {
 
 	public override void Init ()
 	{
-		skillName = "剑气";//技能名字
-		skillInformation = "发射剑气进行穿透伤害";//技能介绍
 		skillAllTimer = 0.5f;//冷却时间
 		skillEffectTime = 0.2f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
+		skillName = "气剑指";//技能名字
+		skillInformation = "昆仑琼华派的基础招式之一。\n将剑气凝于指尖激射而出，对面前的敌人造成穿透伤害。" +
+			"\n剑气持续："+skillEffectTime.ToString("f1")+"秒 冷却时间："+(skillAllTimer - skillEffectTime ).ToString("f1")+"秒";//技能介绍
 	}
 
 	//播放技能动画
@@ -43,7 +44,10 @@ public class ZiYingArrow : SkillBasic {
 		forward = this.thePlayer.transform.forward;
 		//考虑到多种连发的情况，暂时还是不做弹矢的对象池子，后期优化吧
 		if (!ArrowUsing) 
-			ArrowUsing = GameObject.Instantiate (Arrow).GetComponent<Arrows>();
+		{
+			ArrowUsing = GameObject.Instantiate (Arrow).GetComponent<Arrows> ();
+			ArrowUsing.thePlayer = this.thePlayer;
+		}
 
 		ArrowUsing.gameObject.SetActive (true);
 		ArrowUsing.transform.position = thePlayer.transform.position + thePlayer.transform.rotation * new Vector3 (0f, 0.2f * thePlayer.transform.localScale.y + 0.25f, 0.5f);
@@ -60,6 +64,8 @@ public class ZiYingArrow : SkillBasic {
 			catch(Exception d){Destroy (ArrowUsing);}
 		}
 	}
+
+
 
 
 }

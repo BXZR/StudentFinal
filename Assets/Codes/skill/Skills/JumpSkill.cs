@@ -24,8 +24,8 @@ public class JumpSkill : SkillBasic {
 
 	public override void Init ()
 	{
-		skillName = "跳跃";//技能名字
-		skillInformation = "纵向位移/突进";//技能介绍
+		skillName = "琼华派身法";//技能名字
+		skillInformation = "没有御剑飞仙：\n向上跳跃一段距离。\n御剑飞仙：\n向正前方突进一段距离。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
 		skillAllTimer = 1f;//冷却时间
 		skillEffectTime = 0.4f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();

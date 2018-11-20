@@ -6,7 +6,7 @@ public class Arrows : MonoBehaviour {
 
 	public float arrowSpeed = 25f;//弹矢速度
 	TrailRenderer theRender;
-
+	public Player thePlayer;
 
 	void Start()
 	{
@@ -17,6 +17,19 @@ public class Arrows : MonoBehaviour {
 	{
 		this.transform.Translate (new Vector3 (0,0,1) * arrowSpeed  *Time.deltaTime);
 	}
+
+
+	void OnTriggerEnter(Collider collisioner)
+	{
+		print ("触发攻击");
+		Player playeraim = collisioner.GetComponent<Player> ();
+		if (playeraim  && this.thePlayer && playeraim != this.thePlayer) 
+		{
+
+			this.thePlayer.OnAttack (playeraim);
+		}
+	}
+
 
 
 	void OnEnable()

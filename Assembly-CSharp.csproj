@@ -50,6 +50,7 @@
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
      <Compile Include="Assets\Codes\System\SystemValues.cs" />
      <Compile Include="Assets\Codes\UI\HPBasicUI\HpBasicPanel.cs" />
+     <Compile Include="Assets\Codes\UI\IntroductionCanvals\IntroductionCanvals.cs" />
      <Compile Include="Assets\Codes\UI\MessageBox\messageBox.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\CameraUI.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\MovePadThumb.cs" />

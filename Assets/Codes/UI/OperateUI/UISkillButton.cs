@@ -41,7 +41,7 @@ public class UISkillButton : MonoBehaviour {
 			else if (findType == SkillFindType.transform) 
 			{
 				print (skillName);
-				Transform theChild = GameObject.Find (skillName).transform;
+				Transform theChild = SystemValues.thePlayer.transform.Find ("SkillPackage/"+skillName); 
 				//print (theChild.gameObject.name);
 				theSkill = theChild.GetComponent<SkillBasic> ();
 
@@ -71,6 +71,29 @@ public class UISkillButton : MonoBehaviour {
 		}
 	}
 
+
+	float  pressTimer = 0f;
+	bool isShowing = false;
+	public void ShowSkillInformation()
+	{
+		if (!isShowing) 
+		{
+			pressTimer += Time.deltaTime;
+			if (pressTimer > 0.5f) 
+			{
+				UIController.GetInstance ().ShowUI<IntroductionCanvals> (theSkill.skillName +"," + theSkill.skillInformation);
+				isShowing = true;
+			}
+		}
+
+	}
+
+	public void CloseSkillInformation()
+	{
+		UIController.GetInstance ().CloseUI<IntroductionCanvals> ();
+		isShowing = false;
+		pressTimer = 0f;
+	}
 
 	/// <summary>
 	///技能按钮UIButton的自动刷新工作.
