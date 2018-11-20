@@ -57,6 +57,8 @@
      <Compile Include="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\UISkillButton.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\moveJoyStick.cs" />
+     <Compile Include="Assets\Codes\UI\StartCanvas\StartButton.cs" />
+     <Compile Include="Assets\Codes\UI\StartCanvas\YinYangMove.cs" />
      <Compile Include="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" />
      <Compile Include="Assets\Codes\UI\UIFramework\UIBasic.cs" />
      <Compile Include="Assets\Codes\UI\UIFramework\UIController.cs" />
