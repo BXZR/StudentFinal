@@ -57,6 +57,7 @@
      <Compile Include="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\UISkillButton.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\moveJoyStick.cs" />
+     <Compile Include="Assets\Codes\UI\StartCanvas\GameTalkCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\StartButton.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\YinYangMove.cs" />
      <Compile Include="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\Codes\skill\Skills\SkillBasic.cs" />
      <Compile Include="Assets\Codes\skill\Skills\SkillHpup.cs" />
      <Compile Include="Assets\Codes\skill\Skills\ZiYingArrow.cs" />
+     <Compile Include="Assets\Codes\text.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Component\ETCSetDirectActionTransform.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ComponentExtensions.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCArea.cs" />
@@ -82,6 +84,7 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+     <None Include="Assets\Resources\XML\DemoTalk.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
  <Reference Include="UnityEngine.UI">

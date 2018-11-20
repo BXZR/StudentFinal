@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour {
 
-	// Use this for initialization
+	//开始界面的按钮事件方法都在这里了
+
 	void Start () {
 		this.GetComponent<Image> ().alphaHitTestMinimumThreshold = 0.1f;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	//游戏感言
+	public void ShowGameTalk()
+	{
+		UIController.GetInstance ().ChangeUIState<GameTalkCanvas> ();
 	}
 }

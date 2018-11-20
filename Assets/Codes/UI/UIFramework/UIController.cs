@@ -50,16 +50,38 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// 第一次生成UI，之后开/关UI
+	/// </summary>
+	public void ChangeUIState<T> ( ) where T : UIBasic
+	{
+		string UIName = typeof(T).ToString ();
+		GameObject theUI;
+		if (!UIBook.TryGetValue (UIName, out theUI))
+		{
+			theUI = (GameObject)Resources.Load ("UI/" + UIName);
+			theUI = Instantiate (theUI);
+			theUI.name = UIName;
+			UIBook.Add (UIName, theUI);
+			if(theUI)
+				theUI.SetActive (false);
+		}
+		if(theUI)
+		{
+			theUI.SetActive (!theUI.gameObject.activeInHierarchy);
+		}
+	}
+
 
 	void Start()
 	{
 		theUIcontroller = this;
 	}
-	void Update()
-	{
-		if (Input.GetKeyDown (KeyCode.A))
-			ShowUI<messageBox> ("这个世界是有真理的");
-		if (Input.GetKeyDown (KeyCode.S))
-			ShowUI<messageBox> ("这个真理毫无疑问就是吸");
-	}
+//	void Update()
+//	{
+//		if (Input.GetKeyDown (KeyCode.A))
+//			ShowUI<messageBox> ("这个世界是有真理的");
+//		if (Input.GetKeyDown (KeyCode.S))
+//			ShowUI<messageBox> ("这个真理毫无疑问就是吸");
+//	}
 }
