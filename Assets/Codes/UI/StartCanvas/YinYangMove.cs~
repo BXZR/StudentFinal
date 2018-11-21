@@ -16,10 +16,15 @@ public class YinYangMove : MonoBehaviour {
 
 	void Start () 
 	{
+		Invoke ("makeStart", 0.2f);
+	}
+
+
+	void  makeStart()
+	{
 		startPosition = this.transform.position;
 		endPosition = this.transform.position + new Vector3 (moveDistance , 0f , 0f);
 		aimNow = startPosition;
-
 		StartMove ();
 	}
 
