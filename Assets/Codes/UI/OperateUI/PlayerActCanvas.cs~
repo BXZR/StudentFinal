@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerActCanvas : UIBasic {
 
-	// Use this for initialization
-	void Start () {
-		
+	public override void OnEndShow ()
+	{
+		SystemValues.thePlayer.GetComponent<move> ().stopMoving ();
 	}
-
 }

@@ -38,8 +38,16 @@ public class smoothLook : MonoBehaviour {
 	//摄像机的鼠标操作
 	private void CameraOperate()
 	{
+		if (!theTarget) 
+		{
+			theTarget = SystemValues.thePlayer.transform;
+			canOperate = true;
+			FixedPostion ();
+			canOperate = false;
+		}
 		if (!theTarget)
 			return;
+		
 
 		if (Input.GetMouseButtonDown (0)) 
 		{
@@ -82,6 +90,9 @@ public class smoothLook : MonoBehaviour {
 	//摄像机的青位置修订操作
 	private void FixedPostion()
 	{
+		if (!theTarget)
+			return;
+
 		if (SystemValues.theCameraState == CameraState.rotateCamera || canOperate) 
 		{
 			Vector3 aimPosition = theTarget.transform.position + extraDistance ;
@@ -93,7 +104,7 @@ public class smoothLook : MonoBehaviour {
 		else if (SystemValues.theCameraState == CameraState.fixedCamera) 
 		{
 			this.transform.position = theTarget.transform.position + extraDistance;
-			//Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.8f);
+			//this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.5f);
 		}
 
 	}

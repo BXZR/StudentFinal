@@ -75,6 +75,7 @@ public class UIController : MonoBehaviour {
 
 	void Start()
 	{
+		Screen.SetResolution (1280 , 800, true, 60);
 		theUIcontroller = this;
 	}
 //	void Update()

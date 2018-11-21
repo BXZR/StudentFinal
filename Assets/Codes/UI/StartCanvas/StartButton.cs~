@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour {
 
@@ -15,5 +16,12 @@ public class StartButton : MonoBehaviour {
 	public void ShowGameTalk()
 	{
 		UIController.GetInstance ().ChangeUIState<GameTalkCanvas> ();
+	}
+
+	//跳转场景
+	public void SceneSkip(string aimScene)
+	{
+		try{UIController.GetInstance().ShowUI<UILoading>(aimScene);}
+		catch{UIController.GetInstance ().ShowUI<messageBox> ("找不到指定场景");}
 	}
 }

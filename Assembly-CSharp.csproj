@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
+     <Compile Include="Assets\Codes\Scene\TalkWall.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
      <Compile Include="Assets\Codes\System\SystemValues.cs" />
      <Compile Include="Assets\Codes\UI\HPBasicUI\HpBasicPanel.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" />
      <Compile Include="Assets\Codes\UI\UIFramework\UIBasic.cs" />
      <Compile Include="Assets\Codes\UI\UIFramework\UIController.cs" />
+     <Compile Include="Assets\Codes\UI\UILoading\UILoading.cs" />
      <Compile Include="Assets\Codes\people\Player.cs" />
      <Compile Include="Assets\Codes\people\animatorController.cs" />
      <Compile Include="Assets\Codes\people\moveControll\move.cs" />
@@ -84,6 +86,7 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+     <None Include="Assets\Resources\XML\StartTalk.xml" />
      <None Include="Assets\Resources\XML\DemoTalk.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
