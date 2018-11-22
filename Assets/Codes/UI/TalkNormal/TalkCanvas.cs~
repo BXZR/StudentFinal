@@ -57,20 +57,62 @@ public class TalkCanvas : UIBasic {
 		else 
 		{
 			DialogFrame use = theFrames.Dequeue ();
-			theNameText.text = use.name;
-			theInformationText.text = use.information;
-
-			use.picture =  ! string.IsNullOrEmpty (use.picture) ? use.picture : "noOne";
-			Texture2D theTextureIn = Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
-			Sprite theSprite = Sprite.Create (theTextureIn, new Rect (0, 0, theTextureIn.width, theTextureIn.height), new Vector2 (0, 0));
-			theTalkHeadPicture.sprite = theSprite;
+			switch (use.name)
+			{
+			case "SELECT":
+				makeSelect (use);
+				break;
+			case "GOLD":
+				makeOver (use);
+				break;
+			default:
+				makeTalk (use);
+				break;
+			}
 
 		}
 
 	}
 
+	/// <summary>
+	/// 正常的对话.
+	/// </summary>
+	/// <param name="use">Use.</param>
+	private  void makeTalk( DialogFrame use )
+	{
+		theNameText.text = use.name;
+		theInformationText.text = use.information;
 
+		use.picture = !string.IsNullOrEmpty (use.picture) ? use.picture : "noOne";
+		Texture2D theTextureIn = Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
+		Sprite theSprite = Sprite.Create (theTextureIn, new Rect (0, 0, theTextureIn.width, theTextureIn.height), new Vector2 (0, 0));
+		theTalkHeadPicture.sprite = theSprite;
+	}
 
+	/// <summary>
+	/// 开启选项进行选择.
+	/// </summary>
+	/// <param name="use">Use.</param>
+	private void makeSelect(DialogFrame use )
+	{
+		theInformationText.text = "怎么选择呢？";
+		theNameText.text = "";
+		use.picture = "noOne";
+		Texture2D theTextureIn = Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
+		UIController.GetInstance ().ShowUI<UITalkSelect> (use.information);
+	}
+
+	private void makeOver(DialogFrame use )
+	{
+		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
+		UIController.GetInstance ().CloseUI<TalkCanvas> ();
+		string [] values = use.information.Split(',');
+		if(values.Length >=2)
+		{
+			SystemValues.thePlayer.GetComponent<Player> ().OnGetLearningValue( (float)XmlConvert.ToDouble (values[0]));
+			UIController.GetInstance ().ShowUI<messageBox> (values[1]);
+		}
+	}
 
 }
 
