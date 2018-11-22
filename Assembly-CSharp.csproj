@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
      <Compile Include="Assets\Codes\Scene\TalkWall.cs" />
+     <Compile Include="Assets\Codes\System\FileOperater.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
      <Compile Include="Assets\Codes\System\SystemValues.cs" />
      <Compile Include="Assets\Codes\UI\HPBasicUI\HpBasicPanel.cs" />
@@ -58,6 +59,7 @@
      <Compile Include="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\UISkillButton.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\moveJoyStick.cs" />
+     <Compile Include="Assets\Codes\UI\SettingUI\SettingCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\GameTalkCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\StartButton.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\YinYangMove.cs" />
@@ -87,7 +89,8 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
      <None Include="Assets\Resources\XML\StartTalk.xml" />
-     <None Include="Assets\Resources\XML\DemoTalk.xml" />
+     <None Include="Assets\Resources\XML\Brothers1.xml" />
+     <None Include="Assets\Resources\XML\Plot.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
  <Reference Include="UnityEngine.UI">

@@ -11,7 +11,12 @@ public class text : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.A))
-			UIController.GetInstance ().ShowUI<TalkCanvas> ("DemoTalk");
+
+
+		if (Input.GetKeyDown (KeyCode.Z ))
+			SystemValues.SaveInformation ();
+
+		if (Input.GetKeyDown (KeyCode.X ))
+			SystemValues.LoadInformation ();
 	}
 }

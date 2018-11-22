@@ -1,14 +1,23 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\UI\StartCanvas\YinYangMove.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\System\SystemValues.cs">
     <Files>
       <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\DemoTalk.xml" Line="1" Column="1" />
       <File FileName="Assets\Codes\text.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\UI\UIFramework\UIController.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\UI\StartCanvas\StartButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\StartCanvas\YinYangMove.cs" Line="19" Column="30" />
+      <File FileName="Assets\Codes\UI\StartCanvas\YinYangMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\System\SystemSet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="102" Column="2" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\System\FileOperater.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\UI\SettingUI\SettingCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\UI\HPBasicUI\HpBasicPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\StartTalk.xml" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\Plot.xml" Line="11" Column="17" />
+      <File FileName="Assets\Resources\XML\Brothers1.xml" Line="21" Column="10" />
+      <File FileName="Assets\Codes\Scene\TalkWall.cs" Line="33" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

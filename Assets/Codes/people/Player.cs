@@ -130,26 +130,14 @@ public class Player : MonoBehaviour {
 
 	void Start () 
 	{
-		if (this.gameObject.tag == "Player" && SystemValues.thePlayer == null) 
-		{
-			SystemValues.thePlayer = this.gameObject;
-		}
 		HpChanger += this.ChangeHp;
 		DamageChanger += this.ChangeDamage;
 		LearningChanger += this.ChangeLearning;
 	}
 
-	void Update()
-	{
-		if (Input.GetKeyDown (KeyCode.Z))
-			OnGetLearningValue (200f);
-
-		if (Input.GetKeyDown (KeyCode.X))
-			OnHpChange(-4f);
-
-		if (Input.GetKeyDown (KeyCode.C))
-			OnDamageChange(2f);
-
-	}
+//	void Update()
+//	{
+//
+//	}
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TalkWall : MonoBehaviour {
 
 	//触发剧情对话的墙壁
-	public string talkName;
+	public int PlotType;
 	public bool isAutoDestroy = true;
 	public bool isExitMode = false;//在一个范围内走出去的时候触发
 
@@ -15,11 +15,7 @@ public class TalkWall : MonoBehaviour {
 			return;
 		
 		if (collisioner.tag == "Player") 
-		{
-			UIController.GetInstance ().ShowUI<TalkCanvas> (talkName);
-			if(isAutoDestroy)
-			    Destroy (this.gameObject);
-		}
+			ShowPlot ();
 	}
 
 	void OnTriggerExit(Collider collisioner)
@@ -28,10 +24,19 @@ public class TalkWall : MonoBehaviour {
 			return;
 
 		if (collisioner.tag == "Player") 
-		{
-			UIController.GetInstance ().ShowUI<TalkCanvas> (talkName);
-			if(isAutoDestroy)
-				Destroy (this.gameObject);
-		}
+			ShowPlot ();
+	}
+
+
+	private void ShowPlot()
+	{
+		string plotName = SystemValues.getPlotName (PlotType);
+		//print (plotName  +"---");
+		if (string.IsNullOrEmpty (plotName))
+			return;
+		
+		UIController.GetInstance ().ShowUI<TalkCanvas> (plotName);
+		if(isAutoDestroy)
+			Destroy (this.gameObject);
 	}
 }
