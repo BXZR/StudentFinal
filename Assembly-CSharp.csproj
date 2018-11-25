@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
+     <Compile Include="Assets\Codes\Interactive\InteractiveBasic.cs" />
+     <Compile Include="Assets\Codes\Interactive\NPC.cs" />
      <Compile Include="Assets\Codes\Scene\TalkWall.cs" />
      <Compile Include="Assets\Codes\System\FileOperater.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
@@ -77,6 +79,7 @@
      <Compile Include="Assets\Codes\skill\Skills\MoveModeChangeSkill.cs" />
      <Compile Include="Assets\Codes\skill\Skills\SkillBasic.cs" />
      <Compile Include="Assets\Codes\skill\Skills\SkillHpup.cs" />
+     <Compile Include="Assets\Codes\skill\Skills\SkillInteractive.cs" />
      <Compile Include="Assets\Codes\skill\Skills\ZiYingArrow.cs" />
      <Compile Include="Assets\Codes\text.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Component\ETCSetDirectActionTransform.cs" />
@@ -89,11 +92,11 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
-     <None Include="Assets\Resources\XML\Brothers\Brothers2.xml" />
+     <None Include="Assets\Resources\XML\NPC\Ari\Ari_1.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk.xml" />
-     <None Include="Assets\Resources\XML\Brothers\Brothers1.xml" />
+     <None Include="Assets\Resources\XML\NPC\Ari\Ari.xml" />
      <None Include="Assets\Resources\XML\Plot.xml" />
-     <None Include="Assets\Resources\XML\Brothers\Brothers3.xml" />
+     <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
  <Reference Include="UnityEngine.UI">

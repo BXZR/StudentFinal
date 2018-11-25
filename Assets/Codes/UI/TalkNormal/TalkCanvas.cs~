@@ -21,7 +21,13 @@ public class TalkCanvas : UIBasic {
 		UIController.GetInstance().CloseUI<PlayerActCanvas>();//对话的时候不可以操作
 		LoadTexts(value);//加载对话内容
 		ShowText();//加载第一句话
+		SystemValues.theCamera.OnIntoPlot();
 	} 
+
+	public override void OnEndShow ()
+	{
+		SystemValues.theCamera.OnOutPlot ();
+	}
 
 
 		
@@ -110,6 +116,7 @@ public class TalkCanvas : UIBasic {
 	{
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
 		UIController.GetInstance ().CloseUI<TalkCanvas> ();
+		OnEndShow ();
 		string [] values = use.information.Split(',');
 		if(values.Length >=2)
 		{

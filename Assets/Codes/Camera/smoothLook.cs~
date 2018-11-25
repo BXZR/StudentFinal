@@ -16,6 +16,9 @@ public class smoothLook : MonoBehaviour {
 
 	//完全固定视角摄像机
 	public Vector3 extraDistance = new Vector3 (0,2,-2);
+	//当前是否是剧情摄像机
+	//进入剧情和离开剧情的时候需要修改这个标记
+	public bool isPloting = false;
 
 	void Start ()
 	{
@@ -38,13 +41,17 @@ public class smoothLook : MonoBehaviour {
 		FixedPostion ();
 	}
 
-	//摄像机的触摸操作
-	//进化版
+
+	/// <summary>
+	/// 摄像机的触摸操作
+	/// 进化版，可以检测多个手指的移动
+	/// </summary>
 	private void CameraOperateTouch()
 	{
 		if (!theTarget) 
 		{
 			theTarget = SystemValues.thePlayer.transform;
+			SystemValues.theCamera = this;
 			canOperate = true;
 			FixedPostion ();
 		}
@@ -69,7 +76,11 @@ public class smoothLook : MonoBehaviour {
 
 	}
 
-
+	/// <summary>
+	/// 封装的touch移动方法
+	/// 传入的参数就是Touch
+	/// </summary>
+	/// <param name="theTouch">The touch.</param>
 	private void MoveWithTouch(Touch theTouch)
 	{
 
@@ -89,13 +100,16 @@ public class smoothLook : MonoBehaviour {
 		this.transform.Translate (new Vector3 (xMove, 0f, 0f));
 
 	}
-
-	//摄像机的鼠标操作
+		
+	/// <summary>
+	/// 摄像机的鼠标操作
+	/// </summary>
 	private void CameraOperate()
 	{
 		if (!theTarget) 
 		{
 			theTarget = SystemValues.thePlayer.transform;
+			SystemValues.theCamera = this;
 			canOperate = true;
 			FixedPostion ();
 			canOperate = false;
@@ -142,29 +156,76 @@ public class smoothLook : MonoBehaviour {
 		}
 	}
 
-	//摄像机的青位置修订操作
-	private void FixedPostion()
-	{
-		if (!theTarget)
-			return;
 
+	/// <summary>
+	/// 战斗/移动模式之下的摄像机操作
+	/// </summary>
+	private void MoveCamera()
+	{
 		if (SystemValues.theCameraState == CameraState.rotateCamera || canOperate) 
 		{
-			Vector3 aimPosition = theTarget.transform.position + extraDistance ;
-			aimPosition =  new Vector3 (this.transform.position.x , theTarget.transform.position.y + height, this.transform.position.z);
-			extraDistance =  (aimPosition - theTarget.transform.position).normalized * distance;
+			Vector3 aimPosition = theTarget.transform.position + extraDistance;
+			aimPosition = new Vector3 (this.transform.position.x, theTarget.transform.position.y + height, this.transform.position.z);
+			extraDistance = (aimPosition - theTarget.transform.position).normalized * distance;
 			this.transform.LookAt (theTarget.transform.position + new Vector3 (0f, 1f, 0f));
 			this.transform.position = theTarget.transform.position + extraDistance;
 			//不能用插值，会有动荡
 			//this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.8f);
-		}
+		} 
 		else if (SystemValues.theCameraState == CameraState.fixedCamera) 
 		{
 			this.transform.position = theTarget.transform.position + extraDistance;
 			//不能用插值，会有动荡
 			//this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.5f);
 		}
+	}
+
+	/// <summary>
+	/// 剧情模式之下的摄像机操作
+	/// </summary>
+	private void PlotCamera()
+	{
+		if (!theTarget)
+			return;
+		
+		this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (2f,2f,2f) ;
+		this.transform.LookAt (theTarget.transform.position  + theTarget.transform.rotation *  new Vector3(0f,1.5f,1f) );
+	}
+
+	/// <summary>
+	/// 在进入剧情的时候可以发生的事情
+	/// </summary>
+	public void OnIntoPlot()
+	{
+		isPloting = true;
+	}
+
+
+	/// <summary>
+	/// 离开剧情模式下的额外操作
+	/// </summary>
+	public void OnOutPlot()
+	{
+		isPloting = false;
+		this.transform.position = theTarget.transform.position + extraDistance;
+		this.transform.LookAt (theTarget.transform.position + new Vector3 (0f, 1f, 0f));
+
+	}
+
+	/// <summary>
+	/// 摄像机的青位置修订操作
+	/// </summary>
+	private void FixedPostion()
+	{
+		if (!theTarget)
+			return;
+
+		if (!isPloting)
+			MoveCamera ();
+		else
+			PlotCamera ();
 
 	}
 		
 }
+	

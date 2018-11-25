@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using System.Xml;
 using UnityEngine.SceneManagement;
 
-public enum CameraState{fixedCamera ,rotateCamera}
+public enum CameraState{fixedCamera , rotateCamera , PlotCamera}
 /// <summary>
 ///这个类存放的是公有方法和静态参数
 /// </summary>
@@ -16,6 +16,7 @@ public class SystemValues : MonoBehaviour {
 	public static string yAxisName = "Horizontal";//前后移动的轴名称
 	public static CameraState theCameraState = CameraState.fixedCamera;//摄像机模式
 	public static GameObject thePlayer = null;//游戏玩家
+	public static smoothLook theCamera = null;//游戏摄像机
 
 
 	/// <summary>
