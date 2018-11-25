@@ -78,7 +78,7 @@ public class move : MonoBehaviour {
 		float Yadd = Mathf.Asin( xAxisValue / Mathf.Sqrt( allAxisAdd) ) *Mathf.Rad2Deg;
 		Yadd = yAxisValue > 0 ? Yadd : 180-Yadd;
 
-		Vector3 eulerOld = Camera.main.transform.rotation.eulerAngles;
+		Vector3 eulerOld =  Camera.main.transform.rotation.eulerAngles;
 		Vector3 eulerNew = new Vector3 (0f , Yadd + eulerOld.y, 0f);
 		headingAim = Quaternion.Euler (eulerNew );
 

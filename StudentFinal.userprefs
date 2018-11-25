@@ -1,13 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\XML\Brothers\Brothers2.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\people\moveControll\move.cs">
     <Files>
-      <File FileName="Assets\Codes\UI\UITalkSelect\UITalkSelect.cs" Line="18" Column="3" />
-      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="112" Column="69" />
-      <File FileName="Assets\Resources\XML\Brothers\Brothers1.xml" Line="48" Column="14" />
+      <File FileName="Assets\Codes\UI\UITalkSelect\UITalkSelect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="106" Column="17" />
+      <File FileName="Assets\Resources\XML\Brothers\Brothers1.xml" Line="1" Column="1" />
       <File FileName="Assets\Resources\XML\Brothers\Brothers2.xml" Line="21" Column="10" />
-      <File FileName="Assets\Resources\XML\Brothers\Brothers3.xml" Line="20" Column="33" />
-      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\Brothers\Brothers3.xml" Line="1" Column="1" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="33" Column="3" />
+      <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="158" Column="16" />
+      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="67" Column="32" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="46" Column="63" />
+      <File FileName="Assets\Codes\skill\Skills\SkillHpup.cs" Line="20" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

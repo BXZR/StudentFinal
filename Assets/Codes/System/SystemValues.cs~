@@ -31,16 +31,20 @@ public class SystemValues : MonoBehaviour {
 
 	/// <summary>
 	/// 是否正在操作UI，适用于UGUI
+	/// 可以传入参数，参数为Input.GetTouch的fingerId
+	/// 默认参数为Input.GetTouch(0).fingerId
 	/// </summary>
-	public static bool IsOperatingUI()
+	public static bool IsOperatingUI( int IDIn = -1)
 	{
 		if (EventSystem.current == null)
 			return false;
-		
+
+	
 		//目前也就支持PC和按照两种平台的简单交互了
 		if(Application .platform == RuntimePlatform.Android)
 		{
-			if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) 
+			int IDUse = IDIn >= 0 ? IDIn : Input.GetTouch(0).fingerId; 
+			if (EventSystem.current.IsPointerOverGameObject(IDUse)) 
 				return true;//print  ("当前触摸在UI上");
 			else 
 				return false;//print  ("当前没有触摸在UI上");

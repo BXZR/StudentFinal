@@ -102,6 +102,10 @@ public class TalkCanvas : UIBasic {
 		UIController.GetInstance ().ShowUI<UITalkSelect> (use.information);
 	}
 
+	/// <summary>
+	/// 获得经验值，给出消息框
+	/// </summary>
+	/// <param name="use">Use.</param>
 	private void makeOver(DialogFrame use )
 	{
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
