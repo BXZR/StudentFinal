@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 	public float learningValue = 0f;//当前经验值
 	public float learningValueMax = 100f;//当前经验上限
 	public int lvNow = 1;//当前等级
+	public bool isAlive = true;//当前是否生存
 
 	public SkillBasic theSkillNow = null;
 	//公有操作生命的事件
@@ -26,11 +27,15 @@ public class Player : MonoBehaviour {
 	public event DamageChangeHook DamageChanger;
 	//公有操作经验的事件
 	public event LearningChangeHook LearningChanger;
-
+	//动画控制单元
+	private Animator theAnimationController;
 
 
 	public void OnAttack(Player aim)
 	{
+		if (!aim.isAlive)
+			return;
+		
 		aim.OnHpChange (-this.attackDamage);
 		if (aim.hpNow == 0)
 			OnGetLearningValue (aim.lvNow * 15f);
@@ -52,6 +57,14 @@ public class Player : MonoBehaviour {
 	public void OnHpChange(float hpChangeAdder)
 	{
 		HpChanger (hpChangeAdder);
+
+		if (hpChangeAdder >= 0)
+			return;
+		
+		if (hpNow == 0 )
+			OnDead ();
+		else  
+			theAnimationController.Play ("getHit");
 	}
 
 	/// <summary>
@@ -125,7 +138,18 @@ public class Player : MonoBehaviour {
 	/// </summary>
 	private void OnDead()
 	{
-		print ("玩家虽然挂了，然而什么都没有发生，真实见了鬼了");
+		isAlive = false;
+		theAnimationController.Play ("dead");
+		if (this == SystemValues.thePlayer) 
+		{
+			UIController.GetInstance ().ShowUI<messageBox> ("胜败乃兵家常事，大侠请重新来过");
+			bool loadOp = SystemValues.LoadInformation ();
+		} 
+		else 
+		{
+			UIController.GetInstance ().ShowUI<messageBox> ("击杀！");
+			Destroy (this.gameObject, 2f);
+		}
 	}
 
 	void Start () 
@@ -133,6 +157,7 @@ public class Player : MonoBehaviour {
 		HpChanger += this.ChangeHp;
 		DamageChanger += this.ChangeDamage;
 		LearningChanger += this.ChangeLearning;
+		theAnimationController = this.GetComponent<Animator> ();
 	}
 
 //	void Update()

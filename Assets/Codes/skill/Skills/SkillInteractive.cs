@@ -48,10 +48,10 @@ public class SkillInteractive : SkillBasic {
 				}
 			}
 		}
-		if (aim)
-		{
-			print ("aim - "+aim.name);
+		if (aim) {
+			//print ("aim - "+aim.name);
 			aim.MakeInteractive ();
-		}
+		} else
+			UIController.GetInstance ().ShowUI<messageBox> ("附近没有可交互的事物");
 	}
 }
