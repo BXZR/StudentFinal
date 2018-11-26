@@ -5,19 +5,20 @@ using UnityEngine;
 public class SkillHpup : SkillBasic {
 
 
+	float hpUpPerSecond = 0f;
+
 	void Start ()
 	{
 		Init ();
-
 	}
 
 	public override void Init ()
 	{
-		skillAllTimer = 10f;//冷却时间
-		skillEffectTime = 0.2f;//技能持续时间
+		skillAllTimer = 15;//冷却时间
+		skillEffectTime = 3f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "调息";//技能名字
-		skillInformation = "行走江湖必备技能，能够治疗自身的损伤。\n恢复最大生命10%的生命值\n冷却时间：" + skillAllTimer.ToString("f1") + "秒";//技能介绍
+		skillInformation = "行走江湖必备技能，能够治疗自身的损伤。\n恢复共最大生命15%的生命值\n持续时间："+skillEffectTime.ToString("f1")+"秒\n冷却时间：" + skillAllTimer.ToString("f1") + "秒";//技能介绍
 	}
 
 	//播放技能动画
@@ -25,7 +26,20 @@ public class SkillHpup : SkillBasic {
 	{
 		theStateNow = skillState.isUsing;
 		thePlayer.theSkillNow = this;
-		thePlayer.OnHpChange(thePlayer.hpMaxNow * 0.1f);
+		hpUpPerSecond = thePlayer.hpMaxNow * 0.15f / skillEffectTime;
+	}
+
+	public override void OnUpdate ()
+	{
+		if (theStateNow == skillState.isUsing)
+		{
+			thePlayer.OnHpChange( hpUpPerSecond * Time.deltaTime );
+		}
+	}
+
+	void Update()
+	{
+		OnUpdate ();
 	}
 
 

@@ -31,7 +31,43 @@ public class ZiYingArrow : SkillBasic {
 	public override void UseTheSkill ()
 	{
 		thePlayer.theSkillNow = this;
+		SearchAim ();
 		theAnimatorController.PlayAnimation (playerAction.attack);
+	}
+
+
+	//尝试看向身边最近的目标
+	private GameObject theAim = null;
+	private void SearchAim()
+	{
+		if (theAim ) 
+		{
+			this.thePlayer.theMoveController.MakeLookAt (theAim.transform);
+		}
+		else 
+		{
+			Collider[] attackAims = Physics.OverlapSphere (this.thePlayer.transform.position, 12f);
+			GameObject aAim = null;
+			float distance = 999f;
+			for (int i = 0; i < attackAims.Length; i++) 
+			{
+				Player thePlayerGet = attackAims [i].GetComponent<Player> ();
+				if (!thePlayerGet || thePlayerGet == this.thePlayer)
+					continue;
+			
+				float distanceNew = Vector3.Distance (this.thePlayer.transform.position, attackAims [i].transform.position);
+				if (distanceNew < distance) 
+				{
+					distance = distanceNew;
+					aAim = attackAims [i].gameObject;
+				}
+			}
+			if (aAim) 
+			{
+				theAim = aAim;
+				this.thePlayer.theMoveController.MakeLookAt (theAim.transform);
+			}
+		}
 	}
 
 
@@ -50,7 +86,7 @@ public class ZiYingArrow : SkillBasic {
 		}
 
 		ArrowUsing.gameObject.SetActive (true);
-		ArrowUsing.transform.position = thePlayer.transform.position + thePlayer.transform.rotation * new Vector3 (0f, 0.2f * thePlayer.transform.localScale.y + 0.25f, 0.5f);
+		ArrowUsing.transform.position = thePlayer.transform.position + thePlayer.transform.rotation * new Vector3 (0f, 0.2f * thePlayer.transform.localScale.y + 0.25f, 0.15f);
 		ArrowUsing.transform.forward = forward;
 
 		Invoke ("effectDestoryExtra", skillEffectTime);

@@ -86,6 +86,36 @@ public class move : MonoBehaviour {
 		AxisForMove.z = yAxisValue;
 	}
 
+
+	/// <summary>
+	/// 使得玩家看向某个物体
+	/// </summary>
+	public void MakeLookAt(Transform aim)
+	{
+		float xMins = aim.position.x - this.transform.position.x;
+		float zMins = aim.position.z - this.transform.position.z;
+		float AllMins = Vector3.Distance (this.transform.position,aim.transform.position);
+		float YawAdd = Mathf.Abs( Mathf.Acos(xMins/AllMins)* Mathf.Rad2Deg);
+
+		if (xMins >= 0 && zMins > 0)
+			YawAdd = 90 - YawAdd;
+		if (xMins > 0 && zMins < 0)
+			YawAdd = YawAdd + 90;
+		
+		if (xMins < 0 && zMins > 0)
+			YawAdd = 90f - YawAdd;
+		if (xMins < 0 && zMins <= 0)
+			YawAdd = 90f + YawAdd;
+
+		Vector3 eulerOld = this.transform.position;
+		Vector3 eulerNew = new Vector3 (0f , YawAdd + eulerOld.y , 0f);
+		headingAim = Quaternion.Euler (eulerNew );
+//		print (eulerNew);
+		//直接用最暴力的方法
+		//this.transform.LookAt(aim.transform);
+		//headingAim = this.transform.rotation;
+	}
+
 	/// <summary>
 	/// 真正实现移动的方法.
 	/// 转向的实现也在这里

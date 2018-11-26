@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
 	public event LearningChangeHook LearningChanger;
 	//动画控制单元
 	private Animator theAnimationController;
+	//移动控制单元
+	public move theMoveController;
 
 	#region 动画与攻击事件
 	/// <summary>
@@ -134,6 +136,7 @@ public class Player : MonoBehaviour {
 		{
 			learningValue -= learningValueMax;
 			OnLvHp ();
+			UIController.GetInstance ().ShowUI<messageBox> ("等级提升！");
 		}
 	}
 
@@ -202,6 +205,7 @@ public class Player : MonoBehaviour {
 		DamageChanger += this.ChangeDamage;
 		LearningChanger += this.ChangeLearning;
 		theAnimationController = this.GetComponent<Animator> ();
+		theMoveController = this.GetComponent<move> ();
 		MakeHpSlider ();
 	}
 
