@@ -19,7 +19,7 @@ public class UIController : MonoBehaviour {
 		GameObject theUI;
 		if (!UIBook.TryGetValue (UIName, out theUI))
 		{
-			theUI = (GameObject)Resources.Load ("UI/" + UIName);
+			theUI = SystemValues.LoadResources<GameObject>("UI/" + UIName);
 			theUI = Instantiate (theUI);
 			theUI.name = UIName;
 			UIBook.Add (UIName, theUI);
@@ -38,7 +38,7 @@ public class UIController : MonoBehaviour {
 		GameObject theUI;
 		if (!UIBook.TryGetValue (UIName, out theUI))
 		{
-			theUI = (GameObject)Resources.Load ("UI/" + UIName);
+			theUI = SystemValues.LoadResources<GameObject>("UI/" + UIName);
 			theUI = Instantiate (theUI);
 			theUI.name = UIName;
 			UIBook.Add (UIName, theUI);
@@ -59,7 +59,7 @@ public class UIController : MonoBehaviour {
 		GameObject theUI;
 		if (!UIBook.TryGetValue (UIName, out theUI))
 		{
-			theUI = (GameObject)Resources.Load ("UI/" + UIName);
+			theUI = SystemValues.LoadResources<GameObject>("UI/" + UIName);
 			theUI = Instantiate (theUI);
 			theUI.name = UIName;
 			UIBook.Add (UIName, theUI);

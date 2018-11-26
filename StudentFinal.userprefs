@@ -1,9 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\people\Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs">
     <Files>
-      <File FileName="Assets\Codes\people\Player.cs" Line="63" Column="3" />
-      <File FileName="Assets\Codes\UI\SettingUI\SettingCanvas.cs" Line="31" Column="49" />
+      <File FileName="Assets\Codes\UI\UIFramework\UIController.cs" Line="66" Column="13" />
+      <File FileName="Assets\Codes\System\SystemSet.cs" Line="13" Column="64" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="226" Column="38" />
+      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="31" Column="35" />
+      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="32" Column="41" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="194" Column="3" />
+      <File FileName="Assets\Codes\System\FileOperater.cs" Line="60" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

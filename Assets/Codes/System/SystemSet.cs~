@@ -10,7 +10,8 @@ public class SystemSet : MonoBehaviour {
 	//设定完成之后自动销毁
 	void Start () 
 	{
-		thePlayer = (GameObject)GameObject.Instantiate (Resources.Load<GameObject>("Player/ThePlayer"));
+		GameObject playerData = SystemValues.LoadResources<GameObject>("Player/ThePlayer");
+		thePlayer = (GameObject)GameObject.Instantiate (playerData );
 		SystemValues.thePlayer = thePlayer;
 		if (SystemValues.theSaveData == null)
 			thePlayer.transform.position = theStartPosition.position;

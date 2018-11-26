@@ -72,6 +72,22 @@ public class SystemValues : MonoBehaviour {
 		return new Vector2 (xAxisValue , yAxisValue);
 	}
 
+
+	public static bool loadWithResouces = true;
+//	public static GameObject LoadResources(string path) 
+//	{
+//		if (loadWithResouces)
+//			return Resources.Load<GameObject>(path);
+//		return null;
+//	}
+
+	public static T LoadResources<T>(string path) where T : Object
+	{
+		if (loadWithResouces)
+			return Resources.Load<T>(path);
+		return null;
+	}
+
 	#region 有关剧本操作 
 	//显示对话
 	private static XmlDocument xml = new XmlDocument();
@@ -85,7 +101,7 @@ public class SystemValues : MonoBehaviour {
 	public static void LoadPlots()
 	{
 		theFrames = new List<PlotItem> ();
-		TextAsset textAsset = (TextAsset)Resources.Load ("XML/" + "Plot");
+		TextAsset textAsset = SystemValues.LoadResources<TextAsset> ("XML/" + "Plot");
 		xml.LoadXml (textAsset.text);
 		theXmlList = xml.SelectNodes ("Root/Item");
 		foreach (XmlNode node in theXmlList) 
@@ -186,6 +202,7 @@ public class SystemValues : MonoBehaviour {
 		if (!thePlayers || SystemValues.theSaveData == null)
 			return;
 
+		//加载数据
 		thePlayers.lvNow = SystemValues.theSaveData.playerLv;
 		thePlayers.attackDamage = SystemValues.theSaveData.playerDamge;
 		thePlayers.hpNow = SystemValues.theSaveData.playerHp;
@@ -195,8 +212,29 @@ public class SystemValues : MonoBehaviour {
 		SystemValues.plotIDNow = SystemValues.theSaveData.plotIDs;
 		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
 
+		//刷新一下数值，更改其他显示
+		thePlayers.MakeFlash();
+
 		SystemValues.theSaveData = null;
 
+	}
+	#endregion
+
+	#region 头顶血条管理器
+	public static List<PlayerBloodCanvas> bloodCamvasList = new List<PlayerBloodCanvas> ();
+
+	public static void ShowBloodCanvas()
+	{
+		bloodCamvasList.RemoveAll (X => X == null);
+		for (int i = 0; i < bloodCamvasList.Count; i++)
+			bloodCamvasList [i].gameObject.SetActive (true);
+	}
+
+	public static void CloseBloodCanvas()
+	{
+		bloodCamvasList.RemoveAll (X => X == null);
+		for (int i = 0; i < bloodCamvasList.Count; i++)
+			bloodCamvasList [i].gameObject.SetActive (false);
 	}
 	#endregion
 }

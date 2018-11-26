@@ -30,18 +30,45 @@ public class Player : MonoBehaviour {
 	//动画控制单元
 	private Animator theAnimationController;
 
+	#region 动画与攻击事件
+	/// <summary>
+	/// 这个方法食欲带动作的技能触发事件联系在一起的
+	/// 这个方法是自动Animator调用的
+	/// </summary>
+	public  void SkillEffect (float extradamage)
+	{
+		if (theSkillNow != null)
+			theSkillNow.SkillEffect (extradamage);
+		theSkillNow = null;
+	}
 
+
+	/// <summary>
+	/// 动画触发攻击方法
+	/// </summary>
+	public void AnimationAttack(float extradamage)
+	{
+		
+	}
+
+
+	/// <summary>
+	/// 攻击的时候触发
+	/// 触发方式可以是动画事件也可能是投掷武器
+	/// </summary>
+	/// <param name="aim">Aim.</param>
 	public void OnAttack(Player aim)
 	{
 		if (!aim.isAlive)
 			return;
-		
+
 		aim.OnHpChange (-this.attackDamage);
 		if (aim.hpNow == 0)
 			OnGetLearningValue (aim.lvNow * 15f);
 	}
+	#endregion
 
-
+	#region 外部数值管理事件
 	/// <summary>
 	/// 外部调用的获取经验的方法
 	/// </summary>
@@ -77,17 +104,18 @@ public class Player : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// 这个方法食欲带动作的技能触发事件联系在一起的
-	/// 这个方法是自动Animator调用的
+	/// 刷新数值，更改显示
+	/// 因为都是事件驱动的，没有一直查询，只好手动更新了
 	/// </summary>
-	public  void SkillEffect (float extradamage)
+	public void MakeFlash()
 	{
-		if (theSkillNow != null)
-			theSkillNow.SkillEffect (extradamage);
-		theSkillNow = null;
+		OnDamageChange (0f);
+		OnGetLearningValue (0f);
+		OnHpChange (0f);
 	}
-		
+	#endregion
 
+	#region 内部处理方法
 	/// <summary>
 	/// Player自身操作生命值的方法
 	/// </summary>
@@ -151,6 +179,22 @@ public class Player : MonoBehaviour {
 			Destroy (this.gameObject, 2f);
 		}
 	}
+	#endregion
+
+
+
+	//创建头顶血条
+	private void MakeHpSlider()
+	{
+		GameObject theSlider = GameObject.Instantiate( SystemValues.LoadResources<GameObject>("UI/PlayerBloodCanvas"));
+
+		theSlider.transform.position = this.transform.position + new Vector3 (0f,1.5f,0f);
+		theSlider.transform.localScale = new Vector3 (0.01f,0.01f,0.01f);
+		theSlider.transform.SetParent (this.transform);
+
+		PlayerBloodCanvas theShowCanvas = theSlider.GetComponent<PlayerBloodCanvas> ();
+		theShowCanvas.MakeFkash (this);
+	}
 
 	void Start () 
 	{
@@ -158,11 +202,12 @@ public class Player : MonoBehaviour {
 		DamageChanger += this.ChangeDamage;
 		LearningChanger += this.ChangeLearning;
 		theAnimationController = this.GetComponent<Animator> ();
+		MakeHpSlider ();
 	}
+
 
 //	void Update()
 //	{
-//
 //	}
 
 }

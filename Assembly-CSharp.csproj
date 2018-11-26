@@ -61,6 +61,7 @@
      <Compile Include="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\UISkillButton.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\moveJoyStick.cs" />
+     <Compile Include="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" />
      <Compile Include="Assets\Codes\UI\SettingUI\SettingCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\GameTalkCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\StartButton.cs" />

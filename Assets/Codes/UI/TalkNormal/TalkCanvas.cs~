@@ -22,11 +22,13 @@ public class TalkCanvas : UIBasic {
 		LoadTexts(value);//加载对话内容
 		ShowText();//加载第一句话
 		SystemValues.theCamera.OnIntoPlot();
+		SystemValues.CloseBloodCanvas ();
 	} 
 
 	public override void OnEndShow ()
 	{
 		SystemValues.theCamera.OnOutPlot ();
+		SystemValues.ShowBloodCanvas ();
 	}
 
 
@@ -35,7 +37,7 @@ public class TalkCanvas : UIBasic {
 	private void LoadTexts(string value)
 	{
 		theFrames = new Queue<DialogFrame> ();
-		TextAsset textAsset = (TextAsset)Resources.Load ("XML/" + value);
+		TextAsset textAsset = SystemValues.LoadResources<TextAsset>("XML/" + value);
 		xml.LoadXml (textAsset.text);
 		theXmlList = xml.SelectNodes ("Root/Dialog");
 		foreach (XmlNode node in theXmlList) 
@@ -90,7 +92,7 @@ public class TalkCanvas : UIBasic {
 		theInformationText.text = use.information;
 
 		use.picture = !string.IsNullOrEmpty (use.picture) ? use.picture : "noOne";
-		Texture2D theTextureIn = Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
+		Texture2D theTextureIn = SystemValues.LoadResources<Texture2D> ("TalkPicture/" + use.picture); //Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
 		Sprite theSprite = Sprite.Create (theTextureIn, new Rect (0, 0, theTextureIn.width, theTextureIn.height), new Vector2 (0, 0));
 		theTalkHeadPicture.sprite = theSprite;
 	}
@@ -104,7 +106,7 @@ public class TalkCanvas : UIBasic {
 		theInformationText.text = "怎么选择呢？";
 		theNameText.text = "";
 		use.picture = "noOne";
-		Texture2D theTextureIn = Resources.Load <Texture2D> ("TalkPicture/" + use.picture);
+		Texture2D theTextureIn = SystemValues.LoadResources<Texture2D> ("TalkPicture/" + use.picture);
 		UIController.GetInstance ().ShowUI<UITalkSelect> (use.information);
 	}
 
