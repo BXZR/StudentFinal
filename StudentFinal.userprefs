@@ -6,16 +6,17 @@
       <File FileName="Assets\Codes\System\SystemSet.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\System\SystemValues.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="32" Column="41" />
-      <File FileName="Assets\Codes\people\Player.cs" Line="208" Column="50" />
+      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\System\FileOperater.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\NPC\Ari\Ari_1.xml" Line="20" Column="22" />
-      <File FileName="Assets\Resources\XML\NPC\Ari\Ari.xml" Line="30" Column="30" />
-      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="89" Column="167" />
-      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="34" Column="96" />
-      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="95" Column="60" />
-      <File FileName="Assets\Codes\skill\Skills\SkillHpup.cs" Line="21" Column="100" />
-      <File FileName="Assets\Codes\skill\Skills\JumpSkill.cs" Line="65" Column="3" />
+      <File FileName="Assets\Resources\XML\NPC\Ari\Ari_1.xml" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\NPC\Ari\Ari.xml" Line="1" Column="1" />
+      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="23" Column="24" />
+      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="54" Column="62" />
+      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\skill\Skills\SkillHpup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\skill\Skills\JumpSkill.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="147" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

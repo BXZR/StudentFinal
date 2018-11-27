@@ -51,7 +51,9 @@ public class SkillInteractive : SkillBasic {
 		if (aim) {
 			//print ("aim - "+aim.name);
 			aim.MakeInteractive ();
-		} else
+			this.thePlayer.theMoveController.MakeLookAt (aim.transform);
+		} 
+		else
 			UIController.GetInstance ().ShowUI<messageBox> ("附近没有可交互的事物");
 	}
 }

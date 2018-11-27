@@ -62,12 +62,16 @@ public class smoothLook : MonoBehaviour {
 		if (SystemValues.IsOperatingUI () && Input.touches.Length >= 2 && !SystemValues.IsOperatingUI(Input.GetTouch (1).fingerId)) 
 		{
 			canOperate = true;
-			MoveWithTouch (Input.GetTouch (1));
+			Touch theTouch = Input.GetTouch (1);
+			Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x , theTouch.deltaPosition.y);
+			MoveWithVector (touchControlVector);
 		} 
 		else if (!SystemValues.IsOperatingUI () && Input.touches.Length >= 1) 
 		{
 			canOperate = true;
-			MoveWithTouch (Input.GetTouch (0));
+			Touch theTouch = Input.GetTouch (0);
+			Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x , theTouch.deltaPosition.y);
+			MoveWithVector (touchControlVector);
 		} 
 		else
 		{
@@ -76,31 +80,6 @@ public class smoothLook : MonoBehaviour {
 
 	}
 
-	/// <summary>
-	/// 封装的touch移动方法
-	/// 传入的参数就是Touch
-	/// </summary>
-	/// <param name="theTouch">The touch.</param>
-	private void MoveWithTouch(Touch theTouch)
-	{
-
-		float xMove = theTouch.deltaPosition.x; 
-		float yMove = theTouch.deltaPosition.y;
-		xMove = Mathf.Abs (xMove) > 9f ? xMove * 0.02f : 0f;
-		yMove = Mathf.Abs (yMove) > 9f ? yMove * 0.015f : 0f;
-		//取反是可以改变操作的感觉
-		xMove = -xMove;
-		yMove = -yMove;
-
-		height += yMove;
-		distance += yMove;
-		height = Mathf.Clamp (height, 2f, 6f);
-		distance = Mathf.Clamp (distance, 4f, 8f);
-
-		this.transform.Translate (new Vector3 (xMove, 0f, 0f));
-
-	}
-		
 	/// <summary>
 	/// 摄像机的鼠标操作
 	/// </summary>
@@ -134,19 +113,9 @@ public class smoothLook : MonoBehaviour {
 			{
 				float xMove = (Input.mousePosition.x - mousePosition.x); 
 				float yMove = (Input.mousePosition.y - mousePosition.y);
-				xMove = Mathf.Abs (xMove) > 9f ? xMove * 0.02f : 0f;
-				yMove = Mathf.Abs (yMove) > 9f ? yMove * 0.015f : 0f;
-				//取反是可以改变操作的感觉
-				xMove = -xMove;
-				yMove = -yMove;
+				Vector2 mouseControl = new Vector2 (xMove , yMove);
+				MoveWithVector (mouseControl );
 				mousePosition = Input.mousePosition;
-
-				height += yMove;
-				distance += yMove;
-				height = Mathf.Clamp (height , 2f, 6f);
-				distance = Mathf.Clamp (distance  , 4f , 8f);
-
-				this.transform.Translate (new Vector3 (xMove, 0f, 0f));
 
 			}
 		}
@@ -167,18 +136,58 @@ public class smoothLook : MonoBehaviour {
 			Vector3 aimPosition = theTarget.transform.position + extraDistance;
 			aimPosition = new Vector3 (this.transform.position.x, theTarget.transform.position.y + height, this.transform.position.z);
 			extraDistance = (aimPosition - theTarget.transform.position).normalized * distance;
+
+			//先移动摄像机再看
+			FixPosition ();
 			this.transform.LookAt (theTarget.transform.position + new Vector3 (0f, 1f, 0f));
-			this.transform.position = theTarget.transform.position + extraDistance;
-			//不能用插值，会有动荡
-			//this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.8f);
 		} 
 		else if (SystemValues.theCameraState == CameraState.fixedCamera) 
 		{
-			this.transform.position = theTarget.transform.position + extraDistance;
-			//不能用插值，会有动荡
-			//this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.5f);
+			FixPosition ();
 		}
 	}
+
+
+	/// <summary>
+	/// 最终移动摄像机的方法
+	/// </summary>
+	private void FixPosition()
+	{
+		//不能用插值，会有动荡
+		if(!canOperate)
+			this.transform.position = theTarget.transform.position + extraDistance;
+		else
+			this.transform.position = Vector3.Lerp(this.transform.position ,  theTarget.transform.position + extraDistance , 0.5f);
+	}
+
+
+	/// <summary>
+	/// 封装的touch移动方法
+	/// 传入的参数就是Touch
+	/// </summary>
+	/// <param name="theTouch">The touch.</param>
+	private void MoveWithVector(Vector2 theControlVector)
+	{
+
+		float xMove = theControlVector.x; 
+		float yMove = theControlVector.y;
+		xMove = Mathf.Abs (xMove) > 3f ? xMove * 0.008f : 0f;
+		yMove = Mathf.Abs (yMove) > 3f ? yMove * 0.006f : 0f;
+		//取反是可以改变操作的感觉
+		xMove = -xMove;
+		yMove = -yMove;
+
+		height += yMove;
+		distance += yMove;
+		height = Mathf.Clamp (height, 2f, 6f);
+		distance = Mathf.Clamp (distance, 4f, 8f);
+
+		this.transform.Translate (new Vector3 (xMove, 0f, 0f));
+
+	}
+
+
+
 
 	/// <summary>
 	/// 剧情模式之下的摄像机操作
