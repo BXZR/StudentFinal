@@ -18,5 +18,14 @@ public class text : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.X ))
 			SystemValues.LoadInformation ();
+		if (Input.GetKeyDown (KeyCode.V))
+		{
+			Mission_KillMonster1 A = new Mission_KillMonster1 ();
+			A.MakeStart ();
+			SystemValues.thePlayer.GetComponent<Player> ().theMissionPackage.AddNewMission (A);
+		}
+
+		if (Input.GetKeyDown (KeyCode.B))
+			UIController.GetInstance ().ShowUI<UIMissionCanvas> ();
 	}
 }

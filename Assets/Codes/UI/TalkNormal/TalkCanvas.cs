@@ -73,6 +73,9 @@ public class TalkCanvas : UIBasic {
 			case "GOLD":
 				makeOver (use);
 				break;
+			case "MISSION":
+				makeMission (use);
+				break;
 			default:
 				makeTalk (use);
 				break;
@@ -125,6 +128,15 @@ public class TalkCanvas : UIBasic {
 			SystemValues.thePlayer.GetComponent<Player> ().OnGetLearningValue( (float)XmlConvert.ToDouble (values[0]));
 			UIController.GetInstance ().ShowUI<messageBox> (values[1]);
 		}
+	}
+
+	private void makeMission(DialogFrame use )
+	{
+		string missionName = use.information;
+		System.Reflection.Assembly AS = System.Reflection.Assembly.GetExecutingAssembly ();
+		MissionBasic theMission = AS.CreateInstance (missionName)  as MissionBasic; 
+		theMission.MakeStart ();
+		SystemValues.thePlayer.GetComponent<Player> ().theMissionPackage.AddNewMission (theMission);
 	}
 
 }

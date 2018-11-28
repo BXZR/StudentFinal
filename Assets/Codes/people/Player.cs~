@@ -8,10 +8,12 @@ using UnityEngine;
 public delegate void HpChangeHook(float adder);
 public delegate void DamageChangeHook(float adder);
 public delegate void LearningChangeHook(float adder);
+public delegate void KillHook(Player beKilled);
 
 public class Player : MonoBehaviour {
 
 	//游戏人物的数值
+	public string playerName = "";//角色名字
 	public float hpNow = 100f;//当前生命值
 	public float hpMaxNow = 100f;//当前生命上限
 	public float attackDamage = 4f;//当前攻击力
@@ -20,17 +22,24 @@ public class Player : MonoBehaviour {
 	public int lvNow = 1;//当前等级
 	public bool isAlive = true;//当前是否生存
 
+	//动画控制单元
+	private Animator theAnimationController;
+	//移动控制单元
+	public move theMoveController;
+	//当前的技能
 	public SkillBasic theSkillNow = null;
+	//r任务背包，也就是任务控制单元
+	public MissionPackage theMissionPackage;
+
 	//公有操作生命的事件
 	public event HpChangeHook HpChanger;
 	//公有操作战斗力的事件
 	public event DamageChangeHook DamageChanger;
 	//公有操作经验的事件
 	public event LearningChangeHook LearningChanger;
-	//动画控制单元
-	private Animator theAnimationController;
-	//移动控制单元
-	public move theMoveController;
+	//公有操作击杀的事件
+	public event KillHook KillEvent;
+
 
 	#region 动画与攻击事件
 	/// <summary>
@@ -65,8 +74,11 @@ public class Player : MonoBehaviour {
 			return;
 
 		aim.OnHpChange (-this.attackDamage);
-		if (aim.hpNow == 0)
+		if (aim.hpNow == 0) 
+		{
+			KillEvent (aim);
 			OnGetLearningValue (aim.lvNow * 15f);
+		}
 	}
 	#endregion
 
@@ -206,6 +218,7 @@ public class Player : MonoBehaviour {
 		LearningChanger += this.ChangeLearning;
 		theAnimationController = this.GetComponent<Animator> ();
 		theMoveController = this.GetComponent<move> ();
+		theMissionPackage = this.GetComponent<MissionPackage> ();
 		MakeHpSlider ();
 	}
 

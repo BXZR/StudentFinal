@@ -1,22 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\skill\Skills\ZiYingArrow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs">
     <Files>
-      <File FileName="Assets\Codes\UI\UIFramework\UIController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\SystemSet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\SystemValues.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Mission\MissionBasic.cs" Line="14" Column="37" />
+      <File FileName="Assets\Codes\Mission\MissionPackage.cs" Line="22" Column="12" />
+      <File FileName="Assets\Codes\UI\UIFramework\UIController.cs" Line="19" Column="20" />
       <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\FileOperater.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\NPC\Ari\Ari_1.xml" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\NPC\Ari\Ari.xml" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="23" Column="24" />
-      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="54" Column="62" />
-      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\SkillHpup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\JumpSkill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="147" Column="4" />
+      <File FileName="Assets\Codes\text.cs" Line="29" Column="59" />
+      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="22" Column="8" />
+      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="76" Column="10" />
+      <File FileName="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" Line="5" Column="21" />
+      <File FileName="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs" Line="28" Column="35" />
+      <File FileName="Assets\Codes\UI\MessageBox\messageBox.cs" Line="26" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
