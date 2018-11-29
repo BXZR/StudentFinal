@@ -13,15 +13,18 @@ public class SystemSet : MonoBehaviour {
 		GameObject playerData = SystemValues.LoadResources<GameObject>("Player/ThePlayer");
 		thePlayer = (GameObject)GameObject.Instantiate (playerData );
 		SystemValues.thePlayer = thePlayer;
+
 		if (SystemValues.theSaveData == null)
 			thePlayer.transform.position = theStartPosition.position;
-		else
-			SystemValues.makeTrueLoad ();
+		
 		Invoke ("makeStart" , 0.05f);
 	}
 
 	void makeStart()
 	{
+		if (SystemValues.theSaveData != null)
+			SystemValues.makeTrueLoad ();
+		
 		loadGameInformation ();
 		loadSetting ();
 		Destroy (this);

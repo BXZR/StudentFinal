@@ -6,6 +6,7 @@ public class TalkWall : MonoBehaviour {
 
 	//触发剧情对话的墙壁
 	public int PlotType;
+	public int PlotID;
 	public bool isAutoDestroy = true;
 	public bool isExitMode = false;//在一个范围内走出去的时候触发
 
@@ -30,7 +31,7 @@ public class TalkWall : MonoBehaviour {
 
 	private void ShowPlot()
 	{
-		string plotName = SystemValues.getPlotName (PlotType);
+		string plotName = SystemValues.getPlotName (PlotType , PlotID);
 		//print (plotName  +"---");
 		if (string.IsNullOrEmpty (plotName))
 			return;

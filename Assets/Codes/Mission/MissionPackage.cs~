@@ -35,6 +35,7 @@ public class MissionPackage : MonoBehaviour {
 				return;
 			}
 		}
+
 		theMission.thePlayer = this.thePlayer;
 		theMissions.Add (theMission);
 		UIController.GetInstance ().ShowUI<messageBox> ("更新任务："+theMission.missionName);

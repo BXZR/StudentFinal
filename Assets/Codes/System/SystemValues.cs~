@@ -121,7 +121,7 @@ public class SystemValues : MonoBehaviour {
 	/// 通过剧本ID获取到当前剧本文件的名字
 	/// 参数plotType为需要调用的剧本类型ID
 	/// </summary>
-	public static string getPlotName(int plotType)
+	public static string getPlotName(int plotType , int PlotID)
 	{
 		if(plotType >= plotIDNow.Length)
 			return "";
@@ -131,7 +131,7 @@ public class SystemValues : MonoBehaviour {
 		string plotNameUse = "";
 		for (int i = 0; i < theFrames.Count; i++) 
 		{
-			if (theFrames [i].type == plotType && theFrames [i].ID == IDUse) 
+			if (theFrames [i].type == plotType && theFrames [i].ID == IDUse && PlotID == IDUse) 
 			{
 				plotNameUse = theFrames [i].Plot;
 				plotIDNow [plotType]++;
@@ -171,6 +171,7 @@ public class SystemValues : MonoBehaviour {
 		theData.playerPositionZ = thePlayers.transform.position.z;
 
 		theData.missions = thePlayers.theMissionPackage.theMissions;
+		
 		//真实存档
 		FileOperater fileOp = new FileOperater ();
 		string fileName = Application.persistentDataPath + "/GameData.sav";
@@ -214,6 +215,10 @@ public class SystemValues : MonoBehaviour {
 		thePlayers.theMissionPackage.theMissions = SystemValues.theSaveData.missions;
 		SystemValues.plotIDNow = SystemValues.theSaveData.plotIDs;
 		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
+
+		for (int i = 0; i < SystemValues.theSaveData.missions.Count; i++)
+			thePlayers.theMissionPackage.AddNewMission (SystemValues.theSaveData.missions [i]);
+
 
 		//刷新一下数值，更改其他显示
 		thePlayers.MakeFlash();

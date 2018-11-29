@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System .Serializable]
 public class Mission_KillMonster1 :MissionBasic {
 
 	private int CountUse = 0;
@@ -30,6 +31,9 @@ public class Mission_KillMonster1 :MissionBasic {
 
 	public override void OnMissionOver ()
 	{
+		if (!this.thePlayer)
+			this.thePlayer = SystemValues.thePlayer.GetComponent<Player> ();
+		
 		this.thePlayer.OnGetLearningValue (30f);
 		UIController.GetInstance ().ShowUI<messageBox> ("任务["+missionName+"]已经完成\n获得30经验");
 	}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System .Serializable]
 public class MainMission_1 : MainMissionBasic {
 
 	//这是一个跑图任务，没有任何限制
