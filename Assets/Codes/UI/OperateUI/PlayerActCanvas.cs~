@@ -8,4 +8,21 @@ public class PlayerActCanvas : UIBasic {
 	{
 		SystemValues.thePlayer.GetComponent<move> ().stopMoving ();
 	}
+
+
+	/// <summary>
+	/// 召唤设定界面.
+	/// </summary>
+	public void ShowSettings()
+	{
+		UIController.GetInstance ().ShowUI<SettingCanvas> ();
+	}
+
+	/// <summary>
+	/// 召唤任务界面
+	/// </summary>
+	public void ShowMissions()
+	{
+		UIController.GetInstance ().ShowUI<UIMissionCanvas> ();
+	}
 }

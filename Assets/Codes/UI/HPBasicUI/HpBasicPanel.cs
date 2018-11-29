@@ -60,11 +60,4 @@ public class HpBasicPanel : UIBasic {
 		theLearningSlider.value = thePlayer.learningValue / thePlayer.learningValueMax;
 	}
 
-	/// <summary>
-	/// 召唤设定界面.
-	/// </summary>
-	public void ShowSettings()
-	{
-		UIController.GetInstance ().ShowUI<SettingCanvas> ();
-	}
 }

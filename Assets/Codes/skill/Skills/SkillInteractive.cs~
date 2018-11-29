@@ -17,7 +17,7 @@ public class SkillInteractive : SkillBasic {
 
 	public override void Init ()
 	{
-		skillAllTimer = 5f;//冷却时间
+		skillAllTimer = 4f;//冷却时间
 		skillEffectTime = 0.1f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "交互";//技能名字

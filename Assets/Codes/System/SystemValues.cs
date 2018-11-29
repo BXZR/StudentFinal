@@ -98,6 +98,9 @@ public class SystemValues : MonoBehaviour {
 	//记录ID，这样很多的东西都不会重复进行了
 	private static int[] plotIDNow = {0,0,0,0,0,0 };
 
+	/// <summary>
+	///加载存单
+	/// </summary>
 	public static void LoadPlots()
 	{
 		theFrames = new List<PlotItem> ();
@@ -109,9 +112,7 @@ public class SystemValues : MonoBehaviour {
 			PlotItem aFrame = new PlotItem();
 			aFrame.ID = XmlConvert.ToInt32( node.SelectSingleNode("ID").InnerText);
 			aFrame.Plot = node.SelectSingleNode ("Plot").InnerText;
-			aFrame.Name = node.SelectSingleNode ("Name").InnerText;
 			aFrame.type = XmlConvert.ToInt32(node.SelectSingleNode ("Type").InnerText);
-			aFrame.Information = node.SelectSingleNode ("Information").InnerText;
 			theFrames.Add (aFrame);
 		}
 	}
@@ -169,6 +170,7 @@ public class SystemValues : MonoBehaviour {
 		theData.playerPositionY = thePlayers.transform.position.y;
 		theData.playerPositionZ = thePlayers.transform.position.z;
 
+		theData.missions = thePlayers.theMissionPackage.theMissions;
 		//真实存档
 		FileOperater fileOp = new FileOperater ();
 		string fileName = Application.persistentDataPath + "/GameData.sav";
@@ -209,6 +211,7 @@ public class SystemValues : MonoBehaviour {
 		thePlayers.hpMaxNow = SystemValues.theSaveData.playerHpMax;
 		thePlayers.learningValue = SystemValues.theSaveData.playerLearn;
 		thePlayers.learningValueMax = SystemValues.theSaveData.playerLearnMax;
+		thePlayers.theMissionPackage.theMissions = SystemValues.theSaveData.missions;
 		SystemValues.plotIDNow = SystemValues.theSaveData.plotIDs;
 		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
 

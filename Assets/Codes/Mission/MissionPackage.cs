@@ -10,10 +10,23 @@ public class MissionPackage : MonoBehaviour {
 
 	public  List<MissionBasic> theMissions = new List<MissionBasic> ();
 	private Player thePlayer;//这个任务背包的从属
-
+	private MissionBasic theMainMission = null;//这个任务全局唯一的主线任务
 
 	public void AddNewMission(MissionBasic theMission)
 	{
+		
+
+		//添加任务到背包
+		//主线任务只会有一个的
+		if (theMission is MainMissionBasic) 
+		{
+			if (theMainMission != null)
+				theMainMission.OnMissionOver ();
+			theMissions.RemoveAll (X => X is MainMissionBasic);
+			theMainMission = theMission;
+			//print ("主线任务更新");
+		}
+			
 		for(int i = 0 ; i< theMissions.Count ; i ++)
 		{
 			if (theMissions [i].GetType ().Equals(theMission.GetType ())) 
@@ -21,11 +34,10 @@ public class MissionPackage : MonoBehaviour {
 				UIController.GetInstance ().ShowUI<messageBox> ("不可重复获得任务，请完成当前任务之后重试");
 				return;
 			}
-			
 		}
 		theMission.thePlayer = this.thePlayer;
 		theMissions.Add (theMission);
-		UIController.GetInstance ().ShowUI<messageBox> ("获得任务："+theMission.missionName);
+		UIController.GetInstance ().ShowUI<messageBox> ("更新任务："+theMission.missionName);
 	}
 
 

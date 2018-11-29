@@ -77,6 +77,7 @@
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk2.xml" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Unity3D 5.6.1/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

@@ -70,6 +70,7 @@ public class GameData
 	public float playerDamge;//玩家战斗力
 	public int playerLv;//玩家等级
 	public int [] plotIDs;//当前所有线的剧本进度ID 
+	public List<MissionBasic> missions;//当前所有的任务
 
 	//有点坑爹的一点就是不能有构造器
 	//否则编译器会报错

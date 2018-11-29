@@ -8,7 +8,7 @@ public class CameraUI : MonoBehaviour {
 	public Sprite RotateCameraPicture;
 	public Sprite FixedCameraPicture;
 	private Image theButtonImage;
-
+	public Text showText;//提示文本
 
 	void Start()
 	{
@@ -30,9 +30,15 @@ public class CameraUI : MonoBehaviour {
 	/// </summary>
 	private void ShowUI()
 	{
-		if (SystemValues.theCameraState == CameraState.fixedCamera)
+		if (SystemValues.theCameraState == CameraState.fixedCamera) 
+		{
 			theButtonImage.sprite = FixedCameraPicture;
-		else
+			showText.text = "镜头模式\n【固定镜头】";
+		} 
+		else 
+		{
 			theButtonImage.sprite = RotateCameraPicture;
+			showText.text = "镜头模式\n【旋转镜头】";
+		}
 	}
 }
