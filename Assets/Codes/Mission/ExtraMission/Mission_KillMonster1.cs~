@@ -15,7 +15,7 @@ public class Mission_KillMonster1 :MissionBasic {
 	}
 
 
-	public override void OnPlayerKill (Player aim)
+	public override void OnPlayerKill (Acter aim)
 	{
 		if (aim.playerName == "骷髅魔兵")
 			CountUse++;

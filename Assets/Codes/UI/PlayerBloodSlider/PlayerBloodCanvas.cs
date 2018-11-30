@@ -8,7 +8,7 @@ public class PlayerBloodCanvas : MonoBehaviour {
 
 	public Slider theHpSlider;
 	public Image theSliderFront;
-	public Player thePlayer;
+	public Acter thePlayer;
 
 	void Update () 
 	{
@@ -27,7 +27,7 @@ public class PlayerBloodCanvas : MonoBehaviour {
 	}
 
 	//初始设定与刷新
-	public void MakeFkash(Player  thePlayerIn)
+	public void MakeFkash(Acter thePlayerIn)
 	{
 		SystemValues.bloodCamvasList.Add (this);
 		this.thePlayer = thePlayerIn;

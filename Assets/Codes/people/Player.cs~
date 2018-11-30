@@ -5,40 +5,21 @@ using UnityEngine;
 //这是一个Player的信息控制脚本
 //这一次的Player将会尽可能简化的方式进行设计
 //数值尽可能少
-public delegate void HpChangeHook(float adder);
-public delegate void DamageChangeHook(float adder);
-public delegate void LearningChangeHook(float adder);
-public delegate void KillHook(Player beKilled);
 
-public class Player : MonoBehaviour {
+public class Player : Acter {
 
 	//游戏人物的数值
-	public string playerName = "";//角色名字
-	public float hpNow = 100f;//当前生命值
-	public float hpMaxNow = 100f;//当前生命上限
-	public float attackDamage = 4f;//当前攻击力
 	public float learningValue = 0f;//当前经验值
 	public float learningValueMax = 100f;//当前经验上限
-	public int lvNow = 1;//当前等级
-	public bool isAlive = true;//当前是否生存
 
-	//动画控制单元
-	private Animator theAnimationController;
-	//移动控制单元
-	public move theMoveController;
+
 	//当前的技能
 	public SkillBasic theSkillNow = null;
 	//r任务背包，也就是任务控制单元
 	public MissionPackage theMissionPackage;
-
-	//公有操作生命的事件
-	public event HpChangeHook HpChanger;
-	//公有操作战斗力的事件
-	public event DamageChangeHook DamageChanger;
-	//公有操作经验的事件
+	//经验值是玩家角色才会有的
 	public event LearningChangeHook LearningChanger;
-	//公有操作击杀的事件
-	public event KillHook KillEvent;
+
 
 
 	#region 动画与攻击事件
@@ -53,22 +34,7 @@ public class Player : MonoBehaviour {
 		theSkillNow = null;
 	}
 
-
-	/// <summary>
-	/// 动画触发攻击方法
-	/// </summary>
-	public void AnimationAttack(float extradamage)
-	{
-		
-	}
-
-
-	/// <summary>
-	/// 攻击的时候触发
-	/// 触发方式可以是动画事件也可能是投掷武器
-	/// </summary>
-	/// <param name="aim">Aim.</param>
-	public void OnAttack(Player aim)
+	public override void OnAttack(Acter aim)
 	{
 		if (!aim.isAlive)
 			return;
@@ -76,7 +42,7 @@ public class Player : MonoBehaviour {
 		aim.OnHpChange (-this.attackDamage);
 		if (aim.hpNow == 0) 
 		{
-			KillEvent (aim);
+			OnKill (aim);
 			OnGetLearningValue (aim.lvNow * 15f);
 		}
 	}
@@ -90,38 +56,12 @@ public class Player : MonoBehaviour {
 	{
 		LearningChanger (adder);
 	}
-		
-	/// <summary>
-	/// 外部操作生命改变的方法，这个方法全球唯一
-	/// 所有新操作生命的方法都由内部事件处理.
-	/// </summary>
-	public void OnHpChange(float hpChangeAdder)
-	{
-		HpChanger (hpChangeAdder);
-
-		if (hpChangeAdder >= 0)
-			return;
-		
-		if (hpNow == 0 )
-			OnDead ();
-		else  
-			theAnimationController.Play ("getHit");
-	}
-
-	/// <summary>
-	/// 外部操作战斗力的方法，这个方法全球统一
-	/// 所有新操作战斗力的方法都由内部事件处理.
-	/// </summary>
-	public void OnDamageChange(float damageChangeAdder)
-	{
-		DamageChanger (damageChangeAdder);
-	}
 
 	/// <summary>
 	/// 刷新数值，更改显示
 	/// 因为都是事件驱动的，没有一直查询，只好手动更新了
 	/// </summary>
-	public void MakeFlash()
+	public override void MakeFlash()
 	{
 		OnDamageChange (0f);
 		OnGetLearningValue (0f);
@@ -176,41 +116,17 @@ public class Player : MonoBehaviour {
 
 	}
 
-	/// <summary>
-	/// 如果玩家挂了，自动调用这个方法后续处理
-	/// </summary>
-	private void OnDead()
+
+	public override void OnDead ()
 	{
 		isAlive = false;
 		theAnimationController.Play ("dead");
-		if (this == SystemValues.thePlayer) 
-		{
-			UIController.GetInstance ().ShowUI<messageBox> ("胜败乃兵家常事，大侠请重新来过");
-			bool loadOp = SystemValues.LoadInformation ();
-		} 
-		else 
-		{
-			UIController.GetInstance ().ShowUI<messageBox> ("击杀！");
-			Destroy (this.gameObject, 2f);
-		}
+		UIController.GetInstance ().ShowUI<messageBox> ("胜败乃兵家常事，大侠请重新来过");
+		UIController.GetInstance ().ShowUI<UILoading> ("Start");
+
 	}
+		
 	#endregion
-
-
-
-	//创建头顶血条
-	private void MakeHpSlider()
-	{
-		GameObject theSlider = GameObject.Instantiate( SystemValues.LoadResources<GameObject>("UI/PlayerBloodCanvas"));
-
-		theSlider.transform.position = this.transform.position + new Vector3 (0f,1.5f,0f);
-		theSlider.transform.localScale = new Vector3 (0.01f,0.01f,0.01f);
-		theSlider.transform.SetParent (this.transform);
-
-		PlayerBloodCanvas theShowCanvas = theSlider.GetComponent<PlayerBloodCanvas> ();
-		theShowCanvas.MakeFkash (this);
-	}
-
 	void Start () 
 	{
 		HpChanger += this.ChangeHp;
@@ -221,10 +137,5 @@ public class Player : MonoBehaviour {
 		theMissionPackage = this.GetComponent<MissionPackage> ();
 		MakeHpSlider ();
 	}
-
-
-//	void Update()
-//	{
-//	}
-
+		
 }

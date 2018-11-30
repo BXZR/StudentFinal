@@ -13,7 +13,7 @@ public class MissionBasic
 	public string missionInformation = "";//任务说明
 	[System.NonSerialized]
 	public Player thePlayer;//是哪一个玩家的任务
-	public virtual void OnPlayerKill(Player aim){}//击杀任务用这个方法处理
+	public virtual void OnPlayerKill(Acter aim){}//击杀任务用这个方法处理
 	public virtual void MakeStart(){}//任务信息的设定
 	public virtual bool checkMissionOver(){return true;}//每一个任务有自己的任务完成检测方法
 	public virtual void OnMissionOver(){}//任务结束会发生什么

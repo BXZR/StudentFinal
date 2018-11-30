@@ -65,7 +65,7 @@ public class MissionPackage : MonoBehaviour {
 	/// 所有的任务在这里统一检测击杀事件
 	/// </summary>
 	/// <param name="theAim">The aim.</param>
-	private void OnKill(Player theAim)
+	private void OnKill(Acter theAim)
 	{
 		for (int i = 0; i < theMissions.Count; i++)
 			theMissions [i].OnPlayerKill (theAim);

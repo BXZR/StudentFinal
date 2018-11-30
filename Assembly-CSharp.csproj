@@ -46,6 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Codes\AI\FSM\FSMBasic.cs" />
+     <Compile Include="Assets\Codes\AI\FSM\FSMStage.cs" />
+     <Compile Include="Assets\Codes\AI\FSM\FSM_Attack.cs" />
+     <Compile Include="Assets\Codes\AI\FSM\FSM_RunAfter.cs" />
+     <Compile Include="Assets\Codes\AI\FSM\FSM_Search.cs" />
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
      <Compile Include="Assets\Codes\Interactive\InteractiveBasic.cs" />
      <Compile Include="Assets\Codes\Interactive\NPC.cs" />
@@ -78,8 +83,10 @@
      <Compile Include="Assets\Codes\UI\UIMissionCanvas\MissionButton.cs" />
      <Compile Include="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs" />
      <Compile Include="Assets\Codes\UI\UITalkSelect\UITalkSelect.cs" />
+     <Compile Include="Assets\Codes\people\Acter.cs" />
      <Compile Include="Assets\Codes\people\Player.cs" />
      <Compile Include="Assets\Codes\people\animatorController.cs" />
+     <Compile Include="Assets\Codes\people\monster.cs" />
      <Compile Include="Assets\Codes\people\moveControll\move.cs" />
      <Compile Include="Assets\Codes\people\moveControll\moveModes.cs" />
      <Compile Include="Assets\Codes\skill\Arrows\Arrows.cs" />

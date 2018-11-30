@@ -19,8 +19,8 @@ public class ZiYingArrow : SkillBasic {
 
 	public override void Init ()
 	{
-		skillAllTimer = 0.5f;//冷却时间
-		skillEffectTime = 0.3f;//技能持续时间
+		skillAllTimer = 0.45f;//冷却时间
+		skillEffectTime = 0.25f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "气剑指";//技能名字
 		skillInformation = "昆仑琼华派的基础招式之一。\n将剑气凝于指尖激射而出，对面前的敌人造成穿透伤害。" +
@@ -51,7 +51,7 @@ public class ZiYingArrow : SkillBasic {
 			float distance = 999f;
 			for (int i = 0; i < attackAims.Length; i++) 
 			{
-				Player thePlayerGet = attackAims [i].GetComponent<Player> ();
+				Acter thePlayerGet = attackAims [i].GetComponent<Acter> ();
 				if (!thePlayerGet || thePlayerGet == this.thePlayer)
 					continue;
 			

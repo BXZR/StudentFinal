@@ -24,4 +24,18 @@ public class StartButton : MonoBehaviour {
 		try{UIController.GetInstance().ShowUI<UILoading>(aimScene);}
 		catch{UIController.GetInstance ().ShowUI<messageBox> ("找不到指定场景");}
 	}
+
+	//刷新历史信息
+	public void MakeAllStart()
+	{
+		SystemValues.MakeAllStartFlash ();
+	}
+
+	//直接读档跳转
+	public void MakeLoad()
+	{
+		print ("hehehehehehe");
+		SystemValues.LoadInformation ();
+	}
 }
+
