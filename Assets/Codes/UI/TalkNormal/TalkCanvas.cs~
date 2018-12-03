@@ -28,11 +28,8 @@ public class TalkCanvas : UIBasic {
 	public override void OnEndShow ()
 	{
 		SystemValues.theCamera.OnOutPlot ();
-		SystemValues.ShowBloodCanvas ();
+		//SystemValues.ShowBloodCanvas ();
 	}
-
-
-		
 
 	private void LoadTexts(string value)
 	{

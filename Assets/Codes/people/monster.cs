@@ -35,6 +35,8 @@ public class monster : Acter {
 	{
 		hpNow += adder;
 		hpNow = Mathf.Clamp (hpNow, 0f , hpMaxNow);
+		if (adder < 0)
+			theAI.GotAim ();
 		if (hpNow == 0)
 			OnDead ();
 	}
@@ -47,7 +49,7 @@ public class monster : Acter {
 		theAnimationController = this.GetComponent<Animator> ();
 		theMoveController = this.GetComponent<move> ();
 		theAI = this.GetComponent<FSMStage> ();
-		MakeHpSlider ();
+		//MakeHpSlider ();
 	}
 
 }

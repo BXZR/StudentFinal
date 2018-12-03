@@ -21,10 +21,14 @@ public class Acter : MonoBehaviour {
 	public int lvNow = 1;//当前等级
 	public bool isAlive = true;//当前是否生存
 
+
+
 	//动画控制单元
 	public Animator theAnimationController;
 	//移动控制单元
 	public move theMoveController;
+	//头顶血条
+	public PlayerBloodCanvas theBloodSlider;
 
 	//公有操作生命的事件
 	public event HpChangeHook HpChanger;
@@ -64,8 +68,8 @@ public class Acter : MonoBehaviour {
 			OnDead ();
 		else 
 		{
-			if(Random.value < 0.2f)
-			theAnimationController.Play ("getHit");
+			if(Random.value < 0.1f)
+			   theAnimationController.Play ("getHit");
 		}
 	}
 
@@ -127,5 +131,6 @@ public class Acter : MonoBehaviour {
 
 		PlayerBloodCanvas theShowCanvas = theSlider.GetComponent<PlayerBloodCanvas> ();
 		theShowCanvas.MakeFkash (this);
+		this.theBloodSlider = theShowCanvas;
 	}
 }

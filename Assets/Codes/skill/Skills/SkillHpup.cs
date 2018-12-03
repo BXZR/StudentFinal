@@ -17,8 +17,8 @@ public class SkillHpup : SkillBasic {
 		skillAllTimer = 15;//冷却时间
 		skillEffectTime = 3f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
-		skillName = "调息";//技能名字
-		skillInformation = "行走江湖必备技能，能够治疗自身的损伤。\n恢复共最大生命15%的生命值\n持续时间："+skillEffectTime.ToString("f1")+"秒\n冷却时间：" + skillAllTimer.ToString("f1") + "秒";//技能介绍
+		skillName = "五气朝元";//技能名字
+		skillInformation = "琼华派特有的调息疗伤之法。\n恢复15%最大生命，半血以下效果提升至20%最大生命。\n持续时间："+skillEffectTime.ToString("f1")+"秒\n冷却时间：" + skillAllTimer.ToString("f1") + "秒";//技能介绍
 	}
 
 	//播放技能动画
@@ -26,16 +26,30 @@ public class SkillHpup : SkillBasic {
 	{
 		theStateNow = skillState.isUsing;
 		thePlayer.theSkillNow = this;
-		hpUpPerSecond = thePlayer.hpMaxNow * 0.15f / skillEffectTime;
+		float rate = thePlayer.hpNow < thePlayer.hpMaxNow * 0.5f ? 0.2f : 0.15f;
+		hpUpPerSecond = thePlayer.hpMaxNow * rate / skillEffectTime;
+		InvokeRepeating ("makeTrueHpUp" , 0f , 1f);
 	}
 
-	public override void OnUpdate ()
+	float timeAdder = 0f;
+	private  void  makeTrueHpUp()
 	{
-		if (theStateNow == skillState.isUsing)
+		thePlayer.OnHpChange( hpUpPerSecond );
+		timeAdder += 1f;
+		if (timeAdder >= skillEffectTime) 
 		{
-			thePlayer.OnHpChange( hpUpPerSecond * Time.deltaTime );
+			CancelInvoke ();
+			timeAdder = 0f;
 		}
 	}
+
+//	public override void OnUpdate ()
+//	{
+//		if (theStateNow == skillState.isUsing)
+//		{
+//			thePlayer.OnHpChange( hpUpPerSecond * Time.deltaTime );
+//		}
+//	}
 
 	void Update()
 	{

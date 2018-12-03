@@ -17,4 +17,6 @@ public class MissionBasic
 	public virtual void MakeStart(){}//任务信息的设定
 	public virtual bool checkMissionOver(){return true;}//每一个任务有自己的任务完成检测方法
 	public virtual void OnMissionOver(){}//任务结束会发生什么
+	public virtual void OnMissionUpdate(){}//任务更新
+	public virtual bool CanUpdate(){return false;}//这个任务是否可以更新
 }

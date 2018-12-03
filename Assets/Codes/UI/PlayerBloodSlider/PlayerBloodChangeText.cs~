@@ -1,0 +1,57 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerBloodChangeText : MonoBehaviour {
+
+	//任务生命值变化的时候显示的数值
+	private Color damageColor = Color.red;
+	private Color hpupColor = Color.green;
+	private Text theTextToShow;
+	private float moveSpeed = 5f;
+
+	//生命数值显示text
+	//所有的角色共用这一个缓冲区
+	private static List<PlayerBloodChangeText> bloadChangeShowTexts = new List<PlayerBloodChangeText> ();
+	//获取方法
+	public static PlayerBloodChangeText GetBloodChangeText()
+	{
+		bloadChangeShowTexts.RemoveAll (X => X == null);
+		if (bloadChangeShowTexts.Count > 0)
+			return bloadChangeShowTexts [0];
+		PlayerBloodChangeText newText =  Instantiate (SystemValues.LoadResources<PlayerBloodChangeText> ("UI/BloodChangeTextCanvas"));
+		return newText;
+	}
+
+	public void MakeShow(float value)
+	{
+		CancelInvoke ();
+
+		if(!theTextToShow)
+			theTextToShow = this.GetComponent<Text> ();
+		if (value > 0)
+			theTextToShow.color = hpupColor;
+		else if (value < 0)
+			theTextToShow.color = damageColor;
+
+		this.gameObject.SetActive (true);
+		this.transform.localPosition = Vector3.zero;
+		this.transform.localRotation = Quaternion.identity;
+		this.transform.localScale = Vector3.one;
+
+
+		Invoke ("MakeEnd" , 0.5f);
+	}
+
+	private void MakeEnd()
+	{
+		bloadChangeShowTexts.Add (this);
+		this.gameObject.SetActive (false);
+	}
+
+	void Update () 
+	{
+		this.transform.Translate ( Vector3.up * Time.deltaTime * moveSpeed );	
+	}
+}

@@ -14,16 +14,16 @@ public class FSMBasic  {
 	//统一的状态机初始化参数
 	public NavMeshAgent theMoveController;//AI人物的移动控制类
 	public Animator theAnimator;
-	public float timer;//持续时间
-	public Acter theAim;
+	public Acter theAim;//目标
+	public Acter theThis;//自己
 
 	//获得必要的数据
-	public void makeState(NavMeshAgent theMoveControllerIn,  Animator theAnimatorIn,float timerIn , Acter AimIn)
+	public void makeState(NavMeshAgent theMoveControllerIn,  Animator theAnimatorIn, Acter thisIn , Acter AimIn)
 	{
 		theMoveController = theMoveControllerIn;
 		theAnimator = theAnimatorIn;
-		timer = timerIn;
 		theAim = AimIn;
+		theThis = thisIn;
 	}
 	//这个状态的开始阶段应该做什么
 	public virtual void OnFSMStateStart(){}

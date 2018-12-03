@@ -21,11 +21,10 @@ public class Arrows : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collisioner)
 	{
-		print ("触发攻击");
 		Acter playeraim = collisioner.GetComponent<Acter> ();
 		if (playeraim  && this.thePlayer && playeraim != this.thePlayer) 
 		{
-
+			print ("触发攻击");
 			this.thePlayer.OnAttack (playeraim);
 		}
 	}

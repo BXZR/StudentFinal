@@ -96,7 +96,7 @@ public class FSM_Search : FSMBasic {
 		{
 			Debug.Log ("search to attack");
 			FSM_Attack attack = new FSM_Attack ();
-			attack.makeState (this.theMoveController, this.theAnimator, 5f,theMainEMY);
+			attack.makeState (this.theMoveController, this.theAnimator, this.theThis,theMainEMY);
 			attack.OnChangeToThisState ();
 			return attack;
 		}

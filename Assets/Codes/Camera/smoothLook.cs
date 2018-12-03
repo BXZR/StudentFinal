@@ -196,8 +196,12 @@ public class smoothLook : MonoBehaviour {
 	{
 		if (!theTarget)
 			return;
+
+		if(Random.value < 0.5f)
+			this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (2f,2f,2f) ;
+		else
+			this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (-2f,2f,2f) ;
 		
-		this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (2f,2f,2f) ;
 		this.transform.LookAt (theTarget.transform.position  + theTarget.transform.rotation *  new Vector3(0f,1.5f,1f) );
 	}
 
@@ -207,6 +211,7 @@ public class smoothLook : MonoBehaviour {
 	public void OnIntoPlot()
 	{
 		isPloting = true;
+		PlotCamera ();
 	}
 
 
@@ -231,9 +236,6 @@ public class smoothLook : MonoBehaviour {
 
 		if (!isPloting)
 			MoveCamera ();
-		else
-			PlotCamera ();
-
 	}
 		
 }

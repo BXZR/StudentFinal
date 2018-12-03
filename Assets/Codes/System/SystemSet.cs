@@ -27,6 +27,9 @@ public class SystemSet : MonoBehaviour {
 		
 		loadGameInformation ();
 		loadSetting ();
+
+		ShowStartTalk ();
+
 		Destroy (this);
 	}
 
@@ -49,6 +52,16 @@ public class SystemSet : MonoBehaviour {
 		Application.targetFrameRate = 40;
 		UIController.GetInstance ().ShowUI<HpBasicPanel> ();
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
+	}
+
+	void ShowStartTalk()
+	{
+		string plotName = SystemValues.getPlotName (0 , 0);
+		//print (plotName  +"---");
+		if (string.IsNullOrEmpty (plotName))
+			return;
+
+		UIController.GetInstance ().ShowUI<TalkCanvas> (plotName);
 	}
 
 

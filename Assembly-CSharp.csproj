@@ -71,6 +71,7 @@
      <Compile Include="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\UISkillButton.cs" />
      <Compile Include="Assets\Codes\UI\OperateUI\moveJoyStick.cs" />
+     <Compile Include="Assets\Codes\UI\PlayerBloodSlider\BloodChangeTextCanvas.cs" />
      <Compile Include="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" />
      <Compile Include="Assets\Codes\UI\SettingUI\SettingCanvas.cs" />
      <Compile Include="Assets\Codes\UI\StartCanvas\GameTalkCanvas.cs" />
@@ -113,6 +114,7 @@
      <None Include="Assets\Resources\XML\Plot.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk3.xml" />
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />

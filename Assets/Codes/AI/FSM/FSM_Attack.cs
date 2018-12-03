@@ -37,14 +37,14 @@ public class FSM_Attack : FSMBasic {
 		{
 			//Debug.Log ("attack to search");
 			FSM_Search search = new FSM_Search ();
-			search.makeState (this.theMoveController,this.theAnimator, 5F, null);
+			search.makeState (this.theMoveController,this.theAnimator, this.theThis, null);
 			return search;
 		}
 		if (Vector3.Distance (this.theMoveController.transform .position, this.theAim.transform .position) >  this.theAttackLength *0.8f)
 		{
 			Debug.Log ("attack to runafter");
 			FSM_RunAfter runafter = new FSM_RunAfter ();
-			runafter.makeState (this.theMoveController,this.theAnimator, 5f ,this.theAim );
+			runafter.makeState (this.theMoveController,this.theAnimator, this.theThis ,this.theAim );
 			runafter.OnChangeToThisState ();
 			return runafter;
 		}

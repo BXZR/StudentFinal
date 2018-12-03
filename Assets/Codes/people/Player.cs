@@ -99,10 +99,11 @@ public class Player : Acter {
 	{
 		hpNow += adder;
 		hpNow = Mathf.Clamp (hpNow, 0f , hpMaxNow);
+		this.theBloodSlider.MakeAutoClose (5f);
 		if (hpNow == 0)
 			OnDead ();
 	}
-
+		
 	/// <summary>
 	/// 玩家升级了之后的数值修改管理
 	/// </summary>

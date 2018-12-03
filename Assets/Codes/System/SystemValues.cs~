@@ -217,14 +217,12 @@ public class SystemValues : MonoBehaviour {
 		thePlayers.hpMaxNow = SystemValues.theSaveData.playerHpMax;
 		thePlayers.learningValue = SystemValues.theSaveData.playerLearn;
 		thePlayers.learningValueMax = SystemValues.theSaveData.playerLearnMax;
-		thePlayers.theMissionPackage.theMissions = SystemValues.theSaveData.missions;
 		SystemValues.plotIDNow = SystemValues.theSaveData.plotIDs;
-		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
 
 		for (int i = 0; i < SystemValues.theSaveData.missions.Count; i++)
 			thePlayers.theMissionPackage.AddNewMission (SystemValues.theSaveData.missions [i]);
 
-
+		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
 		//刷新一下数值，更改其他显示
 		thePlayers.MakeFlash();
 
@@ -243,12 +241,14 @@ public class SystemValues : MonoBehaviour {
 			bloodCamvasList [i].gameObject.SetActive (true);
 	}
 
+
 	public static void CloseBloodCanvas()
 	{
 		bloodCamvasList.RemoveAll (X => X == null);
 		for (int i = 0; i < bloodCamvasList.Count; i++)
 			bloodCamvasList [i].gameObject.SetActive (false);
 	}
+
 	#endregion
 
 	#region寻找目标

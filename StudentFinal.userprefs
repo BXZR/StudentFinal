@@ -1,21 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\skill\Skills\ZiYingArrow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\AI\FSM\FSM_Search.cs">
     <Files>
-      <File FileName="Assets\Codes\people\Acter.cs" Line="79" Column="1" />
-      <File FileName="Assets\Codes\people\monster.cs" Line="17" Column="39" />
-      <File FileName="Assets\Codes\Mission\MissionPackage.cs" Line="78" Column="4" />
-      <File FileName="Assets\Codes\Mission\MissionBasic.cs" Line="16" Column="40" />
-      <File FileName="Assets\Codes\Mission\ExtraMission\Mission_KillMonster1.cs" Line="18" Column="43" />
-      <File FileName="Assets\Codes\people\Player.cs" Line="125" Column="56" />
-      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="11" Column="123" />
-      <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="90" Column="1" />
-      <File FileName="Assets\Codes\System\SystemValues.cs" Line="192" Column="22" />
-      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="30" Column="2" />
-      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="23" Column="25" />
-      <File FileName="Assets\Codes\skill\Arrows\Arrows.cs" Line="25" Column="8" />
-      <File FileName="Assets\Codes\UI\StartCanvas\StartButton.cs" Line="38" Column="29" />
-      <File FileName="Assets\Codes\text.cs" Line="20" Column="27" />
+      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="33" Column="3" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="87" Column="35" />
+      <File FileName="Assets\Codes\UI\PlayerBloodSlider\BloodChangeTextCanvas.cs" Line="37" Column="18" />
+      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="207" Column="101" />
+      <File FileName="Assets\Codes\skill\Arrows\Arrows.cs" Line="24" Column="56" />
+      <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="62" Column="47" />
+      <File FileName="Assets\Codes\people\monster.cs" Line="39" Column="20" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_RunAfter.cs" Line="44" Column="89" />
+      <File FileName="Assets\Codes\AI\FSM\FSMBasic.cs" Line="36" Column="2" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_Search.cs" Line="20" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

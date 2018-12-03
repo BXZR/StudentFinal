@@ -18,7 +18,11 @@ public class Mission_KillMonster1 :MissionBasic {
 	public override void OnPlayerKill (Acter aim)
 	{
 		if (aim.playerName == "骷髅魔兵")
+		{
 			CountUse++;
+			if (checkMissionOver())
+				OnMissionOver ();
+		}
 	}
 
 
@@ -33,7 +37,8 @@ public class Mission_KillMonster1 :MissionBasic {
 	{
 		if (!this.thePlayer)
 			this.thePlayer = SystemValues.thePlayer.GetComponent<Player> ();
-		
+
+		this.thePlayer.theMissionPackage.theMissions.Remove (this);
 		this.thePlayer.OnGetLearningValue (30f);
 		UIController.GetInstance ().ShowUI<messageBox> ("任务["+missionName+"]已经完成\n获得30经验");
 	}

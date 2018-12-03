@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class FSM_RunAfter : FSMBasic {
 
+	float timer = 4f;
 
 	public override void OnFSMStateStart ()
 	{
@@ -21,8 +22,11 @@ public class FSM_RunAfter : FSMBasic {
 	{
 		//Debug.Log ("run after");
 		theAnimator.Play ("run");
-		this.theMoveController.transform.LookAt (theAim.transform);
-		this.theMoveController.SetDestination (theAim.transform.position + new Vector3 (Random.value, 0, Random.value));
+		if (theAim) 
+		{
+			this.theMoveController.transform.LookAt (theAim.transform);
+			this.theMoveController.SetDestination (theAim.transform.position + new Vector3 (Random.value, 0, Random.value));
+		}
 		timer -= Time.deltaTime;
 		//Debug.Log ("runafterTimer : "+ timer);
 	}
@@ -33,20 +37,25 @@ public class FSM_RunAfter : FSMBasic {
 		//为了确保能真的攻击到，留下多余空间
 		//this.theThis.theAttackAreaLength*1.5f在没有遇到之前就开始会挥舞兵器了
 		//至于移动就在于navMeshAgent了
-		if (Vector3.Distance (this.theMoveController.transform.position , this.theAim.transform .position) <=  this.theAttackLength *1.5f)
+		if (this.theAim && Vector3.Distance (this.theMoveController.transform.position , this.theAim.transform .position) <=  this.theAttackLength *1.5f)
 		{
 			//Debug.Log ("runafter to attack");
 			FSM_Attack attack = new FSM_Attack ();
-			attack.makeState (this.theMoveController,this.theAnimator, 5f,this.theAim);
+			attack.makeState (this.theMoveController,this.theAnimator, this.theThis,this.theAim);
 			attack.OnChangeToThisState ();
 			return attack;
+		}
+		//没找到目标。这个状态损失得更快
+		if(!theAim)
+		{
+			timer -= Time.deltaTime;
 		}
 		//Debug.Log ("theEMY name is "+ theEMY.name);
 		if (timer < 0)
 		{
 			Debug.Log ("runafter to search");
 			FSM_Search search = new FSM_Search ();
-			search.makeState (this.theMoveController,this.theAnimator, 5f , this.theAim);
+			search.makeState (this.theMoveController,this.theAnimator, this.theThis , this.theAim);
 			search.OnChangeToThisState ();
 			return search;
 		}
