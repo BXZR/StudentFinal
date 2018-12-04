@@ -59,6 +59,7 @@
      <Compile Include="Assets\Codes\Mission\MainMission\MainMission_1.cs" />
      <Compile Include="Assets\Codes\Mission\MissionBasic.cs" />
      <Compile Include="Assets\Codes\Mission\MissionPackage.cs" />
+     <Compile Include="Assets\Codes\Scene\SceneSkipWall.cs" />
      <Compile Include="Assets\Codes\Scene\TalkWall.cs" />
      <Compile Include="Assets\Codes\System\FileOperater.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
@@ -108,6 +109,7 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk4.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_1.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari.xml" />

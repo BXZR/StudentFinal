@@ -17,7 +17,7 @@ public class SystemValues : MonoBehaviour {
 	public static CameraState theCameraState = CameraState.fixedCamera;//摄像机模式
 	public static GameObject thePlayer = null;//游戏玩家
 	public static smoothLook theCamera = null;//游戏摄像机
-
+	public static bool isNewGame = false;//是否是一个全新的游戏
 
 	/// <summary>
 	/// 修改摄像机的操作方式
@@ -97,7 +97,12 @@ public class SystemValues : MonoBehaviour {
 	//这个是当前存档的时候需要重点存储的内容之一
 	//记录ID，这样很多的东西都不会重复进行了
 	private static int[] plotIDNow = {0,0,0,0,0,0 };
-
+	public static int getPlotID(int type = 0 )
+	{
+		if (type >= plotIDNow.Length)
+			return  -1;
+		return plotIDNow [type];
+	}
 	/// <summary>
 	///加载存单
 	/// </summary>
@@ -145,7 +150,6 @@ public class SystemValues : MonoBehaviour {
 	#region 文件操作
 	//加载的存档信息
 	public static GameData theSaveData = null;
-
 	public static bool SaveInformation()
 	{
 		//存档校验
@@ -225,11 +229,62 @@ public class SystemValues : MonoBehaviour {
 		thePlayer.transform.position = new Vector3 (SystemValues.theSaveData.playerPositionX , SystemValues.theSaveData.playerPositionY , SystemValues.theSaveData.playerPositionZ);
 		//刷新一下数值，更改其他显示
 		thePlayers.MakeFlash();
-
 		SystemValues.theSaveData = null;
 
 	}
 	#endregion
+
+	#region 信息缓存
+	//加载的catch
+	//有些跨场景的内容是存放在这里的
+	public static GameData theDataCatch = null;
+	public static void  SaveCatch()
+	{
+		//存档校验
+		if (!SystemValues.thePlayer)
+			return ;
+
+		Player thePlayers = SystemValues.thePlayer.GetComponent<Player> ();
+		if (!thePlayers)
+			return ;
+
+		//构建存档信息
+		theDataCatch = new GameData ();
+		theDataCatch.playerLv = thePlayers.lvNow;
+		theDataCatch.playerDamge = thePlayers.attackDamage;
+		theDataCatch.playerHp = thePlayers.hpNow;
+		theDataCatch.playerHpMax = thePlayers.hpMaxNow;
+		theDataCatch.playerLearn = thePlayers.learningValue;
+		theDataCatch.playerLearnMax = thePlayers.learningValueMax;
+		theDataCatch.plotIDs = SystemValues.plotIDNow;
+		theDataCatch.missions = thePlayers.theMissionPackage.theMissions;
+	}
+
+	public static void LoadCatch()
+	{
+		Player thePlayers = SystemValues.thePlayer.GetComponent<Player> ();
+		if (!thePlayers || SystemValues.theSaveData == null)
+			return;
+
+		//加载数据
+		thePlayers.lvNow = SystemValues.theDataCatch.playerLv;
+		thePlayers.attackDamage = SystemValues.theDataCatch.playerDamge;
+		thePlayers.hpNow = SystemValues.theDataCatch.playerHp;
+		thePlayers.hpMaxNow = SystemValues.theDataCatch.playerHpMax;
+		thePlayers.learningValue = SystemValues.theDataCatch.playerLearn;
+		thePlayers.learningValueMax = SystemValues.theDataCatch.playerLearnMax;
+		SystemValues.plotIDNow = SystemValues.theDataCatch.plotIDs;
+
+		for (int i = 0; i < SystemValues.theSaveData.missions.Count; i++)
+			thePlayers.theMissionPackage.AddNewMission (SystemValues.theDataCatch.missions [i]);
+
+		//刷新一下数值，更改其他显示
+		thePlayers.MakeFlash();
+		SystemValues.theDataCatch = null;
+
+	}
+	#endregion
+
 
 	#region 头顶血条管理器
 	public static List<PlayerBloodCanvas> bloodCamvasList = new List<PlayerBloodCanvas> ();

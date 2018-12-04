@@ -8,12 +8,13 @@ public class MainMission_1 : MainMissionBasic {
 
 	public int index = 0;
 
-	public string [] missionNames = { "城中查探", "城中法阵", "探视李家" };
+	public string [] missionNames = { "城中查探", "城中法阵", "探视李家" , "凤血草" };
 	public string[] informationData = 
 	{
 		"【主线任务】城中似乎出现了妖兽的影子，为了防止城中清平受到破坏，在城中四处查探一番。",
 		"【主线任务】城后方有似乎是这个神秘法阵的源头，过去查看一下。",
-		"【主线任务】去李家探视小李子的情况，或许会有所发现"
+		"【主线任务】去李家探视小李子的情况，或许会有所发现",
+		"【主线任务】前去城外寻找凤血草"
 	};
 	//这是一个跑图任务，没有任何限制
 	public override void MakeStart ()
@@ -43,12 +44,10 @@ public class MainMission_1 : MainMissionBasic {
 			OnMissionOver ();
 		else 
 		{
-			UIController.GetInstance ().ShowUI<messageBox> ("任务["+missionName+"]更新");
+			UIController.GetInstance ().ShowUI<messageBox> ("任务更新");
 			missionName = missionNames [index];
 			missionInformation = informationData [index];
-
 		}
-			
 	}
 
 
@@ -59,7 +58,7 @@ public class MainMission_1 : MainMissionBasic {
 
 		this.thePlayer.theMissionPackage.theMissions.Remove (this);
 		this.thePlayer.OnGetLearningValue (80f);
-		UIController.GetInstance ().ShowUI<messageBox> ("任务["+missionName+"]已经完成\n获得80经验");
+		UIController.GetInstance ().ShowUI<messageBox> ("任务完成，获得80经验");
 	}
 
 
