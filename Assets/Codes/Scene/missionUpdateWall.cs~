@@ -1,0 +1,17 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class missionUpdateWall : MonoBehaviour {
+
+	//强制更新指定任务的墙
+	public string MissionName = "";
+	void OnTriggerEnter(Collider collisioner)
+	{
+		if (collisioner.tag == "Player") 
+		{
+			
+		}
+	}
+
+}

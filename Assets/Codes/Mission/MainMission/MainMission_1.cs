@@ -45,6 +45,7 @@ public class MainMission_1 : MainMissionBasic {
 		else 
 		{
 			UIController.GetInstance ().ShowUI<messageBox> ("任务更新");
+			this.thePlayer.OnGetLearningValue (20f);
 			missionName = missionNames [index];
 			missionInformation = informationData [index];
 		}
@@ -64,6 +65,6 @@ public class MainMission_1 : MainMissionBasic {
 
 	public override bool checkMissionOver ()
 	{
-		return index > missionNames.Length;
+		return index >= missionNames.Length;
 	}
 }

@@ -17,12 +17,18 @@ public class MissionPackage : MonoBehaviour {
 		//添加任务到背包
 		//主线任务只会有一个的
 		theMissions.RemoveAll(X=>X==null);
-
 		MissionBasic missionHave = theMissions.Find (X =>X.GetType ().Equals(theMission.GetType ()));
-		if (missionHave != null && missionHave.CanUpdate ()) 
+		if (missionHave != null ) 
 		{
-			print (theMission.GetType () +"=====>>");
-			missionHave.OnMissionUpdate ();
+			if (missionHave.CanUpdate ())
+				missionHave.OnMissionUpdate ();
+			else 
+			{
+				missionHave.OnMissionOver ();
+				theMissions.Remove (missionHave);
+				theMission.thePlayer = this.thePlayer;
+				theMissions.Add (theMission);
+			}
 		}
 		else
 		{

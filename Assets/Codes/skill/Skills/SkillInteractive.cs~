@@ -39,7 +39,7 @@ public class SkillInteractive : SkillBasic {
 			InteractiveBasic aimNew = interactiveAims [i].GetComponent<InteractiveBasic> ();
 			if(aimNew)
 			{
-				print (aimNew.name);
+				//print (aimNew.name);
 				float distanceNew = Vector3.Distance (aimNew.transform.position, this.thePlayer.transform.position);
 				if (distanceNew < distance) 
 				{

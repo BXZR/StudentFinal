@@ -53,7 +53,7 @@ public class FSM_RunAfter : FSMBasic {
 		//Debug.Log ("theEMY name is "+ theEMY.name);
 		if (timer < 0)
 		{
-			Debug.Log ("runafter to search");
+			//Debug.Log ("runafter to search");
 			FSM_Search search = new FSM_Search ();
 			search.makeState (this.theMoveController,this.theAnimator, this.theThis , this.theAim);
 			search.OnChangeToThisState ();

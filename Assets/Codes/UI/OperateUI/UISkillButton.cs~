@@ -40,7 +40,7 @@ public class UISkillButton : MonoBehaviour {
 				theSkill = (SkillBasic)SystemValues.thePlayer.GetComponentInChildren (System.Type.GetType (skillName));
 			else if (findType == SkillFindType.transform) 
 			{
-				print (skillName);
+				//print (skillName);
 				Transform theChild = SystemValues.thePlayer.transform.Find ("SkillPackage/"+skillName); 
 				//print (theChild.gameObject.name);
 				theSkill = theChild.GetComponent<SkillBasic> ();

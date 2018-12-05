@@ -129,11 +129,14 @@ public class TalkCanvas : UIBasic {
 
 	private void makeMission(DialogFrame use )
 	{
-		string missionName = use.information;
-		System.Reflection.Assembly AS = System.Reflection.Assembly.GetExecutingAssembly ();
-		MissionBasic theMission = AS.CreateInstance (missionName)  as MissionBasic; 
-		theMission.MakeStart ();
-		SystemValues.thePlayer.GetComponent<Player> ().theMissionPackage.AddNewMission (theMission);
+		string[] missionNames = use.information.Split (',');
+		for (int i = 0; i < missionNames.Length; i++) 
+		{
+			System.Reflection.Assembly AS = System.Reflection.Assembly.GetExecutingAssembly ();
+			MissionBasic theMission = AS.CreateInstance (missionNames[i])  as MissionBasic; 
+			theMission.MakeStart ();
+			SystemValues.thePlayer.GetComponent<Player> ().theMissionPackage.AddNewMission (theMission);
+		}
 	}
 
 }

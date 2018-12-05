@@ -42,7 +42,7 @@ public class FSM_Attack : FSMBasic {
 		}
 		if (Vector3.Distance (this.theMoveController.transform .position, this.theAim.transform .position) >  this.theAttackLength *0.8f)
 		{
-			Debug.Log ("attack to runafter");
+			//Debug.Log ("attack to runafter");
 			FSM_RunAfter runafter = new FSM_RunAfter ();
 			runafter.makeState (this.theMoveController,this.theAnimator, this.theThis ,this.theAim );
 			runafter.OnChangeToThisState ();

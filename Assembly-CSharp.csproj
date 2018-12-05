@@ -57,6 +57,7 @@
      <Compile Include="Assets\Codes\Mission\ExtraMission\Mission_KillMonster1.cs" />
      <Compile Include="Assets\Codes\Mission\MainMission\MainMissionBasic.cs" />
      <Compile Include="Assets\Codes\Mission\MainMission\MainMission_1.cs" />
+     <Compile Include="Assets\Codes\Mission\MainMission\MainMission_2.cs" />
      <Compile Include="Assets\Codes\Mission\MissionBasic.cs" />
      <Compile Include="Assets\Codes\Mission\MissionPackage.cs" />
      <Compile Include="Assets\Codes\Scene\SceneSkipWall.cs" />
@@ -120,6 +121,7 @@
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk5.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk2.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity3D 5.6.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

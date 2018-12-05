@@ -1,15 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\Scene\SceneSkipWall.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\AI\FSM\FSM_Attack.cs">
     <Files>
-      <File FileName="Assets\Codes\people\Player.cs" Line="64" Column="2" />
-      <File FileName="Assets\Codes\System\SystemValues.cs" Line="104" Column="27" />
-      <File FileName="Assets\Codes\System\SystemSet.cs" Line="17" Column="38" />
-      <File FileName="Assets\Codes\Mission\MainMission\MainMission_1.cs" Line="21" Column="3" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\System\SystemSet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_1.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\XML\MainPlot\StartTalk3.xml" Line="1" Column="1" />
       <File FileName="Assets\Resources\XML\MainPlot\StartTalk2.xml" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Scene\TalkWall.cs" Line="44" Column="1" />
-      <File FileName="Assets\Codes\Scene\SceneSkipWall.cs" Line="14" Column="32" />
+      <File FileName="Assets\Codes\Scene\TalkWall.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Scene\SceneSkipWall.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_Search.cs" Line="89" Column="27" />
+      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="42" Column="7" />
+      <File FileName="Assets\Codes\UI\OperateUI\UISkillButton.cs" Line="43" Column="7" />
+      <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="81" Column="48" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_RunAfter.cs" Line="56" Column="6" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="38" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

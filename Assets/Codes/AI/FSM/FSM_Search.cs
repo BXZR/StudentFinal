@@ -94,7 +94,7 @@ public class FSM_Search : FSMBasic {
 		//找到了目标就转到下一个状态
 		else 
 		{
-			Debug.Log ("search to attack");
+			//Debug.Log ("search to attack");
 			FSM_Attack attack = new FSM_Attack ();
 			attack.makeState (this.theMoveController, this.theAnimator, this.theThis,theMainEMY);
 			attack.OnChangeToThisState ();

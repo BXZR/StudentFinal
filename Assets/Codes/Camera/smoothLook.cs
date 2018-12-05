@@ -202,7 +202,7 @@ public class smoothLook : MonoBehaviour {
 		else
 			this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (-2f,2f,2f) ;
 		
-		this.transform.LookAt (theTarget.transform.position  + theTarget.transform.rotation *  new Vector3(0f,1.5f,1f) );
+		this.transform.LookAt (theTarget.transform.position  + theTarget.transform.rotation *  new Vector3(0f,1.25f,1f) );
 	}
 
 	/// <summary>

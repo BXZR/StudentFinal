@@ -11,7 +11,7 @@ public class Mission_KillMonster1 :MissionBasic {
 	public override void MakeStart ()
 	{
 		missionName = "击杀魔物1";
-		missionInformation = "骷髅魔兵竟然出现在这里，实在蹊跷。先击溃这些魔兵再做查看。此任务需击杀5只骷髅魔兵方可完成。";
+		missionInformation = "骷髅魔兵竟然出现在这里，实在蹊跷。先击溃这些魔兵再做查看。此任务需击杀5只骷髅魔兵方可完成。已击杀：" + CountUse + "/" + CountUseMax;
 	}
 
 
@@ -20,6 +20,7 @@ public class Mission_KillMonster1 :MissionBasic {
 		if (aim.playerName == "骷髅魔兵")
 		{
 			CountUse++;
+			missionInformation = "骷髅魔兵竟然出现在这里，实在蹊跷。先击溃这些魔兵再做查看。此任务需击杀5只骷髅魔兵方可完成。已击杀：" + CountUse + "/" + CountUseMax;
 			if (checkMissionOver())
 				OnMissionOver ();
 		}

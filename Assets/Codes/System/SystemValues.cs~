@@ -263,7 +263,7 @@ public class SystemValues : MonoBehaviour {
 	public static void LoadCatch()
 	{
 		Player thePlayers = SystemValues.thePlayer.GetComponent<Player> ();
-		if (!thePlayers || SystemValues.theSaveData == null)
+		if (!thePlayers || SystemValues.theDataCatch== null)
 			return;
 
 		//加载数据
@@ -275,7 +275,7 @@ public class SystemValues : MonoBehaviour {
 		thePlayers.learningValueMax = SystemValues.theDataCatch.playerLearnMax;
 		SystemValues.plotIDNow = SystemValues.theDataCatch.plotIDs;
 
-		for (int i = 0; i < SystemValues.theSaveData.missions.Count; i++)
+		for (int i = 0; i < SystemValues.theDataCatch.missions.Count; i++)
 			thePlayers.theMissionPackage.AddNewMission (SystemValues.theDataCatch.missions [i]);
 
 		//刷新一下数值，更改其他显示
