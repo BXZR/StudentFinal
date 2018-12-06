@@ -19,7 +19,7 @@ public class ZiYingArrow : SkillBasic {
 
 	public override void Init ()
 	{
-		skillAllTimer = 0.4f;//冷却时间
+		skillAllTimer = 0.25f;//冷却时间
 		skillEffectTime = 0.25f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "琼华剑法";//技能名字
@@ -46,21 +46,21 @@ public class ZiYingArrow : SkillBasic {
 		switch (stepNow) 
 		{
 		case 0:
+		case 1:
 			Step1 ();
 			flashTimer += 1f;
 			break;
-		case 1:
+		case 2:
 			Step2 ();
 			flashTimer += 1f;
 			break;
-		case 2:
+		case 3:
 			Step3 ();
 			flashTimer += 1f;
 			break;
 		}
 		stepNow++;
-		stepNow = stepNow >= 3 ? 0 : stepNow;
-
+		stepNow = stepNow >= 4 ? 0 : stepNow;
 	}
 
 	void makeStepFlash()

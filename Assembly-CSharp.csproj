@@ -64,6 +64,8 @@
      <Compile Include="Assets\Codes\Mission\MissionPackage.cs" />
      <Compile Include="Assets\Codes\Scene\SceneSkipWall.cs" />
      <Compile Include="Assets\Codes\Scene\TalkWall.cs" />
+     <Compile Include="Assets\Codes\Scene\monsterWall.cs" />
+     <Compile Include="Assets\Codes\Scene\moveForwardBack.cs" />
      <Compile Include="Assets\Codes\System\FileOperater.cs" />
      <Compile Include="Assets\Codes\System\SystemSet.cs" />
      <Compile Include="Assets\Codes\System\SystemValues.cs" />

@@ -31,7 +31,7 @@ public class FSMStage :MonoBehaviour  {
 		theStateNow = new FSM_Search ();
 		theStateNow.makeState (theMoveController , theAnimator ,thethis , null );
 		theStateNow.OnFSMStateStart ();
-
+		this.enabled = false;
 	}
 		
 	//有些东西在这里总控制会比较方便

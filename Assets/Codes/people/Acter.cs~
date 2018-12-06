@@ -23,7 +23,6 @@ public class Acter : MonoBehaviour {
 	public bool isAlive = true;//当前是否生存
 
 
-
 	//动画控制单元
 	public Animator theAnimationController;
 	//移动控制单元

@@ -8,10 +8,21 @@ public class UILoading : UIBasic {
 	private Slider theSlider;
 	float valueShow = 0f;
 	private string aimScene = ""; 
+	public Image backImage;
+	Sprite  []pics = null;
 
+	private void LoadPictures()
+	{
+		pics =  Resources.LoadAll<Sprite> ("LoadingPictures");
+	}
 
 	public override void OnShow (string value = "")
 	{
+		if (pics == null)
+			LoadPictures ();
+
+		backImage.sprite = pics [Random.Range (0, pics.Length)];
+
 		Time.timeScale = 1f;
 		if (!theSlider)
 			theSlider = this.transform.GetComponentInChildren<Slider> ();
