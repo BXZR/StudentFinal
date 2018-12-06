@@ -71,7 +71,9 @@
      <None Include="Assets\Resources\XML\MainPlot\StartTalk4.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_1.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk.xml" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk7.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari.xml" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk6.xml" />
      <None Include="Assets\Resources\XML\Plot.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />

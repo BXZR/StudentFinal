@@ -14,28 +14,18 @@ public class MainMission_2 : MainMissionBasic {
 		missionInformation = "【主线任务】在这凤栖野中有一些凤血草，摘取三株作为救助李生的药引。\n已经采摘"+getCount+"/"+getMax;
 
 	}
-
-
-	/// <summary>
-	/// 这个主线任务是可以更新的
-	/// </summary>
-	/// <returns><c>true</c> if this instance can update; otherwise, <c>false</c>.</returns>
-	public override bool CanUpdate ()
+		
+	public override void OnPlayerIntweactive (InteractiveBasic aim)
 	{
-		return true;
-	}
+		if (aim.InterName != "凤血草")
+			return;
 
-	/// <summary>
-	///任务更新换名字
-	/// </summary>
-	public override void OnMissionUpdate ()
-	{
 		getCount++;
 		if (checkMissionOver ())
 			OnMissionOver ();
 		else 
 		{
-			UIController.GetInstance ().ShowUI<messageBox> ("任务更新");
+			UIController.GetInstance ().ShowUI<messageBox> ("获得凤血草");
 			this.thePlayer.OnGetLearningValue (20f);
 			missionInformation = "【主线任务】在这凤栖野中有一些凤血草，摘取三株作为救助李生的药引。\n已经采摘"+getCount+"/"+getMax;
 		}
@@ -50,6 +40,12 @@ public class MainMission_2 : MainMissionBasic {
 		this.thePlayer.theMissionPackage.theMissions.Remove (this);
 		this.thePlayer.OnGetLearningValue (80f);
 		UIController.GetInstance ().ShowUI<messageBox> ("任务完成，获得80经验");
+
+
+		string plotName = SystemValues.getPlotName (0 , 5);
+		if (string.IsNullOrEmpty (plotName))
+			return;
+		UIController.GetInstance ().ShowUI<TalkCanvas> (plotName);
 	}
 
 

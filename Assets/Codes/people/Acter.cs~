@@ -7,6 +7,7 @@ public delegate void HpChangeHook(float adder);
 public delegate void DamageChangeHook(float adder);
 public delegate void LearningChangeHook(float adder);
 public delegate void KillHook(Acter beKilled);
+public delegate void InteractiveHook(InteractiveBasic aim);
 
 
 public class Acter : MonoBehaviour {
@@ -36,6 +37,8 @@ public class Acter : MonoBehaviour {
 	public event DamageChangeHook DamageChanger;
 	//公有操作击杀的事件
 	public event KillHook KillEvent;
+	//公有的交互的事件
+	public event InteractiveHook InteractiveEvent;
 
 
 	/// <summary>
@@ -94,6 +97,12 @@ public class Acter : MonoBehaviour {
 	{
 		if(KillEvent!= null)
 		    KillEvent (aim);
+	}
+
+	public void OnInteractive(InteractiveBasic aim)
+	{
+		if (InteractiveEvent != null)
+			InteractiveEvent (aim);
 	}
 
 

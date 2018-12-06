@@ -1,22 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\AI\FSM\FSM_Attack.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\XML\MainPlot\StartTalk3.xml">
     <Files>
-      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\SystemValues.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\SystemSet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Mission\MainMission\MainMission_1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\MainPlot\StartTalk3.xml" Line="1" Column="1" />
-      <File FileName="Assets\Resources\XML\MainPlot\StartTalk2.xml" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Scene\TalkWall.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Scene\SceneSkipWall.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\AI\FSM\FSM_Search.cs" Line="89" Column="27" />
-      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="42" Column="7" />
-      <File FileName="Assets\Codes\UI\OperateUI\UISkillButton.cs" Line="43" Column="7" />
-      <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="81" Column="48" />
-      <File FileName="Assets\Codes\AI\FSM\FSM_RunAfter.cs" Line="56" Column="6" />
-      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="38" Column="37" />
+      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="50" Column="4" />
+      <File FileName="Assets\Codes\Interactive\Collect.cs" Line="7" Column="14" />
+      <File FileName="Assets\Codes\Interactive\InteractiveBasic.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="12" Column="2" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_3.cs" Line="62" Column="1" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_2.cs" Line="26" Column="8" />
+      <File FileName="Assets\Resources\XML\MainPlot\StartTalk3.xml" Line="76" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

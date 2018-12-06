@@ -50,11 +50,27 @@ public class MissionPackage : MonoBehaviour {
 	}
 
 
+	/// <summary>
+	/// 交互事件在这里处理
+	/// </summary>
+	/// <param name="aim">Aim.</param>
+	private void OnInteractive(InteractiveBasic aim)
+	{
+		theMissions.RemoveAll (X => X==null);
+		for (int i = 0; i < theMissions.Count; i++)
+			theMissions [i].OnPlayerIntweactive (aim);
+	}
+
+
+
 	void Start () 
 	{
 		this.thePlayer = this.GetComponent<Player> ();
-		if(thePlayer)
+		if (thePlayer)
+		{
 			thePlayer.KillEvent += OnKill;
+			thePlayer.InteractiveEvent += OnInteractive;
+		}
 	}
 	
 

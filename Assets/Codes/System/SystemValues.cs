@@ -142,9 +142,9 @@ public class SystemValues : MonoBehaviour {
 				plotIDNow [plotType]++;
 			}
 		}
-
 		return plotNameUse;
 	}
+		
 	#endregion
 
 	#region 文件操作

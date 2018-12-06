@@ -52,12 +52,14 @@
      <Compile Include="Assets\Codes\AI\FSM\FSM_RunAfter.cs" />
      <Compile Include="Assets\Codes\AI\FSM\FSM_Search.cs" />
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
+     <Compile Include="Assets\Codes\Interactive\Collect.cs" />
      <Compile Include="Assets\Codes\Interactive\InteractiveBasic.cs" />
      <Compile Include="Assets\Codes\Interactive\NPC.cs" />
      <Compile Include="Assets\Codes\Mission\ExtraMission\Mission_KillMonster1.cs" />
      <Compile Include="Assets\Codes\Mission\MainMission\MainMissionBasic.cs" />
      <Compile Include="Assets\Codes\Mission\MainMission\MainMission_1.cs" />
      <Compile Include="Assets\Codes\Mission\MainMission\MainMission_2.cs" />
+     <Compile Include="Assets\Codes\Mission\MainMission\MainMission_3.cs" />
      <Compile Include="Assets\Codes\Mission\MissionBasic.cs" />
      <Compile Include="Assets\Codes\Mission\MissionPackage.cs" />
      <Compile Include="Assets\Codes\Scene\SceneSkipWall.cs" />
@@ -113,7 +115,9 @@
      <None Include="Assets\Resources\XML\MainPlot\StartTalk4.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_1.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk.xml" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk7.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari.xml" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk6.xml" />
      <None Include="Assets\Resources\XML\Plot.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />

@@ -8,6 +8,8 @@ public class InteractiveBasic : MonoBehaviour {
 	//有一个交互键，按下之后会有一个范围检查
 	//范围检查之后，距离主人公最近的哪一个交互物体，需要做出反应
 
+	//可交互物品的名字
+	public string InterName = "";
 	//交互操作
 	public virtual void MakeInteractive(){}
 }
