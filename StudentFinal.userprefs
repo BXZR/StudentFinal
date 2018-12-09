@@ -1,23 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\UI\UILoading\UILoading.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs">
     <Files>
-      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Interactive\Collect.cs" Line="10" Column="5" />
-      <File FileName="Assets\Codes\Interactive\InteractiveBasic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="12" Column="2" />
-      <File FileName="Assets\Codes\Mission\MainMission\MainMission_3.cs" Line="62" Column="1" />
-      <File FileName="Assets\Codes\Mission\MainMission\MainMission_2.cs" Line="23" Column="37" />
-      <File FileName="Assets\Resources\XML\MainPlot\StartTalk3.xml" Line="76" Column="10" />
-      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="22" Column="23" />
-      <File FileName="Assets\Codes\Scene\moveForwardBack.cs" Line="19" Column="41" />
-      <File FileName="Assets\Codes\UI\PlayerBloodSlider\BloodChangeTextCanvas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\people\Acter.cs" Line="139" Column="3" />
-      <File FileName="Assets\Codes\people\monster.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\Plot.xml" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_4.cs" Line="23" Column="21" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_3.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\MainPlot\StartTalk7.xml" Line="1" Column="1" />
+      <File FileName="Assets\Resources\XML\MainPlot\StartTalk8.xml" Line="1" Column="1" />
       <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="34" Column="24" />
-      <File FileName="Assets\Codes\Scene\monsterWall.cs" Line="17" Column="17" />
-      <File FileName="Assets\Codes\Scene\TalkWall.cs" Line="21" Column="1" />
-      <File FileName="Assets\Codes\UI\UILoading\UILoading.cs" Line="16" Column="3" />
+      <File FileName="Assets\Codes\people\monsterBoss.cs" Line="98" Column="28" />
+      <File FileName="Assets\Codes\UI\SettingUI\SettingCanvas.cs" Line="20" Column="3" />
+      <File FileName="Assets\Codes\UI\UIMissionCanvas\MissionButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs" Line="22" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

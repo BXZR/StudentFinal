@@ -40,7 +40,7 @@ public class FSMStage :MonoBehaviour  {
 	{
 		if (!thethis.theBloodSlider)
 			thethis.MakeHpSlider ();
-		if (newState.theThis)
+		if (newState.theThis && thethis.theBloodSlider)
 		{
 			if (newState is FSM_RunAfter || newState is FSM_Attack)
 				thethis.theBloodSlider.gameObject.SetActive (true);

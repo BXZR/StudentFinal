@@ -77,12 +77,14 @@
      <None Include="Assets\Resources\XML\Plot.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk9.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk3.xml" />
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk5.xml" />
      <None Include="Assets\Resources\XML\MainPlot\StartTalk2.xml" />
+     <None Include="Assets\Resources\XML\MainPlot\StartTalk8.xml" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Unity3D 5.6.1/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

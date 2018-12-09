@@ -15,8 +15,17 @@ public class UIMissionCanvas : UIBasic {
 	public Text missionInformationText;//任务信息介绍text
 	private List<GameObject> theMissionButtons = new List<GameObject> ();
 
+
+	public override void OnEndShow ()
+	{
+		Time.timeScale = 1f;
+		this.gameObject.SetActive (false);
+	}
+
 	public override void OnShow (string value = "")
 	{
+		Time.timeScale = 0f;
+		missionInformationText.text = "尚未选择任务";
 		for (int i = 0; i < theMissionButtons.Count; i++)
 			Destroy (theMissionButtons[i].gameObject);
 

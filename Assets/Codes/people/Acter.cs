@@ -129,7 +129,7 @@ public class Acter : MonoBehaviour {
 	/// <summary>
 	///额外方法,创建头顶血条
 	/// </summary>
-	public void MakeHpSlider()
+	public virtual void MakeHpSlider()
 	{
 		GameObject theSlider = GameObject.Instantiate( SystemValues.LoadResources<GameObject>("UI/PlayerBloodCanvas"));
 

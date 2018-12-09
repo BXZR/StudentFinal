@@ -18,7 +18,7 @@ public class FSM_Attack : FSMBasic {
 	private void makeLook()
 	{
 		if(this.theAim)
-			this.theMoveController.transform.LookAt (this.theAim.transform);
+			this.theMoveController.transform.LookAt (this.theAim.transform.position);
 	}
 
 //真正的操作-----------------------------------------------------

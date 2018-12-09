@@ -73,6 +73,6 @@ public class BloodChangeTextCanvas : MonoBehaviour {
 
 	void Update()
 	{
-		this.transform.Translate (Vector3.up * 2f * Time.deltaTime);
+		this.transform.Translate (Vector3.up * 1.6f * Time.deltaTime);
 	}
 }

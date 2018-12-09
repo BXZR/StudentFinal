@@ -25,7 +25,7 @@ public class JumpSkill : SkillBasic {
 	public override void Init ()
 	{
 		skillName = "琼华派身法";//技能名字
-		skillInformation = "没有御剑飞仙：\n向上跳跃一段距离。\n御剑飞仙：\n向正前方突进一段距离。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
+		skillInformation = "正常移动：\n向上跳跃并加速移动。\n御剑飞仙：\n向正前方突进一段距离。\n冷却时间："+(skillAllTimer - skillEffectTime).ToString("f1")+"秒";//技能介绍
 		skillAllTimer = 1f;//冷却时间
 		skillEffectTime = 0.4f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
@@ -34,11 +34,16 @@ public class JumpSkill : SkillBasic {
 
 	public override void UseTheSkill ()
 	{
-		theStateNow = skillState.isUsing;
-		thePlayer.theSkillNow = this;
+		if (canUseTheSkill ()) 
+		{
+			theStateNow = skillState.isUsing;
+			thePlayer.theSkillNow = this;
 
-		if(theAnimatorController && !(moveOBJ.theMoveModeNow is flyMoveMode) )
-			theAnimatorController.PlayAnimation (playerAction.jump);
+			if (theAnimatorController && !(moveOBJ.theMoveModeNow is flyMoveMode))
+				theAnimatorController.PlayAnimation (playerAction.jump);
+		}
+		else 
+			UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
 	}
 
 

@@ -54,6 +54,7 @@ public class runMoveMode : moveModeBasic
 	public override void ExtraUpdate2 (move theMove , float value)
 	{
 		theMove.theMoveController.Move (new Vector3 (0f,value,0f));
+		OnMove (theMove.theMoveController , 2f);
 	}
 }
 //飞行移动的模式
@@ -62,7 +63,7 @@ public class flyMoveMode : moveModeBasic
 	public override void OnMove (CharacterController theMoveController, float speed)
 	{
 		if (theMoveController)
-			theMoveController.Move ( theMoveController.transform.forward.normalized * Time.deltaTime * speed * 1.3f);
+			theMoveController.Move ( theMoveController.transform.forward.normalized * Time.deltaTime * speed * 1.75f);
 	}
 
 	public override void OnStartMove (move theMove)

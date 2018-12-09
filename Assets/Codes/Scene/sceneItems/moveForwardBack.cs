@@ -25,9 +25,9 @@ public class moveForwardBack : MonoBehaviour {
 		this.transform.position = Vector3.Lerp (this.transform.position , aimNow , 1f);
 		if (Vector3.Distance (aimNow, this.transform.position) < 0.05f)
 		{
-			print (aimNow + "--");
+			//print (aimNow + "--");
 			aimNow = aimNow == aimForward ? aimStart : aimForward;
-			print (aimNow);
+			//print (aimNow);
 		}
 	}
 

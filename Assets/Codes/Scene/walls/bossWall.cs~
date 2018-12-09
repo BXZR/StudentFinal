@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class bossWall : MonoBehaviour {
+
+	//只有在与Boss战斗中才会触发
+
+	private monsterBoss theBoss;
+
+	//开启boss战
+	private void makeBossFight()
+	{
+		theBoss.GetComponent<FSMStage> ().enabled = true;
+	}
+
+
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}

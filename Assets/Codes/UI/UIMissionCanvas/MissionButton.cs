@@ -10,21 +10,29 @@ public class MissionButton : MonoBehaviour {
 	private MissionBasic theMission;
 	private Text missionNametext;
 	private Text missionInformationText;
-	private Image theMissionImage;
+	private Button theMissionButton;
 
 	public void SetMission(MissionBasic In , Text missionText)
 	{
 		if (!missionNametext)
 			missionNametext = this.GetComponentInChildren<Text> ();
-		if (!theMissionImage)
-			theMissionImage = this.GetComponentInChildren<Image> ();
+		if (!theMissionButton)
+			theMissionButton = this.GetComponentInChildren<Button> ();
 
 
 		theMission = In;
 		missionNametext.text = theMission.missionName;
 		missionInformationText = missionText;
+
 		if (In is MainMissionBasic)
-			theMissionImage.color = Color.yellow;
+		{
+			ColorBlock mainMissionColor = new ColorBlock ();
+			mainMissionColor.normalColor = Color.magenta;
+			mainMissionColor.highlightedColor = Color.magenta;
+			mainMissionColor.pressedColor = Color.gray;
+			mainMissionColor.colorMultiplier = 1f;
+			theMissionButton.colors = mainMissionColor;
+		}
 		
 	}
 

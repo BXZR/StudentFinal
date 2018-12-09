@@ -8,16 +8,17 @@ public class MainMission_3 : MainMissionBasic {
 
 	public int index = 0;
 
-	public string [] missionNames = { "李生异变" };
+	public string [] missionNames = { "李生情况"  , "追赶魔物"};
 	public string[] informationData = 
 	{
-		"【主线任务】李生的身体出现了异变，查看一下李生的情况。"
+		"【主线任务】事不宜迟，赶快回城查探李生的情况。",
+		"【主线任务】追赶从李生身体离开的魔物。"
 	};
 	//这是一个跑图任务，没有任何限制
 	public override void MakeStart ()
 	{
 		missionName = "李生异变";
-		missionInformation ="【主线任务】李生的身体出现了异变，查看一下李生的情况。";
+		missionInformation = "【主线任务】事不宜迟，赶快回城查探李生的情况。";
 
 	}
 

@@ -7,7 +7,7 @@ public class ZiYingArrow : SkillBasic {
 
 	public GameObject Arrow;//弹矢引用保存
 	Vector3 forward;
-
+	public float searchDistance = 5f;
 	private animatorController theAnimatorController;
 
 	void Start ()
@@ -23,16 +23,20 @@ public class ZiYingArrow : SkillBasic {
 		skillEffectTime = 0.25f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "琼华剑法";//技能名字
-		skillInformation = "昆仑琼华派三段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三剑共飞花。\n【上清破云剑】巨刃天上来。"
+		skillInformation = "昆仑琼华派多段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三刃共飞花。\n【上清破云剑】巨剑天上来。"
 			+"\n剑气持续："+skillEffectTime.ToString("f1")+"秒 冷却时间："+(skillAllTimer - skillEffectTime ).ToString("f1")+"秒";//技能介绍
 	}
 
 	//播放技能动画
 	public override void UseTheSkill ()
 	{
-		thePlayer.theSkillNow = this;
-		SearchAim ();
-		theAnimatorController.PlayAnimation (playerAction.attack);
+		if (canUseTheSkill ())
+		{
+			OnUse ();
+			thePlayer.theSkillNow = this;
+			SearchAim ();
+			theAnimatorController.PlayAnimation (playerAction.attack);
+		}
 	}
 
 
@@ -79,17 +83,17 @@ public class ZiYingArrow : SkillBasic {
 
 	#region 招式瞄准
 	//尝试看向身边最近的目标
-	private GameObject theAim = null;
+	private Acter theAim = null;
 	private void SearchAim()
 	{
-		if (theAim ) 
+		if (theAim && theAim.isAlive &&Vector3.Distance(theAim.transform.position , this.thePlayer.transform.position )< searchDistance) 
 		{
 			this.thePlayer.theMoveController.MakeLookAt (theAim.transform);
 		}
 		else 
 		{
-			Collider[] attackAims = Physics.OverlapSphere (this.thePlayer.transform.position, 5f);
-			GameObject aAim = null;
+			Collider[] attackAims = Physics.OverlapSphere (this.thePlayer.transform.position, searchDistance);
+			Acter aAim = null;
 			float distance = 999f;
 			for (int i = 0; i < attackAims.Length; i++) 
 			{
@@ -101,7 +105,7 @@ public class ZiYingArrow : SkillBasic {
 				if (distanceNew < distance) 
 				{
 					distance = distanceNew;
-					aAim = attackAims [i].gameObject;
+					aAim = thePlayerGet;
 				}
 			}
 			if (aAim) 

@@ -24,7 +24,7 @@ public class FSM_RunAfter : FSMBasic {
 		theAnimator.Play ("run");
 		if (theAim) 
 		{
-			this.theMoveController.transform.LookAt (theAim.transform);
+			this.theMoveController.transform.LookAt (theAim.transform.position);
 			this.theMoveController.SetDestination (theAim.transform.position + new Vector3 (Random.value, 0, Random.value));
 		}
 		timer -= Time.deltaTime;

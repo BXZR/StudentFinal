@@ -24,11 +24,17 @@ public class SkillHpup : SkillBasic {
 	//播放技能动画
 	public override void UseTheSkill ()
 	{
-		theStateNow = skillState.isUsing;
-		thePlayer.theSkillNow = this;
-		float rate = thePlayer.hpNow < thePlayer.hpMaxNow * 0.5f ? 0.2f : 0.15f;
-		hpUpPerSecond = thePlayer.hpMaxNow * rate / skillEffectTime;
-		InvokeRepeating ("makeTrueHpUp" , 0f , 1f);
+		if (canUseTheSkill ())
+		{
+			OnUse ();
+			theStateNow = skillState.isUsing;
+			thePlayer.theSkillNow = this;
+			float rate = thePlayer.hpNow < thePlayer.hpMaxNow * 0.5f ? 0.2f : 0.15f;
+			hpUpPerSecond = thePlayer.hpMaxNow * rate / skillEffectTime;
+			InvokeRepeating ("makeTrueHpUp", 0f, 1f);
+		} 
+		else 
+			UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
 	}
 
 	float timeAdder = 0f;

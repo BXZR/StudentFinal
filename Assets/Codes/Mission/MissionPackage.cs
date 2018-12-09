@@ -20,20 +20,30 @@ public class MissionPackage : MonoBehaviour {
 		MissionBasic missionHave = theMissions.Find (X =>X.GetType ().Equals(theMission.GetType ()));
 		if (missionHave != null ) 
 		{
-			if (missionHave.CanUpdate ())
+			//这个任务可以更新
+			//主线任务都是可以更新的，一些boss战的任务是靠更新完结的
+			if (missionHave.CanUpdate ()) 
+			{
 				missionHave.OnMissionUpdate ();
+				print ("update mission");
+			}
 			else 
 			{
-				missionHave.OnMissionOver ();
-				theMissions.Remove (missionHave);
-				theMission.thePlayer = this.thePlayer;
-				theMissions.Add (theMission);
+				//如果这个任务可以重复领取
+				if (missionHave.checkMissionOver ()) 
+				{
+					missionHave.OnMissionOver ();
+					theMissions.Remove (missionHave);
+					theMission.thePlayer = this.thePlayer;
+					theMissions.Add (theMission);
+				}
 			}
 		}
 		else
 		{
 			theMission.thePlayer = this.thePlayer;
 			theMissions.Add (theMission);
+			UIController.GetInstance ().ShowUI<messageBox> ("获得新任务");
 		}
 
 	}

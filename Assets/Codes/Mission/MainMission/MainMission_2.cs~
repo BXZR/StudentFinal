@@ -19,9 +19,10 @@ public class MainMission_2 : MainMissionBasic {
 	{
 		if (aim.InterName != "凤血草")
 			return;
-
-		GameObject.Destroy (aim.gameObject);
+		
 		getCount++;
+		GameObject.Destroy (aim.gameObject);
+
 		if (checkMissionOver ())
 			OnMissionOver ();
 		else 

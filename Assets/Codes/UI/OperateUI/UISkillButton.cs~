@@ -60,14 +60,9 @@ public class UISkillButton : MonoBehaviour {
 	{
 		makeStart ();//因为Start未必能够完全初始化
 
-		if (theSkill && theSkill.canUseTheSkill ()) 
+		if (theSkill) 
 		{
-			theSkill.OnUse ();
 			theSkill.UseTheSkill ();
-		}
-		else
-		{
-			UIController.GetInstance ().ShowUI<messageBox> ("当前无法使用该技能");
 		}
 	}
 
