@@ -13,6 +13,23 @@ public class UIController : MonoBehaviour {
 
 	private Dictionary <string , GameObject> UIBook = new Dictionary<string, GameObject>();
 
+
+	public T GetUI<T>() where T : UIBasic
+	{
+		string UIName = typeof(T).ToString ();
+		GameObject theUI;
+		if (!UIBook.TryGetValue (UIName, out theUI))
+		{
+			theUI = SystemValues.LoadResources<GameObject>("UI/" + UIName);
+			theUI = Instantiate (theUI);
+			theUI.name = UIName;
+			UIBook.Add (UIName, theUI);
+		}
+		if(theUI)
+			return theUI.GetComponent<T>();
+		return null;
+	}
+
 	public  void ShowUI <T> (string value = "") where T : UIBasic
 	{
 		string UIName = typeof(T).ToString ();
