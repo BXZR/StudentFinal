@@ -12,4 +12,9 @@ public class InteractiveBasic : MonoBehaviour {
 	public string InterName = "";
 	//交互操作
 	public virtual void MakeInteractive(){}
+	//设定tag
+	public void SetTag()
+	{
+		this.gameObject.tag = "Interactive";
+	}
 }

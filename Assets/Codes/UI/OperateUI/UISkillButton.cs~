@@ -25,7 +25,7 @@ public class UISkillButton : MonoBehaviour {
 	void Start()
 	{
 		theButton = this.GetComponent<ETCButton> ();
-		makeStart ();
+		Invoke ("makeStart" , 0.2f);
 	}
 
 

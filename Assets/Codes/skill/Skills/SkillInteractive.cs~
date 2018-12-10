@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillInteractive : SkillBasic {
 
@@ -11,12 +12,15 @@ public class SkillInteractive : SkillBasic {
 	public Sprite canInteractivePicture;
 	public Sprite canNotInteractivePicture;
 	ETCButton theETCButton;
+	Image ButtonImage;
 
 	void Start ()
 	{
 		Init ();
-		InvokeRepeating ("checkCanInteractive" , 1f , 0.25f);
 
+		//这个换图的功能在手机上始终有问题，所以实在不行就用这种方法规避一下
+		//if(Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+		    InvokeRepeating ("CheckCanInteractive" , 2f, 0.25f);
 	}
 
 
@@ -58,44 +62,47 @@ public class SkillInteractive : SkillBasic {
 	/// </summary>
 	private InteractiveBasic GetAim()
 	{
-		List<InteractiveBasic> IAs = new List<InteractiveBasic> ();
+		if (theStateNow == skillState.isCooling)
+			return null;
+		
 		Collider[] interactiveAims = Physics.OverlapSphere (this.transform.position, searchLength);
-		InteractiveBasic aim = null;
-		float distance = 9999f;
-		for (int i = 0; i < interactiveAims.Length; i++) 
-		{
-			InteractiveBasic aimNew = interactiveAims [i].GetComponent<InteractiveBasic> ();
-			if (aimNew) 
-			{
-				//print (aimNew.name);
-				float distanceNew = Vector3.Distance (aimNew.transform.position, this.thePlayer.transform.position);
-				if (distanceNew < distance) 
-				{
-					distance = distanceNew;
-					aim = aimNew;
-				}
-			}
-		}
-		return aim;
+		List<Collider> ams = new List<Collider> (interactiveAims);
+		//print ("check--"+ams.Count);
+		ams.RemoveAll (x => !x.tag .Equals( "Interactive"));
+
+		if (ams.Count <= 0)
+			return null;
+
+		ams.Sort
+		(
+			(x ,y) =>  Vector3.Distance (x.transform.position, this.thePlayer.transform.position).CompareTo
+			(Vector3.Distance (y.transform.position, this.thePlayer.transform.position))
+		);
+		return ams [0].GetComponent<InteractiveBasic> ();
 	}
 
 	/// <summary>
 	/// 自动检查身边可以交互的物体，按钮图要随之改变
 	/// </summary>
-	private void checkCanInteractive()
+	void  CheckCanInteractive()
 	{
 		if (!theButton)
 			return;
 		
-		if (!theETCButton)
+		if(!theETCButton)
 			theETCButton = theButton.GetComponent<ETCButton> ();
-		if (!theETCButton)
+		if (!ButtonImage)
+			ButtonImage = theButton.GetComponent<Image> ();
+		
+		if (!theETCButton || !ButtonImage)
 			return;
-
+		
+		
 		InteractiveBasic aim = GetAim ();
-		if (aim) 
-			theETCButton.normalSprite = canInteractivePicture;
-		else
-			theETCButton.normalSprite = canNotInteractivePicture;
+		Sprite aimPicture = aim == null ? canNotInteractivePicture : canInteractivePicture;
+		theETCButton.normalSprite = aimPicture;
+		ButtonImage.sprite = aimPicture;
+
 	}
+
 }

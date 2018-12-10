@@ -7,19 +7,21 @@
       <File FileName="Assets\Codes\UI\UIFramework\UIController.cs" Line="1" Column="1" />
       <File FileName="Assets\Resources\XML\MainPlot\StartTalk9.xml" Line="1" Column="1" />
       <File FileName="Assets\Resources\XML\MainPlot\StartTalk8.xml" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\OperateUI\UISkillButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="92" Column="21" />
-      <File FileName="Assets\Codes\Interactive\InteractiveBasic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Mission\MissionPackage.cs" Line="39" Column="30" />
-      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="136" Column="84" />
+      <File FileName="Assets\Codes\Interactive\NPC.cs" Line="16" Column="2" />
+      <File FileName="Assets\Codes\UI\OperateUI\UISkillButton.cs" Line="28" Column="31" />
+      <File FileName="Assets\Codes\skill\Skills\SkillInteractive.cs" Line="22" Column="5" />
+      <File FileName="Assets\Codes\Interactive\InteractiveBasic.cs" Line="18" Column="37" />
+      <File FileName="Assets\Codes\Mission\MissionPackage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\UI\TalkNormal\TalkCanvas.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\Mission\MainMission\MainMission_3.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Mission\MainMission\MainMission_4.cs" Line="29" Column="3" />
-      <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="9" Column="2" />
-      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="11" Column="114" />
-      <File FileName="Assets\Codes\AI\FSM\FSMBasic.cs" Line="33" Column="37" />
+      <File FileName="Assets\Codes\Mission\MainMission\MainMission_4.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSMStage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSM_Attack.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\AI\FSM\FSMBasic.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\AI\FSM\FSM_Search.cs" Line="1" Column="1" />
       <File FileName="Assets\Codes\AI\FSM\FSM_RunAfter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Scene\walls\monsterWall.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Interactive\Collect.cs" Line="8" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

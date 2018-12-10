@@ -8,6 +8,12 @@ public class NPC : InteractiveBasic{
     
 	public string NPCPlotName = "";//剧本名
 	public bool isAutoDestroy = true;//可以重复对话
+
+	void Start()
+	{
+		SetTag ();
+	}
+
 	//进行交互
 	public override void MakeInteractive ()
 	{
