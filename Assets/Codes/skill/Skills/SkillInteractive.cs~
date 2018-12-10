@@ -87,21 +87,15 @@ public class SkillInteractive : SkillBasic {
 		if (!theButton)
 			return;
 		
-		InteractiveBasic aim = GetAim ();
 		if (!theETCButton)
 			theETCButton = theButton.GetComponent<ETCButton> ();
 		if (!theETCButton)
 			return;
-		
+
+		InteractiveBasic aim = GetAim ();
 		if (aim) 
-		{
 			theETCButton.normalSprite = canInteractivePicture;
-			theETCButton.pressedSprite = canInteractivePicture;
-		} 
 		else
-		{
 			theETCButton.normalSprite = canNotInteractivePicture;
-			theETCButton.pressedSprite = canNotInteractivePicture;
-		}
 	}
 }

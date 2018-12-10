@@ -6,7 +6,6 @@ using UnityEngine;
 public class MainMission_4 : MainMissionBasic {
 
 	//这是一个跑图任务，没有任何限制
-	private static bool isCreatedBoss = false;
 
 	public override void MakeStart ()
 	{
@@ -17,10 +16,6 @@ public class MainMission_4 : MainMissionBasic {
 		
 	private void CreateBoss()
 	{
-		if (isCreatedBoss)
-			return;
-
-		isCreatedBoss = true;
 		GameObject boss = GameObject.Instantiate( SystemValues.LoadResources<GameObject>("Boss/Boss1"));
 		boss.transform.position = SystemValues.thePlayer.transform.position + SystemValues.thePlayer.transform.forward.normalized * 5f;
 		boss.GetComponent<monsterBoss> ().StartBoss ();

@@ -36,6 +36,7 @@ public class MissionPackage : MonoBehaviour {
 					theMissions.Remove (missionHave);
 					theMission.thePlayer = this.thePlayer;
 					theMissions.Add (theMission);
+					theMission.MakeStart ();
 				}
 			}
 		}
@@ -43,6 +44,7 @@ public class MissionPackage : MonoBehaviour {
 		{
 			theMission.thePlayer = this.thePlayer;
 			theMissions.Add (theMission);
+			theMission.MakeStart ();
 			UIController.GetInstance ().ShowUI<messageBox> ("获得新任务");
 		}
 

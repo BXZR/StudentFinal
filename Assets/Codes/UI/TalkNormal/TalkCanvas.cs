@@ -134,7 +134,6 @@ public class TalkCanvas : UIBasic {
 		{
 			System.Reflection.Assembly AS = System.Reflection.Assembly.GetExecutingAssembly ();
 			MissionBasic theMission = AS.CreateInstance (missionNames[i])  as MissionBasic; 
-			theMission.MakeStart ();
 			SystemValues.thePlayer.GetComponent<Player> ().theMissionPackage.AddNewMission (theMission);
 		}
 	}

@@ -13,6 +13,10 @@ public class FSMStage :MonoBehaviour  {
 	private Acter thethis; 
 	private Animator theAnimator;
 	public float AIThinkTimer = 0.20f;//AI每隔一段时间再进行思考
+
+	public float searchArea = 5f;//搜查范围
+	public float attackarea = 1.25f;//攻击范围
+
 	//这是一个值得优化的点，在一些条件下关闭掉AI计算会非常省事
 	//AI的计算很重并且同时计算的很多
 	public bool theAiIsActing = true;//AI是否计算的标记
@@ -30,6 +34,7 @@ public class FSMStage :MonoBehaviour  {
 	
 		theStateNow = new FSM_Search ();
 		theStateNow.makeState (theMoveController , theAnimator ,thethis , null );
+		theStateNow.setArea (attackarea,searchArea);
 		theStateNow.OnFSMStateStart ();
 		this.enabled = false;
 	}
@@ -60,7 +65,9 @@ public class FSMStage :MonoBehaviour  {
 		if (this.theStateNow is FSM_Search  ) 
 		{
 			FSMBasic theStateNew = new FSM_RunAfter ();
-			theStateNew.makeState(this.theMoveController,this.theAnimator, theStateNow .theThis, theStateNow.theAim);
+			theStateNew.makeState(this.theMoveController,this.theAnimator, theStateNow .theThis, theStateNow.theAim );
+			theStateNew.setArea (attackarea,searchArea);
+
 			if (theStateNew != theStateNow)
 				OnStateChange (theStateNow , theStateNew);
 
@@ -80,8 +87,11 @@ public class FSMStage :MonoBehaviour  {
 			theStateNow.actInThisState ();
 			FSMBasic theStateNew = theStateNow.moveToNextState ();
 
-			if (theStateNew != theStateNow)
-				OnStateChange (theStateNow , theStateNew);
+			if (theStateNew != theStateNow) 
+			{
+				OnStateChange (theStateNow, theStateNew);
+				theStateNew.setArea (attackarea,searchArea);
+			}
 
 			theStateNow = theStateNew;
 		}

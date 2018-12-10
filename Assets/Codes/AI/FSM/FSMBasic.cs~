@@ -25,6 +25,13 @@ public class FSMBasic  {
 		theAim = AimIn;
 		theThis = thisIn;
 	}
+
+	//重新设置范围属性
+	public void setArea(float attackArea , float searchArea)
+	{
+		this.theSearchLength = searchArea;
+		this.theAttackLength = attackArea;
+	}
 	//这个状态的开始阶段应该做什么
 	public virtual void OnFSMStateStart(){}
 	//这个状态的结束阶段应该做什么
