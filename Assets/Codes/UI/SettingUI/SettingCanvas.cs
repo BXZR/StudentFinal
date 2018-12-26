@@ -21,16 +21,12 @@ public class SettingCanvas : UIBasic
 
 	public void MakeSave()
 	{
-		bool saveOp = SystemValues.SaveInformation ();
-		string show = saveOp ? "存档成功" : "存档失败";
-		UIController.GetInstance ().ShowUI<messageBox> (show);
+		UIController.GetInstance ().ShowUI<UISaveLoadSelect> ("Save");
 	}
 
 	public void MakeLoad()
 	{
-		bool loadOp = SystemValues.LoadInformation ();
-		string show = loadOp ? "读取成功" : "读取失败";
-		UIController.GetInstance ().ShowUI<messageBox> (show);
+		UIController.GetInstance ().ShowUI<UISaveLoadSelect> ("Load");
 	}
 
 	public void MakeExitSetting()

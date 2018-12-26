@@ -17,7 +17,7 @@ public class text : MonoBehaviour {
 			SystemValues.SaveInformation ();
 
 		if (Input.GetKeyDown (KeyCode.X ))
-			SystemValues.LoadInformation ();
+			SystemValues.LoadInformation ("0");
 		if (Input.GetKeyDown (KeyCode.V))
 		{
 			Mission_KillMonster1 A = new Mission_KillMonster1 ();

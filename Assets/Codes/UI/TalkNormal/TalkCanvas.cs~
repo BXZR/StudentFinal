@@ -19,6 +19,7 @@ public class TalkCanvas : UIBasic {
 	public override void OnShow (string value = "")
 	{
 		UIController.GetInstance().CloseUI<PlayerActCanvas>();//对话的时候不可以操作
+		UIController.GetInstance().CloseUI<HpBasicPanel>();//基本生命值界面也关闭
 		LoadTexts(value);//加载对话内容
 		ShowText();//加载第一句话
 		SystemValues.theCamera.OnIntoPlot();
@@ -28,7 +29,16 @@ public class TalkCanvas : UIBasic {
 	public override void OnEndShow ()
 	{
 		SystemValues.theCamera.OnOutPlot ();
-		//SystemValues.ShowBloodCanvas ();
+	}
+
+	/// <summary>
+	/// 可以外部控制的直接关闭
+	/// </summary>
+	public void MakeJustClose()
+	{
+		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
+		UIController.GetInstance ().ShowUI<HpBasicPanel> ();
+		UIController.GetInstance ().CloseUI<TalkCanvas> ();
 	}
 
 	private void LoadTexts(string value)
@@ -54,11 +64,8 @@ public class TalkCanvas : UIBasic {
 	//点击生效
 	public void ShowText()
 	{
-		if (theFrames.Count == 0) 
-		{
-			UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
-			UIController.GetInstance ().CloseUI<TalkCanvas> ();
-		} 
+		if (theFrames.Count == 0)
+			MakeJustClose ();
 		else 
 		{
 			DialogFrame use = theFrames.Dequeue ();
@@ -117,6 +124,7 @@ public class TalkCanvas : UIBasic {
 	private void makeOver(DialogFrame use )
 	{
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
+		UIController.GetInstance ().ShowUI<HpBasicPanel> ();
 		UIController.GetInstance ().CloseUI<TalkCanvas> ();
 		OnEndShow ();
 		string [] values = use.information.Split(',');

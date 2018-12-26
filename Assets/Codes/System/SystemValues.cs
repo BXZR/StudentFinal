@@ -150,7 +150,7 @@ public class SystemValues : MonoBehaviour {
 	#region 文件操作
 	//加载的存档信息
 	public static GameData theSaveData = null;
-	public static bool SaveInformation()
+	public static bool SaveInformation(string ID = "0")
 	{
 		//存档校验
 		if (!SystemValues.thePlayer)
@@ -178,18 +178,18 @@ public class SystemValues : MonoBehaviour {
 		
 		//真实存档
 		FileOperater fileOp = new FileOperater ();
-		string fileName = Application.persistentDataPath + "/GameData.sav";
+		string fileName = Application.persistentDataPath + "/GameData"+ID+".sav";
 		print (fileName);
 		fileOp.SaveBinary (fileName , theData);
 		return true;
 	}
 
 
-	public static bool LoadInformation()
+	public static bool LoadInformation(string ID = "0")
 	{
 		//读取信息
 		FileOperater fileOp = new FileOperater ();
-		string fileName = Application.persistentDataPath + "/GameData.sav";
+		string fileName = Application.persistentDataPath + "/GameData"+ID+".sav";
 		GameData theData = fileOp.loadBinary (fileName);
 
 		//存档校验

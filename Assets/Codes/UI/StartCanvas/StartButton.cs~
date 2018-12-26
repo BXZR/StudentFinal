@@ -34,8 +34,20 @@ public class StartButton : MonoBehaviour {
 	//直接读档跳转
 	public void MakeLoad()
 	{
-		print ("hehehehehehe");
-		SystemValues.LoadInformation ();
+		//SystemValues.LoadInformation ();
+		UIController.GetInstance().ShowUI<UISaveLoadSelect>("Load");
+	}
+
+	//直接结束游戏
+	public void MakeExit()
+	{
+		UIController.GetInstance ().ShowUI<SelectMessageBox> ("是否离开游戏？");
+		UIController.GetInstance ().GetUI<SelectMessageBox> ().theOperate = new MesageOperate (EndGame);
+	}
+
+	private void EndGame()
+	{
+		Application.Quit ();
 	}
 }
 
