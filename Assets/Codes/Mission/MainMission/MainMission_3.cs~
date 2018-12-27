@@ -17,8 +17,8 @@ public class MainMission_3 : MainMissionBasic {
 	//这是一个跑图任务，没有任何限制
 	public override void MakeStart ()
 	{
-		missionName = "李生异变";
-		missionInformation = "【主线任务】事不宜迟，赶快回城查探李生的情况。";
+		missionName = missionNames [index];
+		missionInformation = informationData [index];
 
 	}
 

@@ -31,7 +31,7 @@ public class UISaveLoadSelect : UIBasic {
 		operateTypeText.text = modeNow == 0 ? "存档" : "读档";
 
 		Time.timeScale = 1f;
-		Invoke ("loadPictureOnStart" , 0.04f);
+		Invoke ("loadPictureOnStart" , 0.02f);
 	}
 	public override void OnEndShow ()
 	{
@@ -62,7 +62,7 @@ public class UISaveLoadSelect : UIBasic {
 		StartCoroutine (OnScreenCapture2 (ID));
 		string show = saveOp ? "存档成功" : "存档失败";
 		UIController.GetInstance ().ShowUI<messageBox> (show);
-		Invoke ("loadPictureOnStart" , 0.04f);
+		Invoke ("loadPictureOnStart" , 0.02f);
 
 	}
 

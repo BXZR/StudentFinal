@@ -9,7 +9,7 @@ public class GameTalkCanvas : UIBasic {
 	//有太多的东西想要倾诉
 	//有太多的东西想要表达
 
-	public Transform theText;
+	public Transform theShower;
 	public float moveSpeed = 2f;
 	public float textMoveDistance = 100f;
 	private Vector3 textStartPosition;
@@ -18,22 +18,24 @@ public class GameTalkCanvas : UIBasic {
 
 	void Start () 
 	{
-		textStartPosition = theText.transform.position;
-		textEndPosition = textStartPosition + new Vector3 (0f , textMoveDistance , 0f);
-		theText.transform.position = textStartPosition;
+		textStartPosition = theShower.transform.position;
+		textEndPosition = textStartPosition + new Vector3 ( textMoveDistance  , 0f , 0f);
+		theShower.transform.position = textStartPosition;
 		isStarted = true;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Vector3.Distance(theText.transform.position , textEndPosition) > 0.5f)
-			theText.transform.Translate (Vector3.up * moveSpeed *Time.deltaTime);
+		float distanceNow = Vector3.Distance (theShower.transform.position, textEndPosition);
+		print ("distance = "+distanceNow);
+		if( Mathf.Abs(distanceNow) > 5)
+			theShower.transform.Translate (Vector3.right* moveSpeed *Time.deltaTime);
 	}
 
 	void OnEnable()
 	{
 		if(isStarted)
-		 theText.transform.position = textStartPosition;
+			theShower.transform.position = textStartPosition;
 	}
 }

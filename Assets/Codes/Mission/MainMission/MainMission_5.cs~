@@ -16,8 +16,8 @@ public class MainMission_5 : MainMissionBasic {
 	//这是一个跑图任务，没有任何限制
 	public override void MakeStart ()
 	{
-		missionName = "李生情况";
-		missionInformation = "【主线任务】李生的情况到底是怎么回事，还需要继续探查才能明白。";
+		missionName = missionNames [index];
+		missionInformation = informationData [index];
 
 	}
 

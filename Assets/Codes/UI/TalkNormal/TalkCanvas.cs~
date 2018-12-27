@@ -36,6 +36,13 @@ public class TalkCanvas : UIBasic {
 	/// </summary>
 	public void MakeJustClose()
 	{
+		if (theFrames.Count >= 0) 
+		{
+			DialogFrame use = theFrames.Dequeue ();
+			while (theFrames.Count > 0)
+				use = theFrames.Dequeue ();
+			OperateFrame (use);
+		} 
 		UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
 		UIController.GetInstance ().ShowUI<HpBasicPanel> ();
 		UIController.GetInstance ().CloseUI<TalkCanvas> ();
@@ -64,29 +71,40 @@ public class TalkCanvas : UIBasic {
 	//点击生效
 	public void ShowText()
 	{
-		if (theFrames.Count == 0)
-			MakeJustClose ();
+		if (theFrames.Count == 0) 
+		{
+			UIController.GetInstance ().ShowUI<PlayerActCanvas> ();
+			UIController.GetInstance ().ShowUI<HpBasicPanel> ();
+			UIController.GetInstance ().CloseUI<TalkCanvas> ();
+		}
 		else 
 		{
 			DialogFrame use = theFrames.Dequeue ();
-			switch (use.name)
-			{
-			case "SELECT":
-				makeSelect (use);
-				break;
-			case "GOLD":
-				makeOver (use);
-				break;
-			case "MISSION":
-				makeMission (use);
-				break;
-			default:
-				makeTalk (use);
-				break;
-			}
-
+			OperateFrame (use);
 		}
 
+	}
+
+	/// <summary>
+	/// 对每一个剧本帧的操作
+	/// </summary>
+	private void OperateFrame(DialogFrame use)
+	{
+		switch (use.name)
+		{
+		case "SELECT":
+			makeSelect (use);
+			break;
+		case "GOLD":
+			makeOver (use);
+			break;
+		case "MISSION":
+			makeMission (use);
+			break;
+		default:
+			makeTalk (use);
+			break;
+		}
 	}
 
 	/// <summary>
