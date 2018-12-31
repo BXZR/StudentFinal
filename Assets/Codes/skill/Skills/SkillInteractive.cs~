@@ -29,7 +29,7 @@ public class SkillInteractive : SkillBasic {
 		skillAllTimer = 4f;//冷却时间
 		skillEffectTime = 0.1f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
-		skillName = "交互";//技能名字
+		skillName = "万物通灵";//技能名字
 		skillInformation = "与身边的人与事物进行交互，或许会得到有意思的收获。\n若身边有可交互的事物，会有相应的提示。\n冷却时间：" + skillAllTimer.ToString("f1") + "秒";//技能介绍
 	}
 

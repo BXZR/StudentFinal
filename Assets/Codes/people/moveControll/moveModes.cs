@@ -87,7 +87,7 @@ public class flyMoveMode : moveModeBasic
 
 	public override void ExtraUpdate2 (move theMove , float value)
 	{
-		theMove.theMoveController.Move (theMove.transform.rotation * new Vector3 (0f, 0f , value *2f));
+		theMove.theMoveController.Move (theMove.transform.rotation * new Vector3 (0f, 0f , value *2.25f));
 	}
 	public override void ExtraUpdate2End (move theMove)
 	{

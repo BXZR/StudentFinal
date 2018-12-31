@@ -36,6 +36,12 @@ public class SettingCanvas : UIBasic
 
 	public void MakeExitGame()
 	{
+		UIController.GetInstance ().ShowUI<SelectMessageBox> ("是否离开游戏？");
+		UIController.GetInstance ().GetUI<SelectMessageBox> ().theOperate = new MesageOperate (EndGame);
+	}
+
+	private void EndGame()
+	{
 		Application.Quit ();
 	}
 }

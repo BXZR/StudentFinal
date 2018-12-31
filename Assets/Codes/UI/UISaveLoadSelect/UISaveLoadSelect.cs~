@@ -31,7 +31,7 @@ public class UISaveLoadSelect : UIBasic {
 		operateTypeText.text = modeNow == 0 ? "存档" : "读档";
 
 		Time.timeScale = 1f;
-		Invoke ("loadPictureOnStart" , 0.02f);
+		Invoke ("loadPictureOnStart" , 0.01f);
 	}
 	public override void OnEndShow ()
 	{
@@ -62,7 +62,7 @@ public class UISaveLoadSelect : UIBasic {
 		StartCoroutine (OnScreenCapture2 (ID));
 		string show = saveOp ? "存档成功" : "存档失败";
 		UIController.GetInstance ().ShowUI<messageBox> (show);
-		Invoke ("loadPictureOnStart" , 0.02f);
+		Invoke ("loadPictureOnStart" , 0.01f);
 
 	}
 
@@ -86,7 +86,7 @@ public class UISaveLoadSelect : UIBasic {
 	//获取存档截图
 	IEnumerator loadPicture()
 	{
-		yield return  new WaitForSeconds (0.04f);
+		//yield return  new WaitForSeconds (0.01f);
 		//一共就只有三个存档
 		for (int i = 0; i < 3; i++) 
 		{
