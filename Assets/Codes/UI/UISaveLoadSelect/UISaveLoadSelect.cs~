@@ -9,6 +9,7 @@ public class UISaveLoadSelect : UIBasic {
 	//存档按钮截图
 	public Image  [] saveButtonImages;
 	public Text[] saveButtonTexts;
+	public Text[] saveButtonTimeText;
 	public Text operateTypeText;
 	public Camera theCamera;
 
@@ -31,7 +32,7 @@ public class UISaveLoadSelect : UIBasic {
 		operateTypeText.text = modeNow == 0 ? "存档" : "读档";
 
 		Time.timeScale = 1f;
-		Invoke ("loadPictureOnStart" , 0.01f);
+		Invoke ("loadButtonInformation" , 0.01f);
 	}
 	public override void OnEndShow ()
 	{
@@ -62,7 +63,7 @@ public class UISaveLoadSelect : UIBasic {
 		StartCoroutine (OnScreenCapture2 (ID));
 		string show = saveOp ? "存档成功" : "存档失败";
 		UIController.GetInstance ().ShowUI<messageBox> (show);
-		Invoke ("loadPictureOnStart" , 0.01f);
+		Invoke ("loadButtonInformation" , 0.01f);
 
 	}
 
@@ -78,9 +79,24 @@ public class UISaveLoadSelect : UIBasic {
 
 
 
-	private void loadPictureOnStart()
+	private void loadButtonInformation()
 	{
 		StartCoroutine (loadPicture());
+
+		for (int i = 0; i < 3; i++) 
+		{
+			//加载存档信息
+			GameData theData = SystemValues.getData (i.ToString());
+			if (theData == null)
+				continue;
+			saveButtonTexts [i].text = "Lv."+ theData.playerLv;
+
+			//加载修改时间
+			string checkPath = Application.persistentDataPath + "/save" + i +  ".jpg";
+			FileInfo fi = new FileInfo (checkPath);
+			if (saveButtonTimeText[i])
+				saveButtonTimeText[i].text = fi.LastWriteTime.ToString ();
+		}
 	}
 
 	//获取存档截图
@@ -105,10 +121,6 @@ public class UISaveLoadSelect : UIBasic {
 				else 
 					print ("load fail!");
 				
-				//加载修改时间
-				FileInfo fi = new FileInfo (checkPath);
-				if (saveButtonTexts[i])
-					saveButtonTexts[i].text = fi.LastWriteTime.ToString ();
 			}
 		}
 	}
@@ -181,8 +193,8 @@ public class UISaveLoadSelect : UIBasic {
 		}
 	}
 
-	void Update()
-	{
-		print ("dfdffgrth");
-	}
+	//void Update()
+	//{
+		//print ("dfdffgrth");
+	//}
 }

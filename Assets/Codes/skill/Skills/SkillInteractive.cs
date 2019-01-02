@@ -9,6 +9,7 @@ public class SkillInteractive : SkillBasic {
 	//这个技能的联动性非常强大
 	//原理是相交球检查
 	public float searchLength = 1f;
+	public float minDistance = 0.75f;//离得太近也不可以交互
 	public Sprite canInteractivePicture;
 	public Sprite canNotInteractivePicture;
 	ETCButton theETCButton;
@@ -68,8 +69,7 @@ public class SkillInteractive : SkillBasic {
 		Collider[] interactiveAims = Physics.OverlapSphere (this.transform.position, searchLength);
 		List<Collider> ams = new List<Collider> (interactiveAims);
 		//print ("check--"+ams.Count);
-		ams.RemoveAll (x => !x.tag .Equals( "Interactive"));
-
+		ams.RemoveAll (x => !x.tag .Equals( "Interactive") || Mathf.Abs( Vector3.Distance (x.transform.position, this.thePlayer.transform.position)) < minDistance);
 		if (ams.Count <= 0)
 			return null;
 

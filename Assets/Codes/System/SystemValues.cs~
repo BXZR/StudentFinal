@@ -202,6 +202,16 @@ public class SystemValues : MonoBehaviour {
 
 	}
 
+	//获取存档信息
+	public static GameData getData(string ID = "0")
+	{
+		//读取信息
+		FileOperater fileOp = new FileOperater ();
+		string fileName = Application.persistentDataPath + "/GameData"+ID+".sav";
+		GameData theData = fileOp.loadBinary (fileName);
+		return theData;
+	}
+
 	//完全从头来过
 	public static void MakeAllStartFlash()
 	{
