@@ -47,7 +47,7 @@ public class effectSlowIn : MonoBehaviour {
 		//每一次开启场景的时候都有一个淡出（必要）
 		//如果没有这个淡出，slowInChangePanel就会一直显示，这与其他的设置有一点矛盾
 		//这在这里也只能是一个权宜之计
-		makeChangeOut(1f);
+		makeChangeOut(3f);
 		Destroy (this.gameObject,1f);
 		
 	}

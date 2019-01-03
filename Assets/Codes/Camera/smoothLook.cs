@@ -15,18 +15,29 @@ public class smoothLook : MonoBehaviour {
 	private bool canOperate = false;//是否可以操作摄像机
 
 	//完全固定视角摄像机
-	public Vector3 extraDistance = new Vector3 (0,2,-2);
+	public Vector3 extraDistance = new Vector3 (0,6,-5);
 	//当前是否是剧情摄像机
 	//进入剧情和离开剧情的时候需要修改这个标记
 	public bool isPloting = false;
 
 	void Start ()
 	{
-		canOperate = true;
-		FixedPostion ();
-		canOperate = false;
+		SystemValues.theCamera = this;
+		Invoke ("FixPositionOnStart" , 0.02f);
 	}
-	
+
+	//开始阶段的强制设定摄像机位置
+	void FixPositionOnStart()
+	{
+		if (!SystemValues.thePlayer )
+			return;
+
+		theTarget = SystemValues.thePlayer.transform;
+
+		this.transform.position = theTarget.transform.position + extraDistance;
+		this.transform.LookAt(theTarget.transform.position);
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -48,16 +59,8 @@ public class smoothLook : MonoBehaviour {
 	/// </summary>
 	private void CameraOperateTouch()
 	{
-		if (!theTarget) 
-		{
-			theTarget = SystemValues.thePlayer.transform;
-			SystemValues.theCamera = this;
-			canOperate = true;
-			FixedPostion ();
-		}
 		if (!theTarget)
 			return;
-
 
 		if (SystemValues.IsOperatingUI () && Input.touches.Length >= 2 && !SystemValues.IsOperatingUI(Input.GetTouch (1).fingerId)) 
 		{
@@ -87,8 +90,6 @@ public class smoothLook : MonoBehaviour {
 	{
 		if (!theTarget) 
 		{
-			theTarget = SystemValues.thePlayer.transform;
-			SystemValues.theCamera = this;
 			canOperate = true;
 			FixedPostion ();
 			canOperate = false;
@@ -183,10 +184,7 @@ public class smoothLook : MonoBehaviour {
 		distance = Mathf.Clamp (distance, 4f, 8f);
 
 		this.transform.Translate (new Vector3 (xMove, 0f, 0f));
-
 	}
-
-
 
 
 	/// <summary>
