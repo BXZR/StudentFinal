@@ -50,6 +50,7 @@ public class TalkCanvas : UIBasic {
 
 	private void LoadTexts(string value)
 	{
+		//print ("value =" +value);
 		theFrames = new Queue<DialogFrame> ();
 		TextAsset textAsset = SystemValues.LoadResources<TextAsset>("XML/" + value);
 		xml.LoadXml (textAsset.text);

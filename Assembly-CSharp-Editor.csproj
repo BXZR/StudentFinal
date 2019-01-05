@@ -68,23 +68,22 @@
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCJoystickInspector.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCMenu.cs" />
      <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCTouchPadInspector.cs" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk4.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_3.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_1.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk7.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_0.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_6.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk6.xml" />
-     <None Include="Assets\Resources\XML\Plot.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_5.xml" />
      <None Include="Assets\Resources\XML\NPC\Ari\Ari_2.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk9.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk3.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_8.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_2.xml" />
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk5.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk2.xml" />
-     <None Include="Assets\Resources\XML\MainPlot\StartTalk8.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_4.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_1.xml" />
+     <None Include="Assets\Resources\XML\PlotItem0\Plot_0_7.xml" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/environments/Unity5.6/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

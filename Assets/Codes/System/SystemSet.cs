@@ -40,7 +40,6 @@ public class SystemSet : MonoBehaviour {
 	/// </summary>
 	void loadGameInformation()
 	{
-		SystemValues.LoadPlots ();
 		Destroy (theStartPosition.gameObject);
 	}
 

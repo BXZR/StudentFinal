@@ -103,28 +103,13 @@ public class SystemValues : MonoBehaviour {
 			return  -1;
 		return plotIDNow [type];
 	}
-	/// <summary>
-	///加载存单
-	/// </summary>
-	public static void LoadPlots()
-	{
-		theFrames = new List<PlotItem> ();
-		TextAsset textAsset = SystemValues.LoadResources<TextAsset> ("XML/" + "Plot");
-		xml.LoadXml (textAsset.text);
-		theXmlList = xml.SelectNodes ("Root/Item");
-		foreach (XmlNode node in theXmlList) 
-		{
-			PlotItem aFrame = new PlotItem();
-			aFrame.ID = XmlConvert.ToInt32( node.SelectSingleNode("ID").InnerText);
-			aFrame.Plot = node.SelectSingleNode ("Plot").InnerText;
-			aFrame.type = XmlConvert.ToInt32(node.SelectSingleNode ("Type").InnerText);
-			theFrames.Add (aFrame);
-		}
-	}
+
 
 	/// <summary>
 	/// 通过剧本ID获取到当前剧本文件的名字
 	/// 参数plotType为需要调用的剧本类型ID
+	/// 这种做法非常讲究命名规范，剧本是否能够查找到都要考剧本命名
+	/// 一个剧本Type一个文件夹，文件夹下的文件命名为“Plot_Type_ID”
 	/// </summary>
 	public static string getPlotName(int plotType , int PlotID)
 	{
@@ -132,16 +117,15 @@ public class SystemValues : MonoBehaviour {
 			return "";
 		
 		int IDUse = plotIDNow [plotType];
-		//循环查找，此处可以优化
+
 		string plotNameUse = "";
-		for (int i = 0; i < theFrames.Count; i++) 
+
+		if(IDUse == PlotID)
 		{
-			if (theFrames [i].type == plotType && theFrames [i].ID == IDUse && PlotID == IDUse) 
-			{
-				plotNameUse = theFrames [i].Plot;
-				plotIDNow [plotType]++;
-			}
+		 plotNameUse = "PlotItem" +  plotType + "/Plot_"+plotType+"_" + IDUse;
+		 plotIDNow [plotType]++;
 		}
+
 		return plotNameUse;
 	}
 		
