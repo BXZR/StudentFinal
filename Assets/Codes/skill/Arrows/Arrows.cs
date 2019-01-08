@@ -24,7 +24,7 @@ public class Arrows : MonoBehaviour {
 		Acter playeraim = collisioner.GetComponent<Acter> ();
 		if (playeraim  && this.thePlayer && playeraim != this.thePlayer) 
 		{
-			print ("触发攻击");
+			//print ("触发攻击");
 			this.thePlayer.OnAttack (playeraim);
 		}
 	}

@@ -11,6 +11,7 @@ public class MissionButton : MonoBehaviour {
 	private Text missionNametext;
 	private Text missionInformationText;
 	private Button theMissionButton;
+	public int missionID = 0;//用于排序的ID
 
 	public void SetMission(MissionBasic In , Text missionText)
 	{
@@ -23,6 +24,7 @@ public class MissionButton : MonoBehaviour {
 		theMission = In;
 		missionNametext.text = theMission.missionName;
 		missionInformationText = missionText;
+		missionID = 1;
 
 		if (In is MainMissionBasic)
 		{
@@ -32,6 +34,7 @@ public class MissionButton : MonoBehaviour {
 			mainMissionColor.pressedColor = Color.gray;
 			mainMissionColor.colorMultiplier = 1f;
 			theMissionButton.colors = mainMissionColor;
+			missionID = 0;
 		}
 		
 	}
