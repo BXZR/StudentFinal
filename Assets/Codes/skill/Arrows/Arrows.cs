@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrows : MonoBehaviour {
 
+	public float extraDamage = 0f;//特殊箭矢会有额外的计算伤害
 	public float arrowSpeed = 25f;//弹矢速度
 	TrailRenderer theRender;
 	public Acter thePlayer;
@@ -25,7 +26,7 @@ public class Arrows : MonoBehaviour {
 		if (playeraim  && this.thePlayer && playeraim != this.thePlayer) 
 		{
 			//print ("触发攻击");
-			this.thePlayer.OnAttack (playeraim);
+			this.thePlayer.OnAttack (playeraim , extraDamage);
 		}
 	}
 

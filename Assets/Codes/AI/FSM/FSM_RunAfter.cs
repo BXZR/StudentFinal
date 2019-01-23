@@ -25,7 +25,7 @@ public class FSM_RunAfter : FSMBasic {
 		if (theAim) 
 		{
 			this.theMoveController.transform.LookAt (theAim.transform.position);
-			this.theMoveController.SetDestination (theAim.transform.position + new Vector3 (Random.value, 0, Random.value));
+			this.theMoveController.SetDestination (theAim.transform.position + new Vector3 (Random.value*1.2f, 0, Random.value*1.2f));
 		}
 		timer -= Time.deltaTime;
 		//Debug.Log ("runafterTimer : "+ timer);

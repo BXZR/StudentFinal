@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingCanvas : UIBasic
 {
@@ -40,8 +41,20 @@ public class SettingCanvas : UIBasic
 		UIController.GetInstance ().GetUI<SelectMessageBox> ().theOperate = new MesageOperate (EndGame);
 	}
 
+	public void MakeReturnStart()
+	{
+		UIController.GetInstance ().ShowUI<SelectMessageBox> ("是否返回初始？");
+		UIController.GetInstance ().GetUI<SelectMessageBox> ().theOperate = new MesageOperate (ReturnStart);
+	}
+
 	private void EndGame()
 	{
 		Application.Quit ();
+	}
+
+	private void ReturnStart()
+	{
+		UIController.GetInstance ().ShowUI <UILoading>("Start");
+		//SceneManager.LoadScene ("Start");
 	}
 }

@@ -34,12 +34,12 @@ public class Player : Acter {
 		theSkillNow = null;
 	}
 
-	public override void OnAttack(Acter aim)
+	public override void OnAttack(Acter aim , float extreaDamage)
 	{
 		if (!aim.isAlive)
 			return;
 
-		aim.OnHpChange (-this.attackDamage);
+		aim.OnHpChange (- (this.attackDamage + extreaDamage));
 		if (aim.hpNow == 0) 
 		{
 			OnKill (aim);

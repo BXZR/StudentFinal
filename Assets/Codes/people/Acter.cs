@@ -43,17 +43,19 @@ public class Acter : MonoBehaviour {
 	/// <summary>
 	/// 攻击的时候触发
 	/// 触发方式可以是动画事件也可能是投掷武器
+	/// 这个方式会计算额外的伤害
 	/// </summary>
 	/// <param name="aim">Aim.</param>
-	public virtual void OnAttack(Acter aim)
+	public virtual void OnAttack(Acter aim , float extraDamage = 0f)
 	{
 		if (!aim.isAlive)
 			return;
 
-		aim.OnHpChange (-this.attackDamage);
+		aim.OnHpChange (-(this.attackDamage+extraDamage));
 		if (aim.hpNow == 0) 
 			OnKill (aim);
 	}
+
 
 	/// <summary>
 	/// 外部操作生命改变的方法，这个方法全球唯一

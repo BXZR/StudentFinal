@@ -23,7 +23,7 @@ public class ZiYingArrow : SkillBasic {
 		skillEffectTime = 0.25f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "琼华剑法";//技能名字
-		skillInformation = "琼华派多段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三刃共飞花。\n【上清破云剑】巨剑天上来。"
+		skillInformation = "琼华派多段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三刃共飞花。\n【上清破云剑】巨剑天上来。\n"
 			+"\n剑气持续："+skillEffectTime.ToString("f1")+"秒 冷却时间："+(skillAllTimer - skillEffectTime ).ToString("f1")+"秒";//技能介绍
 	}
 
@@ -119,7 +119,7 @@ public class ZiYingArrow : SkillBasic {
 
 
 
-	#region 第一段 一束剑气
+	#region 第一二段 一束剑气
 	Arrows ArrowUsing;//弹矢引用保存
 	public void Step1()
 	{
@@ -146,7 +146,7 @@ public class ZiYingArrow : SkillBasic {
 	}
 	#endregion
 
-	#region 第二段 三束剑气
+	#region 第三段 三束剑气 这种剑气的伤害会有所缩减
 	int arrowCounts = 3;
 	float angleForArrow = 35f;
 	List<Arrows> theArrows = new List<Arrows> ();
@@ -163,6 +163,7 @@ public class ZiYingArrow : SkillBasic {
 			{
 				theArrow  = GameObject.Instantiate (Arrow).GetComponent<Arrows> ();
 				theArrow .thePlayer = this.thePlayer;
+				theArrow.extraDamage = -thePlayer.attackDamage * 0.20f;//千方残光剑的每一束剑气的伤害较少 
 				theArrows.Add (theArrow );
 			} 
 			else 
@@ -207,6 +208,7 @@ public class ZiYingArrow : SkillBasic {
 		{
 			ArrowUsingBig = GameObject.Instantiate (Arrow).GetComponent<Arrows> ();
 			ArrowUsingBig.thePlayer = this.thePlayer;
+			ArrowUsingBig.extraDamage = this.thePlayer.attackDamage * 0.25f;//超大号剑气具有额外的伤害
 			Vector3 scaleOld = ArrowUsingBig.transform.localScale;
 			ArrowUsingBig.transform.localScale = new Vector3 (scaleOld.x *8f , scaleOld.y*7f , scaleOld.z *2f);
 			ArrowUsingBig.GetComponent<TrailRenderer> ().widthMultiplier = 5f;
