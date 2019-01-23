@@ -25,7 +25,7 @@ public class MissionPackage : MonoBehaviour {
 			if (missionHave.CanUpdate ()) 
 			{
 				missionHave.OnMissionUpdate ();
-				print ("update mission");
+				//print ("update mission");
 			}
 			else 
 			{
@@ -45,7 +45,7 @@ public class MissionPackage : MonoBehaviour {
 			theMission.thePlayer = this.thePlayer;
 			theMissions.Add (theMission);
 			theMission.MakeStart ();
-			UIController.GetInstance ().ShowUI<messageBox> ("获得新任务");
+			UIController.GetInstance ().ShowUI<messageBox> ("任务更新");
 		}
 
 	}

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 
+public enum SaveloadOperate {save , load}
 public class UISaveLoadSelect : UIBasic {
 
 	//存档按钮截图
@@ -14,25 +15,26 @@ public class UISaveLoadSelect : UIBasic {
 	public Camera theCamera;
 
 	//存档图像参数
-	private  int width = 180;
-	private  int height = 150;
+	private  int width = 160;
+	private  int height = 120;
 
 	//当前的模式：存档还是读档
-	private int modeNow = 999;//0 存档 1 读档
+	private SaveloadOperate modeNow  = SaveloadOperate .save ;
 
 	public override void OnShow (string value = "")
 	{
+		Time.timeScale = 1f;
+
 		theCamera.transform.position = Camera.main.transform.position;
 		theCamera.transform.rotation = Camera.main.transform.rotation;
 		if (value.Equals ("Save"))
-			modeNow = 0;
+			modeNow  = SaveloadOperate .save ;
 		else if (value.Equals ("Load"))
-			modeNow = 1;
+			modeNow  = SaveloadOperate.load;
 
 		operateTypeText.text = modeNow == 0 ? "存档" : "读档";
 
-		Time.timeScale = 1f;
-		Invoke ("loadButtonInformation" , 0.01f);
+		Invoke ("loadButtonInformation" , 0.005f);
 	}
 	public override void OnEndShow ()
 	{
@@ -46,9 +48,9 @@ public class UISaveLoadSelect : UIBasic {
 	/// </summary>
 	public void ButtonOperate(int ID )
 	{
-		if (modeNow == 0)
+		if (modeNow == SaveloadOperate .save)
 			MakeSave (ID);
-		else if (modeNow == 1)
+		else if (modeNow == SaveloadOperate.load)
 			MakeLoad (ID);
 		else
 			UIController.GetInstance ().ShowUI<messageBox> ("无效操作");
@@ -63,7 +65,7 @@ public class UISaveLoadSelect : UIBasic {
 		StartCoroutine (OnScreenCapture2 (ID));
 		string show = saveOp ? "存档成功" : "存档失败";
 		UIController.GetInstance ().ShowUI<messageBox> (show);
-		Invoke ("loadButtonInformation" , 0.01f);
+		loadButtonInformation ();
 
 	}
 
@@ -94,8 +96,8 @@ public class UISaveLoadSelect : UIBasic {
 			//加载修改时间
 			string checkPath = Application.persistentDataPath + "/save" + i +  ".jpg";
 			FileInfo fi = new FileInfo (checkPath);
-			if (saveButtonTimeText[i])
-				saveButtonTimeText[i].text = fi.LastWriteTime.ToString ();
+			if(saveButtonTimeText[i])
+			saveButtonTimeText[i].text = fi.LastWriteTime.ToString ();
 		}
 	}
 
