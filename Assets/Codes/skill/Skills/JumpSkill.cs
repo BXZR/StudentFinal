@@ -20,6 +20,7 @@ public class JumpSkill : SkillBasic {
 		moveOBJ = thePlayer.GetComponent<move> ();
 		if (!theMoveController)
 			Destroy (this);
+		this.enabled = false;
 	}
 
 	public override void Init ()
@@ -42,6 +43,8 @@ public class JumpSkill : SkillBasic {
 
 			if (theAnimatorController && !(moveOBJ.theMoveModeNow is flyMoveMode))
 				theAnimatorController.PlayAnimation (playerAction.jump);
+
+			this.enabled = true;
 		}
 		else 
 			UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
@@ -52,6 +55,7 @@ public class JumpSkill : SkillBasic {
 	{
 		//动作结尾
 		moveOBJ.theMoveModeNow.ExtraUpdate2End (moveOBJ);
+		this.enabled = false; 
 	}
 
 	public override void OnUpdate ()

@@ -10,6 +10,7 @@ public class SkillHpup : SkillBasic {
 	void Start ()
 	{
 		Init ();
+		this.enabled = false;
 	}
 
 	public override void Init ()
@@ -32,9 +33,16 @@ public class SkillHpup : SkillBasic {
 			float rate = thePlayer.hpNow < thePlayer.hpMaxNow * 0.5f ? 0.16f : 0.1f;
 			hpUpPerSecond = thePlayer.hpMaxNow * rate / skillEffectTime;
 			InvokeRepeating ("makeTrueHpUp", 0f, 1f);
+
+			this.enabled = true;
 		} 
 		else 
 			UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
+	}
+
+	public override void OnCool ()
+	{
+		this.enabled = false;
 	}
 
 	float timeAdder = 0f;

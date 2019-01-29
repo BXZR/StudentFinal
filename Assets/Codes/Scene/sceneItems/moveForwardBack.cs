@@ -16,7 +16,7 @@ public class moveForwardBack : MonoBehaviour {
 		aimStart = this.transform.position;
 		aimForward = this.transform.position + new Vector3 (0f, 0f, distance);
 		aimNow = aimForward;
-		InvokeRepeating ("MakeMove" , 0f , 0.5f);
+		InvokeRepeating ("MakeMove" , 0f , 1f);
 	}
 
 

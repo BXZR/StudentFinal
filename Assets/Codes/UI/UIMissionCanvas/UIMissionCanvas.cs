@@ -27,8 +27,11 @@ public class UIMissionCanvas : UIBasic {
 	public override void OnShow (string value = "")
 	{
 		Time.timeScale = 0f;
-		missionInformationText.text = "尚未选择任务";
 		ShowButtonsNew ();
+		if(theMissionButtons.Count > 0 )
+			 theMissionButtons[0].MakeSelectMission();
+		else
+		    missionInformationText.text = "当前没有任务";
 	} 
 
 

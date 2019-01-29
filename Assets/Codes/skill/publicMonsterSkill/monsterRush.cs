@@ -8,8 +8,8 @@ public class monsterRush : MonoBehaviour {
 	//这类技能一般是叠加在FSMStage里面进行的
 	private FSMStage theAI;
 	private bool isRushing = false;
-	private float rushTimer = 0.15f;
-	private float rushTimerMax = 0.15f;
+	private float rushTimer = 0.2f;
+	private float rushTimerMax = 0.2f;
 	public float damage = 7f;
 	void Start ()
 	{

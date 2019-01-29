@@ -12,6 +12,7 @@ public class MissionButton : MonoBehaviour {
 	private Text missionInformationText;
 	private Button theMissionButton;
 	public int missionID = 0;//用于排序的ID
+	private ColorBlock colorBuff;//用来存储本来的颜色
 
 	public void SetMission(MissionBasic In , Text missionText)
 	{
@@ -36,6 +37,7 @@ public class MissionButton : MonoBehaviour {
 			theMissionButton.colors = mainMissionColor;
 			missionID = 0;
 		}
+		colorBuff = theMissionButton.colors;
 		
 	}
 
@@ -43,5 +45,25 @@ public class MissionButton : MonoBehaviour {
 	public void MakeSelectMission()
    {
 		missionInformationText.text = theMission.missionInformation;
+
+		if (selectedMissionButton)
+			selectedMissionButton.theMissionButton.colors = selectedMissionButton.colorBuff;
+		selectedMissionButton = this;
+		this.theMissionButton.colors = GetSelectedMissionColor();
    }
+	 
+
+	//有关颜色的额外操作
+	private static ColorBlock selectedMissionColor;
+	private static MissionButton selectedMissionButton;
+	public static ColorBlock GetSelectedMissionColor()
+	{
+		selectedMissionColor = new ColorBlock ();
+		selectedMissionColor.normalColor = Color.cyan;
+		selectedMissionColor.highlightedColor = Color.cyan;
+		selectedMissionColor.pressedColor = Color.gray;
+		selectedMissionColor.colorMultiplier = 1f;
+		return selectedMissionColor;
+	}
+		
 }

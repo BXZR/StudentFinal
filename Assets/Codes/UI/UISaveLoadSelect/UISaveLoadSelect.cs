@@ -61,11 +61,13 @@ public class UISaveLoadSelect : UIBasic {
     /// </summary>
 	private void MakeSave(int ID)
 	{
+		
 		bool saveOp = SystemValues.SaveInformation (ID.ToString());
 		StartCoroutine (OnScreenCapture2 (ID));
 		string show = saveOp ? "存档成功" : "存档失败";
 		UIController.GetInstance ().ShowUI<messageBox> (show);
-		loadButtonInformation ();
+		//loadButtonInformation ();全体刷新经过多次IO，不是好方法
+		loadButtonInformationFromMemory(ID);//假装先存档完成
 
 	}
 
@@ -80,7 +82,10 @@ public class UISaveLoadSelect : UIBasic {
 	}
 
 
-
+	/// <summary>
+	/// 整体获取存档信息的方法
+	/// 这个方法只适合在初始化的时候使用
+	/// </summary>
 	private void loadButtonInformation()
 	{
 		StartCoroutine (loadPicture());
@@ -100,6 +105,34 @@ public class UISaveLoadSelect : UIBasic {
 			saveButtonTimeText[i].text = fi.LastWriteTime.ToString ();
 		}
 	}
+
+	/// <summary>
+	/// 存档的时候直接使用当前存档信息来修改按钮信息
+	/// 这样就可以不经过IO并且减少针对其它存档的计算
+	/// </summary>
+	private void loadButtonInformationFromMemory(int ID)
+	{
+		saveButtonTimeText[ID].text = System.DateTime.Now.ToString ();
+		saveButtonTexts [ID ].text = "Lv."+ SystemValues.thePlayer.GetComponent<Player>().lvNow;
+
+		//直接获取屏幕信息当截图不经过IO
+		int widthUse = Screen.width;
+		int heightUse = Screen.height;
+
+		RenderTexture rt = new RenderTexture( widthUse, heightUse, 0);
+		theCamera.targetTexture = rt;
+		theCamera.Render();
+		RenderTexture.active = rt;
+
+		Texture2D tex =  new Texture2D(widthUse,heightUse, TextureFormat.RGB24, false);//新建一张图
+		tex.ReadPixels (new Rect (0, 0, widthUse, heightUse), 0, 0, true);//从屏幕开始读点
+		tex = ScaleTexture(tex , width ,  height);//缩放的过程
+
+		saveButtonImages[ID].sprite = Sprite.Create (tex, new Rect (0, 0, tex.width, tex.height), new Vector2 (0, 0));
+
+	}
+
+
 
 	//获取存档截图
 	IEnumerator loadPicture()
@@ -159,8 +192,8 @@ public class UISaveLoadSelect : UIBasic {
 			int widthUse = Screen.width;
 			int heightUse = Screen.height;
 
+			//下面四行主要是为了防止闪屏
 			RenderTexture rt = new RenderTexture( widthUse, heightUse, 0);
-
 			theCamera.targetTexture = rt;
 			theCamera.Render();
 			RenderTexture.active = rt;
