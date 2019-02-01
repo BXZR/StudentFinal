@@ -51,6 +51,8 @@
      <Compile Include="Assets\Codes\AI\FSM\FSM_Attack.cs" />
      <Compile Include="Assets\Codes\AI\FSM\FSM_RunAfter.cs" />
      <Compile Include="Assets\Codes\AI\FSM\FSM_Search.cs" />
+     <Compile Include="Assets\Codes\Audio\BGMController.cs" />
+     <Compile Include="Assets\Codes\Audio\SoundController.cs" />
      <Compile Include="Assets\Codes\Camera\smoothLook.cs" />
      <Compile Include="Assets\Codes\Interactive\Collect.cs" />
      <Compile Include="Assets\Codes\Interactive\InteractiveBasic.cs" />
