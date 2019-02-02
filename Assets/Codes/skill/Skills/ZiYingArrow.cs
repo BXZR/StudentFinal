@@ -23,7 +23,7 @@ public class ZiYingArrow : SkillBasic {
 		skillEffectTime = 0.25f;//技能持续时间
 		thePlayer = this.GetComponentInParent<Player>();
 		skillName = "琼华剑法";//技能名字
-		skillInformation = "琼华派多段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三刃共飞花。\n【上清破云剑】巨剑天上来。\n"
+		skillInformation = "琼华派多段御剑之法。\n【化相真如剑】一束风云起。\n【千方残光剑】三刃共飞花。\n【上清破云剑】巨剑天上来。"
 			+"\n剑气持续："+skillEffectTime.ToString("f1")+"秒 冷却时间："+(skillAllTimer - skillEffectTime ).ToString("f1")+"秒";//技能介绍
 	}
 
