@@ -1,23 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\skill\Skills\ZiYingArrow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Codes\Camera\smoothLook.cs">
     <Files>
-      <File FileName="Assets\Codes\UI\UISaveLoadSelect\UISaveLoadSelect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\System\SystemValues.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\UI\UIMissionCanvas\MissionButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\people\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Arrows\Arrows.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\publicMonsterSkill\monsterRush.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\JumpSkill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\SkillHpup.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\ZiYingArrow.cs" Line="26" Column="78" />
-      <File FileName="Assets\Codes\Scene\sceneItems\moveForwardBack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\skill\Skills\SkillBasic.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Audio\SoundController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Audio\BGMController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Codes\Interactive\Collect.cs" Line="1" Column="1" />
+      <File FileName="Assets\Codes\Camera\smoothLook.cs" Line="75" Column="35" />
+      <File FileName="Assets\Codes\UI\PlayerBloodSlider\PlayerBloodCanvas.cs" Line="20" Column="18" />
+      <File FileName="Assets\Codes\people\Player.cs" Line="102" Column="23" />
+      <File FileName="Assets\Codes\people\moveControll\move.cs" Line="92" Column="55" />
+      <File FileName="Assets\Codes\UI\OperateUI\PlayerActCanvas.cs" Line="14" Column="13" />
+      <File FileName="Assets\Codes\UI\OperateUI\moveJoyStick.cs" Line="28" Column="14" />
+      <File FileName="Assets\Codes\UI\OperateUI\MovePadThumb.cs" Line="57" Column="3" />
+      <File FileName="Assets\Codes\System\SystemValues.cs" Line="38" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

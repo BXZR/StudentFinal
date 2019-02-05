@@ -20,6 +20,20 @@ public class move : MonoBehaviour {
 	private animatorController theAnimatorController;//动画控制单元
 	private Vector3 AxisForMove = Vector3.zero;//移动控制单元的轴向
 
+	/// <summary>
+	/// 修改移动向量并且顺带修改动画
+	/// 动画不再在update里面疯狂修改
+	/// </summary>
+	/// <param name="X">X.</param>
+	/// <param name="Y">Y.</param>
+	/// <param name="Z">Z.</param>
+	private void  SetAxisForMove(float X , float Y , float Z)
+	{
+		AxisForMove.x = X;
+		//AxisForMove.y = Y;
+		AxisForMove.z = Z;
+		theMoveModeNow.OnPlayAnimation(theAnimatorController, AxisForMove.x ,AxisForMove.z);
+	}
 
 	//额外功能
 	private NavMeshAgent TheAgent;//导航代理
@@ -82,8 +96,9 @@ public class move : MonoBehaviour {
 		Vector3 eulerNew = new Vector3 (0f , Yadd + eulerOld.y, 0f);
 		headingAim = Quaternion.Euler (eulerNew );
 
-		AxisForMove.x = xAxisValue;
-		AxisForMove.z = yAxisValue;
+		SetAxisForMove (xAxisValue , 0 , yAxisValue);
+		//AxisForMove.x = xAxisValue;
+		//AxisForMove.z = yAxisValue;
 	}
 
 
@@ -110,7 +125,6 @@ public class move : MonoBehaviour {
 		Vector3 eulerOld = this.transform.position;
 		Vector3 eulerNew = new Vector3 (0f , YawAdd + eulerOld.y , 0f);
 		headingAim = Quaternion.Euler (eulerNew );
-//		print (eulerNew);
 		//直接用最暴力的方法
 		//this.transform.LookAt(aim.transform);
 		//headingAim = this.transform.rotation;
@@ -140,6 +154,7 @@ public class move : MonoBehaviour {
 	/// <summary>
 	/// 动画控制.
 	/// 使用输入轴的数据与Animator状态机的轴数据做对应
+	/// 这个方法已经废弃
 	/// </summary>
 	private void AnimationControl()
 	{
@@ -149,13 +164,13 @@ public class move : MonoBehaviour {
 	//开始移动
 	public void startMoving()
 	{
-		AxisForMove = Vector3.zero;
+		SetAxisForMove ( 0f , 0f , 0f);
 		isMoving = true;
 	}
     //强制停止移动 
 	public void stopMoving()
 	{
-		AxisForMove = Vector3.zero;
+		SetAxisForMove ( 0f , 0f , 0f);
 		isMoving = false;
 	}
 
@@ -183,7 +198,7 @@ public class move : MonoBehaviour {
 	void Update () 
 	{
 		TrueMove ();
-		AnimationControl ();
+		//AnimationControl ();
 	}
 }
 

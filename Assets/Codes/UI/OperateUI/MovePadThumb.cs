@@ -14,6 +14,11 @@ public class MovePadThumb : MonoBehaviour {
 		EndShow ();
 	}
 
+	void OnEnable()
+	{
+		EndShow ();
+	}
+
 
 	/// <summary>
 	/// 使用轴进行移动的时候的自身旋转
@@ -50,7 +55,8 @@ public class MovePadThumb : MonoBehaviour {
 	/// </summary>
 	public void EndShow()
 	{
-		theShowImage.enabled = false;
+		if(theShowImage)
+		    theShowImage.enabled = false;
 	}
 
 }

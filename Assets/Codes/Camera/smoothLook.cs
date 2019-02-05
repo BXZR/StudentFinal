@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(Camera))]
 public class smoothLook : MonoBehaviour {
 
 	//摄像机的移动
 	//这是一个围绕目标球形查看的一个摄像机
 	public Transform theTarget;//查看目标
+	//摄像机的高度和距离设置参数
+	private float maxHeight = 6f;
+	private float minHeight = 2f;
+	private float maxDistance = 8f;
+	private float minDistance = 4f;
+	private float maxFov = 60f;
+	private float minFov = 30f;
+	//摄像机本体
+	private Camera theCamera;
+
 	public float distance = 4f;//与目标的距离
 	public float height = 2f;//固定高度
-
 	private Vector3 mousePosition = Vector3.zero;
 	private bool canOperate = false;//是否可以操作摄像机
 
@@ -23,6 +32,7 @@ public class smoothLook : MonoBehaviour {
 	void Start ()
 	{
 		SystemValues.theCamera = this;
+		theCamera = this.GetComponent<Camera> ();
 		Invoke ("FixPositionOnStart" , 0.02f);
 	}
 
@@ -51,8 +61,8 @@ public class smoothLook : MonoBehaviour {
 	{
 		FixedPostion ();
 	}
-
-
+		
+//----------------------------------------------------操作方法封装，获得输入------------------------------------------------------------------------------//
 	/// <summary>
 	/// 摄像机的触摸操作
 	/// 进化版，可以检测多个手指的移动
@@ -80,7 +90,6 @@ public class smoothLook : MonoBehaviour {
 		{
 			canOperate = false;
 		}
-
 	}
 
 	/// <summary>
@@ -97,7 +106,6 @@ public class smoothLook : MonoBehaviour {
 		if (!theTarget)
 			return;
 		
-
 		if (Input.GetMouseButtonDown (0)) 
 		{
 			if (SystemValues.IsOperatingUI ())
@@ -117,7 +125,6 @@ public class smoothLook : MonoBehaviour {
 				Vector2 mouseControl = new Vector2 (xMove , yMove);
 				MoveWithVector (mouseControl );
 				mousePosition = Input.mousePosition;
-
 			}
 		}
 		if (Input.GetMouseButtonUp (0))
@@ -125,7 +132,7 @@ public class smoothLook : MonoBehaviour {
 			canOperate = false;
 		}
 	}
-
+//----------------------------------------------------操作方法封装，获得输入------------------------------------------------------------------------------//
 
 	/// <summary>
 	/// 战斗/移动模式之下的摄像机操作
@@ -134,8 +141,8 @@ public class smoothLook : MonoBehaviour {
 	{
 		if (SystemValues.theCameraState == CameraState.rotateCamera || canOperate) 
 		{
-			Vector3 aimPosition = theTarget.transform.position + extraDistance;
-			aimPosition = new Vector3 (this.transform.position.x, theTarget.transform.position.y + height, this.transform.position.z);
+			//Vector3 aimPosition = theTarget.transform.position + extraDistance;//这一步的计算和赋值其实没有什么用，暂时先不做
+			Vector3 aimPosition = new Vector3 (this.transform.position.x, theTarget.transform.position.y + height, this.transform.position.z);
 			extraDistance = (aimPosition - theTarget.transform.position).normalized * distance;
 
 			//先移动摄像机再看
@@ -165,35 +172,64 @@ public class smoothLook : MonoBehaviour {
 	/// <summary>
 	/// 封装的touch移动方法
 	/// 传入的参数就是Touch
+	/// 以操纵的上下输入作为参数的综合方法
 	/// </summary>
 	/// <param name="theTouch">The touch.</param>
 	private void MoveWithVector(Vector2 theControlVector)
 	{
-
 		float xMove = theControlVector.x; 
 		float yMove = theControlVector.y;
+		//0.008f等等数值用于调整操作顺滑度
 		xMove = Mathf.Abs (xMove) > 3f ? xMove * 0.008f : 0f;
 		yMove = Mathf.Abs (yMove) > 3f ? yMove * 0.006f : 0f;
 		//取反是可以改变操作的感觉
 		xMove = -xMove;
 		yMove = -yMove;
 
-		height += yMove;
-		distance += yMove;
-		height = Mathf.Clamp (height, 2f, 6f);
-		distance = Mathf.Clamp (distance, 4f, 8f);
+		if (ChangeFov (theControlVector)) 
+		{
+			height += yMove;
+			distance += yMove;
+			height = Mathf.Clamp (height, minHeight, maxHeight);
+			distance = Mathf.Clamp (distance, minDistance, maxDistance);
+		}
 
 		this.transform.Translate (new Vector3 (xMove, 0f, 0f));
 	}
 
+	/// <summary>
+	///附加，修改摄像机的视野范围的方法
+	/// 只有在摄像机在最下面的时候才可以触发
+	/// 在调整视野范围的时候是不可以进行高度移动的
+	/// </summary>
+	/// <param name="theControlVector">The control vector.</param>
+	private bool ChangeFov(Vector2 theControlVector)
+	{
+		if (height > minHeight)
+			return true;
+		
+		theControlVector = -theControlVector;
+		//上下移动操作的条件
+		if (theControlVector.y > 0 && Mathf.Abs (theCamera.fieldOfView - 60f) < 0.35f) 
+			 return true;
 
+		theCamera.fieldOfView += theControlVector.y * 0.1f;
+		theCamera.fieldOfView = Mathf.Clamp (theCamera.fieldOfView, minFov, maxFov);
+		return false;
+	}
+
+	//-------------------------------------------------------剧情摄像机----------------------------------------------------------//
 	/// <summary>
 	/// 剧情模式之下的摄像机操作
 	/// </summary>
+	private float cameraFovSave;
 	private void PlotCamera()
 	{
 		if (!theTarget)
 			return;
+
+		cameraFovSave = theCamera.fieldOfView;
+		theCamera.fieldOfView = maxFov;
 
 		if(Random.value < 0.5f)
 			this.transform.position = theTarget.transform.position + theTarget.transform.rotation * new Vector3 (2f,2f,2f) ;
@@ -221,6 +257,7 @@ public class smoothLook : MonoBehaviour {
 		isPloting = false;
 		this.transform.position = theTarget.transform.position + extraDistance;
 		this.transform.LookAt (theTarget.transform.position + new Vector3 (0f, 1f, 0f));
+		theCamera.fieldOfView = cameraFovSave;
 
 	}
 

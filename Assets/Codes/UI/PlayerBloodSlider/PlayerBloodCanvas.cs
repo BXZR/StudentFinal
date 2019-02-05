@@ -15,6 +15,10 @@ public class PlayerBloodCanvas : MonoBehaviour {
 	private float closeTimerMax = 5f;
 
 
+	void Start()
+	{
+		MakeAutoClose(3f);
+	}
 
 	void Update () 
 	{
