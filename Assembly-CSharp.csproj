@@ -98,6 +98,7 @@
      <Compile Include="Assets\Codes\UI\UIMissionCanvas\UIMissionCanvas.cs" />
      <Compile Include="Assets\Codes\UI\UISaveLoadSelect\UISaveLoadSelect.cs" />
      <Compile Include="Assets\Codes\UI\UITalkSelect\UITalkSelect.cs" />
+     <Compile Include="Assets\Codes\fog\warFog.cs" />
      <Compile Include="Assets\Codes\people\Acter.cs" />
      <Compile Include="Assets\Codes\people\Player.cs" />
      <Compile Include="Assets\Codes\people\animatorController.cs" />
@@ -135,6 +136,7 @@
      <None Include="Assets\Resources\XML\PlotItem0\Plot_0_8.xml" />
      <None Include="Assets\Resources\XML\PlotItem0\Plot_0_2.xml" />
      <None Include="Assets\Resources\XML\NPC\LiuMengLi\LiuMengLi.xml" />
+     <None Include="Assets\Codes\fog\WarFogShader.shader" />
      <None Include="Assets\Resources\XML\NPC\LinWeiYang\LinWeiYang.xml" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
      <None Include="Assets\Resources\XML\PlotItem0\Plot_0_4.xml" />
