@@ -72,19 +72,30 @@ public class smoothLook : MonoBehaviour {
 		if (!theTarget)
 			return;
 
-		if (SystemValues.IsOperatingUI () && Input.touches.Length >= 2 && !SystemValues.IsOperatingUI(Input.GetTouch (1).fingerId)) 
-		{
-			canOperate = true;
-			Touch theTouch = Input.GetTouch (1);
-			Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x , theTouch.deltaPosition.y);
-			MoveWithVector (touchControlVector);
-		} 
-		else if (!SystemValues.IsOperatingUI () && Input.touches.Length >= 1) 
+		if (!SystemValues.IsOperatingUI () && Input.touches.Length == 1) 
 		{
 			canOperate = true;
 			Touch theTouch = Input.GetTouch (0);
 			Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x , theTouch.deltaPosition.y);
 			MoveWithVector (touchControlVector);
+		} 
+		else if (Input.touches.Length == 2 ) 
+		{
+			Touch theTouch;
+			if (SystemValues.IsOperatingUI () && !SystemValues.IsOperatingUI (Input.GetTouch (1).fingerId)) 
+			{
+				canOperate = true;
+				theTouch = Input.GetTouch (1);
+				Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x, theTouch.deltaPosition.y);
+				MoveWithVector (touchControlVector);
+			}
+			if (!SystemValues.IsOperatingUI () && SystemValues.IsOperatingUI (Input.GetTouch (1).fingerId)) 
+			{
+				canOperate = true;
+				theTouch = Input.GetTouch (0);
+				Vector2 touchControlVector = new Vector2 (theTouch.deltaPosition.x, theTouch.deltaPosition.y);
+				MoveWithVector (touchControlVector);
+			}
 		} 
 		else
 		{

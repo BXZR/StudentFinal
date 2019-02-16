@@ -36,9 +36,8 @@ public class MoveModeChangeSkill: SkillBasic {
 	{
 		if (canUseTheSkill ())
 		{
-			theStateNow = skillState.isUsing;
 			thePlayer.theSkillNow = this;
-
+			theStateNow = skillState.isUsing;
 			if (moveOBJ.theMoveModeNow is flyMoveMode) 
 			{
 				moveOBJ.changeMoveMode (new runMoveMode ());
@@ -55,7 +54,7 @@ public class MoveModeChangeSkill: SkillBasic {
 			}
 		}
 	    else 
-		UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
+		    UIController.GetInstance ().ShowUI<messageBox> ("暂时无法使用此技能");
 	}
 
 
